@@ -1,0 +1,111 @@
+@import "compass";
+
+@charset "utf-8";
+
+$primary: #FFD608;
+$secondary: complement($primary);
+$dark: #30302A;
+$light: tint($primary, 95%);
+
+$freight-text: "freight-text-pro", Georgia, serif;
+$freight-sans: "freight-sans-pro", Verdana, sans-serif;
+
+body {
+  font-family: $freight-sans;
+
+}
+
+* {
+  @include box-sizing(border-box);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $freight-text;
+}
+
+body, article, section, ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+$form-width: 16em;
+$output-width: 6em;
+$specimen-width: 30em;
+
+.form, .output, .specimen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  padding: 1em;
+  overflow: auto;
+  @include box-shadow(0 0 10px 0 rgba(#000, .5));
+}
+
+.form {
+  left: 0;
+  width: $form-width;
+  background-color: $dark;
+  color: $light;
+}
+label {
+  display: block;
+}
+input {
+  display: block;
+  width: 100%;
+  border: 0 solid tint($dark, 20%);
+  background-color: black;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  padding: .25em .5em;
+  border-top-width: 3px;
+  &:focus {
+    border-color: $primary;
+    outline: none;
+  }
+}
+
+$output-item-start : -1;
+$output-item-end   : 8;
+
+
+.output {
+  left: $form-width;
+  right: $specimen-width;
+  background-color: $light;
+  min-width: $output-width;
+  li {
+    display: inline;
+    padding: .25em .5em;
+  }
+  .info {
+    white-space: nowrap;
+    border-bottom: 1px solid $primary;
+  }
+  .text {
+    font-family: $freight-text;
+    white-space:nowrap;
+    @for $i from $output-item-start through $output-item-end {
+      &.m#{$i} {
+        font-size: 1em * $i;
+      }
+    }
+  }
+}
+
+.specimen {
+  left: $form-width + $output-width;
+  right: 0;
+  background-color: $light;
+  max-width: $specimen-width;
+  padding: 1em 2em 4em 1em;
+  @media (min-width: $form-width + $output-width + $specimen-width) {
+    left: auto;
+  }
+}
+
+
+.contain {
+}

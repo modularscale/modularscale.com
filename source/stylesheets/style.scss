@@ -15,7 +15,7 @@ $primary: cs-primary();
 $secondary: cs-secondary();
 $dark: hsl(hue(cs-quadrary()), 10%, 30%);
 $light: hsl(hue(cs-quadrary()), 22%, 96%);
-@include cs-test($primary $secondary $dark $light);
+// @include cs-test($primary $secondary $dark $light);
 
 $freight-text: 'freight-text-pro', Georgia, serif;
 $freight-sans: 'freight-sans-pro', Verdana, sans-serif;
@@ -23,7 +23,6 @@ $freight-sans: 'freight-sans-pro', Verdana, sans-serif;
 
 body {
   font-family: $freight-sans;
-
 }
 
 * {
@@ -51,6 +50,7 @@ $specimen-width: 30em;
   padding: 1em;
   overflow: auto;
   @include box-shadow(0 0 10px 0 rgba(#000, .5));
+  border-top: ms(-2) solid $primary;
 }
 
 .form {

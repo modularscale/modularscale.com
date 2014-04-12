@@ -1,14 +1,26 @@
-@import "compass";
+@import 'compass';
+@import 'breakpoint';
+@import 'color-schemer';
+@import 'modular-scale';
+@import 'toolkit';
 
-@charset "utf-8";
+@charset 'utf-8';
 
-$primary: #FFD608;
-$secondary: complement($primary);
-$dark: #30302A;
-$light: tint($primary, 95%);
+$cs-primary: #E8662A;
+$cs-scheme: accented-analogic;
+$cs-hue-offset: 20;
+$cs-color-model: ryb;
 
-$freight-text: "freight-text-pro", Georgia, serif;
-$freight-sans: "freight-sans-pro", Verdana, sans-serif;
+$primary: cs-primary();
+$secondary: cs-secondary();
+$dark: hsl(hue(cs-quadrary()), 22%, 16%);
+$light: hsl(hue(cs-quadrary()), 22%, 96%);
+
+@include cs-test($primary $secondary $dark $light);
+
+$freight-text: 'freight-text-pro', Georgia, serif;
+$freight-sans: 'freight-sans-pro', Verdana, sans-serif;
+
 
 body {
   font-family: $freight-sans;

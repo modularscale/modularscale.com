@@ -7,6 +7,11 @@
 #   config.output_style = :compact
 # end
 
+require 'toolkit'
+require 'modular-scale'
+require 'breakpoint'
+require 'color-schemer'
+
 ###
 # Page options, layouts, aliases and proxies
 ###

@@ -6,16 +6,15 @@
 
 @charset 'utf-8';
 
-$cs-primary: #E8662A;
+$cs-primary: #D6681E;
 $cs-scheme: accented-analogic;
 $cs-hue-offset: 20;
 $cs-color-model: ryb;
 
 $primary: cs-primary();
 $secondary: cs-secondary();
-$dark: hsl(hue(cs-quadrary()), 22%, 16%);
+$dark: hsl(hue(cs-quadrary()), 10%, 30%);
 $light: hsl(hue(cs-quadrary()), 22%, 96%);
-
 @include cs-test($primary $secondary $dark $light);
 
 $freight-text: 'freight-text-pro', Georgia, serif;
@@ -66,16 +65,20 @@ label {
 input {
   display: block;
   width: 100%;
-  border: 0 solid tint($dark, 20%);
-  background-color: black;
-  color: inherit;
+  border: 1px solid $secondary;
+  background-color: $light;
+  color: $dark;
   font-family: inherit;
   font-size: inherit;
   padding: .25em .5em;
-  border-top-width: 3px;
+  // border-radius: .25em;
   &:focus {
     border-color: $primary;
+    background: white;
     outline: none;
+    @include box-shadow(
+      0 0 0 2px $primary
+    );
   }
 }
 
@@ -88,13 +91,19 @@ $output-item-end   : 8;
   right: $specimen-width;
   background-color: $light;
   min-width: $output-width;
+  overflow-x: hidden;
   li {
     display: inline;
     padding: .25em .5em;
+    &:first-child {
+      padding-left: 0;
+    }
   }
   .info {
     white-space: nowrap;
     border-bottom: 1px solid $primary;
+    color: mix($secondary, $dark);
+    @include transition(all .5s);
   }
   .text {
     font-family: $freight-text;

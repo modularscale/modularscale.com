@@ -108,11 +108,6 @@ $output-item-end   : 8;
   .text {
     font-family: $freight-text;
     white-space:nowrap;
-    @for $i from $output-item-start through $output-item-end {
-      &.m#{$i} {
-        font-size: 1em * $i;
-      }
-    }
   }
 }
 

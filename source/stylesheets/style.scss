@@ -108,6 +108,7 @@ $output-item-end   : 8;
   .text {
     font-family: $freight-text;
     white-space:nowrap;
+    @include transition(font-size .5s);
   }
 }
 

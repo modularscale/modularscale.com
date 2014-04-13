@@ -20,14 +20,17 @@ function changeRatio(e) {
 // alert(ms(3, 1, 1.5));
 
 function msPage(msBase, msUnit, msRatio) {
+
   // upper bound of scale
   var u = 10;
   // lower bound of scale
   var l = -6;
   while (u >= l) {
     if (u >= 0) {
+      document.getElementById('m'+u+'value').innerHTML=(Math.round((ms(u,msBase,msRatio))*1000)/1000)+msUnit;
       document.getElementById('text_m'+u).style.fontSize=(ms(u,msBase,msRatio)+msUnit);
     } else {
+      document.getElementById('mn'+Math.abs(u)+'value').innerHTML=(Math.round((ms(u,msBase,msRatio))*1000)/1000)+msUnit;
       document.getElementById('text_mn'+Math.abs(u)).style.fontSize=(ms(u,msBase,msRatio)+msUnit);
     }
     u--;
@@ -43,6 +46,7 @@ var msUnit = 'em';
 var msRatio = 1;
 
 document.addEventListener('DOMContentLoaded', function(){
+
   // base
   msBase = document.getElementById("msBase").value;
   // units

@@ -49,6 +49,7 @@ $specimen-width: 30em;
   bottom: 0;
   padding: 1em;
   overflow: auto;
+  background-color: white;
   @include box-shadow(0 0 10px 0 rgba(#000, .5));
   border-top: ms(-2) solid $primary;
 }
@@ -89,7 +90,6 @@ $output-item-end   : 8;
 .output {
   left: $form-width;
   right: $specimen-width;
-  background-color: $light;
   min-width: $output-width;
   overflow-x: hidden;
   li {
@@ -102,11 +102,12 @@ $output-item-end   : 8;
   .info {
     white-space: nowrap;
     border-bottom: 1px solid $primary;
-    color: mix($secondary, $dark);
+    color: $secondary;
     @include transition(all .5s);
   }
   .text {
     font-family: $freight-text;
+    color: $dark;
     white-space:nowrap;
     @include transition(font-size .5s);
   }
@@ -115,7 +116,6 @@ $output-item-end   : 8;
 .specimen {
   left: $form-width + $output-width;
   right: 0;
-  background-color: $light;
   max-width: $specimen-width;
   padding: 1em 2em 4em 1em;
   @media (min-width: $form-width + $output-width + $specimen-width) {

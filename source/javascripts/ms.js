@@ -1,4 +1,4 @@
-function ms(msValue, msBase, msRatio) {
+function ms(msValue, msBases, msRatios) {
   // (r^v)*b
-  return Math.pow(msRatio, msValue) * msBase;
+  return Math.pow(msRatios, msValue) * msBases;
 }

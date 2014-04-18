@@ -50,7 +50,7 @@ $specimen-width: 30em;
   padding: 1em;
   overflow: auto;
   background-color: white;
-  @include box-shadow(0 0 10px 0 rgba(#000, .5));
+  @include box-shadow((ms(-3) * -1) 0 0 0 rgba(#000, .1));
   border-top: ms(-2) solid $primary;
 }
 

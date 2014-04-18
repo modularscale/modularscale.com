@@ -17,15 +17,42 @@ function ms(value, bases, ratios) {
     ratios = msRatios;
   }
 
+  // (r^v)*b
+  return Math.pow(ratios, value) * bases;
+}
+
+function msnew(value, bases, ratios) {
+
+  if (typeof value === 'string') {
+    value = 1;
+  }
+  if (value == undefined) {
+    value = msValue;
+  }
+  if (bases == undefined) {
+    bases = msBases;
+  }
+  if (ratios == undefined) {
+    ratios = msRatios;
+  }
+
+  // Make arrays
+  var bases = (''+bases).split(',');
+  var ratios = (''+ratios).split(',');
+
   for (var ratio = 0; ratio < ratios.length; ratio++) {
     for (var base = 0; base < bases.length; base++) {
-      console.log(ratio, base);
+      console.log(ratios[ratio], bases[base]);
     }
   }
 
   // (r^v)*b
-  return Math.pow(ratios, value) * bases;
+  return 2;
 }
+
+console.log(
+  msnew(3,[16, 20],1.3)
+);
 
 
 //   def ms_gem_func(value, bases, ratios)

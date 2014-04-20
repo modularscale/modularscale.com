@@ -2,6 +2,28 @@ var msValue = 0;
 var msBases = 1;
 var msRatios = (1+ Math.sqrt(5))/2;
 
+// Unique via http://jsfiddle.net/gabrieleromanato/BrLfv/
+var msUnique = function(origArr) {
+    var newArr = [],
+        origLen = origArr.length,
+        found, x, y;
+
+    for (x = 0; x < origLen; x++) {
+        found = undefined;
+        for (y = 0; y < newArr.length; y++) {
+            if (origArr[x] === newArr[y]) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            newArr.push(origArr[x]);
+        }
+    }
+    return newArr;
+}
+
+// Main function
 function ms(value, bases, ratios) {
 
   if (typeof value === 'string') {
@@ -17,102 +39,68 @@ function ms(value, bases, ratios) {
     ratios = msRatios;
   }
 
-  // (r^v)*b
-  return Math.pow(ratios, value) * bases;
-}
-
-function msnew(value, bases, ratios) {
-
-  if (typeof value === 'string') {
-    value = 1;
+  // Error hangling
+  if (bases <= 0) {
+    bases = 1;
   }
-  if (value == undefined) {
-    value = msValue;
-  }
-  if (bases == undefined) {
-    bases = msBases;
-  }
-  if (ratios == undefined) {
-    ratios = msRatios;
+  if (typeof Math.abs(bases[0]) != 'number') {
+    bases = 1;
   }
 
   // Make arrays
   var bases = (''+bases).split(',');
   var ratios = (''+ratios).split(',');
 
+  // Seed return array
+  var r = [];
+
   for (var ratio = 0; ratio < ratios.length; ratio++) {
     for (var base = 0; base < bases.length; base++) {
-      console.log(ratios[ratio], bases[base]);
+
+      // Seed list with an initial value
+      // r.push(bases[base]);
+
+      // Find values on a positive scale
+      if (value >= 0) {
+        // Find lower values on the scale
+        var i = 0;
+        while((Math.pow(ratios[ratio], i) * bases[base]) >= bases[0]) {
+          r.push(Math.pow(ratios[ratio], i) * bases[base]);
+          i--;
+        }
+
+        // Find higher possible values on the scale
+        var i = 0;
+        while(Math.pow(ratios[ratio], i) * bases[base] <= Math.pow(ratios[ratio], value + 1) * bases[base]) {
+          r.push(Math.pow(ratios[ratio], i) * bases[base]);
+          i++;
+        }
+      } else {
+        // Find values on a negitve scale
+        var i = 0;
+        while((Math.pow(ratios[ratio], i) * bases[base]) <= bases[0]) {
+          r.push(Math.pow(ratios[ratio], i) * bases[base]);
+          i++;
+        }
+
+        // // Find higher possible values on the scale
+        var i = 0;
+        while((Math.pow(ratios[ratio], i) * bases[base]) >= (Math.pow(ratios[ratio], value - 1) * bases[base])) {
+          if (Math.pow(ratios[ratio], i) * bases[base] <= bases[0]) {
+            r.push(Math.pow(ratios[ratio], i) * bases[base]);
+          }
+          i--;
+        }
+      }
     }
   }
 
-  // (r^v)*b
-  return 2;
+  r = msUnique(r.sort(function(a,b) { return a - b;}));
+
+  // reverse array if value is negitive
+  if(value < 0) {
+    r = r.reverse();
+  }
+
+  return r[Math.abs(value)];
 }
-
-console.log(
-  msnew(3,[16, 20],1.3)
-);
-
-
-//   def ms_gem_func(value, bases, ratios)
-//     rratios.each do |ratio|
-//       rbases.each do |base|
-
-//         base_counter = 0
-
-//         # Seed list with an initial value
-//         r << base
-
-//         # Find values on a positive scale
-//         if rvalue >= 0
-//           # Find higher values on the scale
-//           i = 0;
-//           while ((ratio ** i) * base) >= (rbases[0])
-//             r << (ratio ** i) * base
-//             i = i - 1;
-//           end
-
-//           # Find lower possible values on the scale
-//           i = 0;
-//           while ((ratio ** i) * base) <= ((ratio ** (rvalue + 1)) * base)
-//             r << (ratio ** i) * base
-//             i = i + 1;
-//           end
-
-//         else
-
-//           # Find lower values on the scale
-//           i = 0;
-//           while ((ratio ** i) * base) <= (rbases[0])
-//             r << (ratio ** i) * base
-//             i = i + 1;
-//           end
-
-//           # Find higher possible values on the scale
-//           i = 0;
-//           while ((ratio ** i) * base) >= ((ratio ** (rvalue - 1)) * base)
-//             r << (ratio ** i) * base
-//             i = i - 1;
-//           end
-//         end
-
-//       end
-//     end
-
-//     # Sort and trim
-//     r.sort!
-//     r.uniq!
-
-
-//     if rvalue < 0
-//       r = r.keep_if { |a| a <= rbases[0] }
-//       # Final value
-//       r = r[(rvalue - 1)]
-//     else
-//       r = r[rvalue]
-//     end
-
-
-//     Sass::Script::Number.new(r)
-//   end

@@ -16,6 +16,19 @@
   </head>
 
   <body class="<%= page_classes %>">
+    <%= partial "partials/svg" %>
+    <%= partial "partials/form" %>
+    <%= partial "partials/output" %>
+    <article class="specimen">
+      <div class="contain">
+        <div class="tabs">
+          <a href="#about" class="tab active">About</a>
+          <a href="#specimen" class="tab">Specimen</a>
+          <a href="#code" class="tab">Code</a>
+        </div>
+
     <%= yield %>
+
+    <%= partial "partials/specimen" %>
   </body>
 </html>

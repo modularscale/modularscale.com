@@ -1,0 +1,28 @@
+body {
+  font-family: $freight-sans;
+}
+
+* {
+  @include box-sizing(border-box);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $freight-text;
+}
+
+body, article, section, ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  &:link, &:visited, &:hover {
+    @include transition(all .5s);
+    color: $primary;
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}

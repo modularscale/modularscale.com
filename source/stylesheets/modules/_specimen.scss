@@ -1,0 +1,9 @@
+.specimen {
+  right: 0;
+  width: $specimen-width;
+  padding: 1em 2em 4em 1em;
+  @media (max-width: $break) {
+    width: 0;
+    padding: 1em 0 4em;
+  }
+}

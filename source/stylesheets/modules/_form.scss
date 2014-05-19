@@ -1,0 +1,97 @@
+.form {
+  left: 0;
+  width: $form-width;
+  background-color: $dark;
+  color: $light;
+  @media (max-width: $break-med) {
+    width: 100%;
+  }
+  .label {
+    border-top: ms(-3) solid darken($dark, 3%);
+    font-size: ms(-.5);
+    font-family: $freight-sans;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: ms(-3);
+    margin: ms(1) 0 ms(-1);
+    padding: ms(-3) 0 0;
+    color: tint($dark, 80%);
+    // -webkit-font-smoothing: antialiased;
+    // -moz-osx-font-smoothing: grayscale;
+    // text-rendering: optimizeLegibility;
+    &:first-child {
+      border-top: none;
+      margin-top: ms(-1);
+    }
+  }
+}
+
+.button-pm {
+  outline: none;
+  border: none;
+  background: $primary;
+  border-radius: 50%;
+  padding: 0;
+  -webkit-appearance: none;
+  cursor: pointer;
+  border: 1px solid $primary;
+  position: absolute;
+  margin-top: -2.5em;
+  right: 5em;
+  &:hover {
+    @include animation(pop-plus .25s);
+    animation-timing-function: ease-out;
+    background: darken($primary, 5%);
+  }
+  &.remove {
+    @include transform(rotateZ(45deg));
+    right: 2em;
+    &:hover, &:focus {
+      @include animation(pop-minus .25s);
+      animation-timing-function: ease-out;
+    }
+  }
+  &:focus {
+    @include animation(pop-plus .25s);
+    background: lighten($primary, 10%);
+  }
+}
+
+@include keyframes(pop-plus) {
+  0% {
+    @include transform(scale(1.1) rotateZ(90deg));
+  }
+}
+@include keyframes(pop-minus) {
+  0% {
+    @include transform(scale(1.1) rotateZ(90deg + 45));
+  }
+}
+
+input {
+  display: block;
+  width: 100%;
+  border: 1px solid $secondary;
+  background-color: $light;
+  color: $dark;
+  font-family: inherit;
+  font-size: inherit;
+  padding: ms(-2) ms(-1);
+  margin-bottom: 1em;
+  // border-radius: .25em;
+  &:focus {
+    border-color: $primary;
+    background: white;
+    outline: none;
+    @include box-shadow(
+      0 0 0 2px $primary
+    );
+  }
+}
+
+
+
+
+
+
+

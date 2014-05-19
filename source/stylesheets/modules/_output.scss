@@ -1,0 +1,34 @@
+$output-item-start : -1;
+$output-item-end   : 8;
+
+
+.output {
+  left: $form-width;
+  right: $specimen-width;
+  overflow-x: hidden;
+  li {
+    display: inline;
+    padding: .25em .5em;
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+  .info {
+    white-space: nowrap;
+    border-bottom: 1px solid $primary;
+    color: $secondary;
+    @include transition(all .5s);
+  }
+  .text {
+    font-family: $freight-text;
+    color: $dark;
+    white-space:nowrap;
+    @include transition(font-size .5s);
+  }
+  @media (max-width: $break) {
+    right: 0;
+  }
+  @media (max-width: $break-med) {
+    display: none;
+  }
+}

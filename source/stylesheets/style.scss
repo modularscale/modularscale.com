@@ -20,28 +20,14 @@ $light: hsl(hue(cs-quadrary()), 22%, 96%);
 $freight-text: 'freight-text-pro', Georgia, serif;
 $freight-sans: 'freight-sans-pro', Verdana, sans-serif;
 
-
-body {
-  font-family: $freight-sans;
-}
-
-* {
-  @include box-sizing(border-box);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: $freight-text;
-}
-
-body, article, section, ul, li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+@import 'reset';
 
 $form-width: 16em;
-$output-width: 6em;
+$output-width: 18em;
 $specimen-width: 30em;
+
+$break: $form-width + $output-width + $specimen-width;
+$break-med: $form-width + $output-width;
 
 .form, .output, .specimen {
   position: fixed;
@@ -57,75 +43,11 @@ $specimen-width: 30em;
   border-top: ms(-2) solid $primary;
 }
 
-.form {
-  left: 0;
-  width: $form-width;
-  background-color: $dark;
-  color: $light;
-}
-label {
-  display: block;
-}
-input {
-  display: block;
-  width: 100%;
-  border: 1px solid $secondary;
-  background-color: $light;
-  color: $dark;
-  font-family: inherit;
-  font-size: inherit;
-  padding: .25em .5em;
-  // border-radius: .25em;
-  &:focus {
-    border-color: $primary;
-    background: white;
-    outline: none;
-    @include box-shadow(
-      0 0 0 2px $primary
-    );
-  }
-}
+@import 'svg';
 
-$output-item-start : -1;
-$output-item-end   : 8;
+@import 'patterns/tabs';
 
-
-.output {
-  left: $form-width;
-  right: $specimen-width;
-  min-width: $output-width;
-  overflow-x: hidden;
-  li {
-    display: inline;
-    padding: .25em .5em;
-    &:first-child {
-      padding-left: 0;
-    }
-  }
-  .info {
-    white-space: nowrap;
-    border-bottom: 1px solid $primary;
-    color: $secondary;
-    @include transition(all .5s);
-  }
-  .text {
-    font-family: $freight-text;
-    color: $dark;
-    white-space:nowrap;
-    @include transition(font-size .5s);
-  }
-}
-
-.specimen {
-  left: $form-width + $output-width;
-  right: 0;
-  max-width: $specimen-width;
-  padding: 1em 2em 4em 1em;
-  @media (min-width: $form-width + $output-width + $specimen-width) {
-    left: auto;
-  }
-}
-
-
-.contain {
-}
+@import 'modules/form';
+@import 'modules/output';
+@import 'modules/specimen';
+@import 'modules/advertisement';

@@ -1,0 +1,20 @@
+.tabs {
+  border-bottom: 1px solid $primary;
+  padding: 0 ms(-2);
+}
+
+a.tab {
+  color: inherit;
+  text-decoration: none;
+  font-size: ms(-1);
+  text-transform: uppercase;
+  letter-spacing: ms(-3);
+  padding: ms(-3) (ms(-1) - ms(-3)) ms(-3) ms(-1);
+  &:hover {
+    background: rgba($primary, .5);
+  }
+  &.active {
+    background: darken($primary, 5%);
+    color: white;
+  }
+}

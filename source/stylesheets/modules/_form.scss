@@ -4,7 +4,7 @@
   background-color: $dark;
   color: $light;
   @media (max-width: $break-med) {
-    width: 100%;
+    width: 96%;
   }
   .label {
     border-top: ms(-3) solid darken($dark, 3%);

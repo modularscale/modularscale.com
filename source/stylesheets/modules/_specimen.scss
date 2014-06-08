@@ -3,7 +3,11 @@
   width: $specimen-width;
   padding: 1em 2em 4em 1em;
   @media (max-width: $break) {
-    width: 0;
-    padding: 1em 0 4em;
+    @include transform(translateX(96%));
+  }
+  @media (max-width: $break-med) {
+    left: 0;
+    width: 100%;
+    @include transform(translateX(98%));
   }
 }

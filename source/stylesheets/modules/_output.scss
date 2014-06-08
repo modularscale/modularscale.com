@@ -26,9 +26,11 @@ $output-item-end   : 8;
     @include transition(font-size .5s);
   }
   @media (max-width: $break) {
-    right: 0;
+    right: ($specimen-width * .04);
   }
   @media (max-width: $break-med) {
-    display: none;
+    left: 0;
+    width: 100%;
+    @include transform(translateX(96%));
   }
 }

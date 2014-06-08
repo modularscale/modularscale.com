@@ -1,0 +1,45 @@
+.pager {
+  display: none;
+  @include transition(all .5s);
+  position: fixed;
+  background: $primary;
+  bottom: 0;
+  height: $pager-height;
+  width: 100%;
+  @include box-shadow(
+    0 (ms(-3) * -1) 0 0 rgba(#000, .1),
+    0 -1px 0 0 rgba(#000, .33)
+  );
+  a {
+    display: table-cell;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+    color: white;
+    border-left: 1px solid darken($primary, 10%);
+    width: 33.34%;
+    text-shadow: 0 1px 0 darken($primary, 10%);
+    &:hover {
+      text-decoration: none;
+      background: darken($primary, 10%);
+    }
+    &:first-child {
+      border: none;
+    }
+    &.active:after {
+      content: '•';
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      font-size: .67em;
+      line-height: 1;
+    }
+  }
+  @media (max-width: $break) {
+  }
+  @media (max-width: $break-med) {
+    display: table;
+  }
+}

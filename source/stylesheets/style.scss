@@ -25,6 +25,7 @@ $freight-sans: 'freight-sans-pro', Verdana, sans-serif;
 $form-width: 16em;
 $output-width: 18em;
 $specimen-width: 30em;
+$pager-height: ms(2);
 
 $break: $form-width + $output-width + $specimen-width;
 $break-med: $form-width + $output-width;
@@ -42,6 +43,9 @@ $break-med: $form-width + $output-width;
   );
   border-top: ms(-2) solid $primary;
   @include transition(all .5s);
+  @media (max-width: $break-med) {
+    bottom: $pager-height;
+  }
 }
 
 @import 'svg';
@@ -51,4 +55,5 @@ $break-med: $form-width + $output-width;
 @import 'modules/form';
 @import 'modules/output';
 @import 'modules/specimen';
+@import 'modules/pager';
 @import 'modules/advertisement';

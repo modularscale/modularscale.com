@@ -3,6 +3,9 @@
   width: $form-width;
   background-color: $dark;
   color: $light;
+  form {
+    margin-bottom: ms(1);
+  }
   @media (max-width: $break-med) {
     width: 96%;
   }
@@ -37,7 +40,7 @@
   border: 2px solid white;
   position: absolute;
   margin-top: (ms(2) + ms(-6)) * -1;
-  right: 5em;
+  right: 4.6em;
   &:hover {
     @include animation(pop-plus .25s);
     animation-timing-function: ease-out;
@@ -45,7 +48,7 @@
   }
   &.remove {
     @include transform(rotateZ(45deg));
-    right: 2em;
+    right: 1.75em;
     &:hover, &:focus {
       @include animation(pop-minus .25s);
       animation-timing-function: ease-out;

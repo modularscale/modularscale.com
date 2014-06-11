@@ -1,11 +1,17 @@
 //= require 'ms.js'
 
+// Vars
+
+var mode = 'web';
+var panel = 'form';
+var bases = '1em';
+var ratios = 1.3;
+
+
+
 function changeBase(e) {
-  msBase = e.value;
-  msPage(msBase, msUnit, msRatio);
-}
-function changeUnit(e) {
-  msUnit = e.value;
+  msBase = e.value.match(/^(\d+(?:\.\d+)?)(.*)$/)[1];
+  msUnit = e.value.match(/^(\d+(?:\.\d+)?)(.*)$/)[2];
   msPage(msBase, msUnit, msRatio);
 }
 function changeRatio(e) {
@@ -43,20 +49,11 @@ function msPage(msBase, msUnit, msRatio) {
 
 // base
 var msBase = 1;
-// units
+// unit
 var msUnit = 'em';
 // ratio
-// var msRatio = 1.2;
-var msRatio = 1;
+var msRatio = 1.2;
 
 document.addEventListener('DOMContentLoaded', function(){
-
-  // base
-  msBase = document.getElementById("msBase").value;
-  // units
-  msUnit = document.getElementById("msUnit").value;
-  // ratio
-  msRatio = document.getElementById("msRatio").value;
-
   msPage(msBase, msUnit, msRatio);
 });

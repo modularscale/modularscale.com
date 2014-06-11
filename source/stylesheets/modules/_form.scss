@@ -34,9 +34,9 @@
   padding: 0;
   -webkit-appearance: none;
   cursor: pointer;
-  border: 1px solid $primary;
+  border: 2px solid white;
   position: absolute;
-  margin-top: -2.5em;
+  margin-top: (ms(2) + ms(-6)) * -1;
   right: 5em;
   &:hover {
     @include animation(pop-plus .25s);
@@ -72,7 +72,7 @@ input {
   display: block;
   width: 100%;
   border: 1px solid $secondary;
-  background-color: $light;
+  background-color: white;
   color: $dark;
   font-family: inherit;
   font-size: inherit;

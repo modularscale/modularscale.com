@@ -6,14 +6,14 @@
 
 @charset 'utf-8';
 
-$cs-primary: #D6681E;
+$cs-primary: #3bc8b6;
 $cs-scheme: accented-analogic;
 $cs-hue-offset: 20;
-$cs-color-model: ryb;
+$cs-color-model: rgb;
 
 $primary: cs-primary();
 $secondary: cs-secondary();
-$dark: hsl(hue(cs-quadrary()), 10%, 30%);
+$dark: hsl(hue(cs-quadrary()), 10%, 35%);
 $light: hsl(hue(cs-quadrary()), 22%, 96%);
 // @include cs-test($primary $secondary $dark $light);
 

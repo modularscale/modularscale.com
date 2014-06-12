@@ -45,6 +45,7 @@ $break-med: $form-width + $output-width;
   @include transition(all .5s);
   @media (max-width: $break-med) {
     bottom: $pager-height;
+    width: 96%;
   }
 }
 

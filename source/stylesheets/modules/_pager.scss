@@ -1,9 +1,9 @@
 .pager {
-  display: none;
   @include transition(all .5s);
+  bottom: ($pager-height * -1);
+  display: table;
   position: fixed;
   background: $primary;
-  bottom: 0;
   height: $pager-height;
   width: 100%;
   @include box-shadow(
@@ -26,20 +26,29 @@
     &:first-child {
       border: none;
     }
-    &.active:after {
-      content: '•';
-      position: absolute;
-      text-align: center;
-      width: 100%;
-      left: 0;
-      bottom: 0;
-      font-size: .67em;
-      line-height: 1;
-    }
   }
   @media (max-width: $break) {
   }
   @media (max-width: $break-med) {
-    display: table;
+    bottom: 0;
+  }
+}
+
+.pager:after {
+  content: '•';
+  position: absolute;
+  text-align: center;
+  width: 33.334%;
+  left: 0;
+  bottom: ms(-4);
+  font-size: .67em;
+  line-height: 1;
+  color: white;
+  @include transition(all .5s);
+  .panel-output & {
+    @include transform(translateX(100%));
+  }
+  .panel-about & {
+    @include transform(translateX(200%));
   }
 }

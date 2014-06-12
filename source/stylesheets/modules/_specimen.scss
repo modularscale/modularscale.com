@@ -3,11 +3,19 @@
   width: $specimen-width;
   padding: 1em 2em 4em 1em;
   @media (max-width: $break) {
+    width: auto;
+    left: $form-width + 1em;
     @include transform(translateX(96%));
+    .panel-about & {
+      @include transform(translateX(0));
+    }
   }
   @media (max-width: $break-med) {
-    left: 0;
-    width: 100%;
-    @include transform(translateX(98%));
+    left: 2%;
+    width: 96%;
+    @include transform(translateX(100%));
+    .panel-about & {
+      @include transform(translateX(2%));
+    }
   }
 }

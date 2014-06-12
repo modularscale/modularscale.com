@@ -15,7 +15,6 @@ a.tab {
   }
   &.active {
     background: darken($primary, 5%);
-    text-shadow: 0 1px rgba(#000, .4);
     color: white;
   }
 }

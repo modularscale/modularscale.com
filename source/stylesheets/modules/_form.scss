@@ -3,11 +3,12 @@
   width: $form-width;
   background-color: $dark;
   color: $light;
-  form {
-    margin-bottom: ms(1);
-  }
+  text-shadow: 0 1px rgba(#000, .5);
   @media (max-width: $break-med) {
     width: 96%;
+  }
+  form {
+    margin-bottom: ms(1);
   }
   .label {
     border-top: ms(-3) solid darken($dark, 3%);
@@ -92,9 +93,25 @@ input {
   }
 }
 
+pre {
+  color: $secondary;
+  background: darken($dark, 5%);
+  padding: ms(-1);
+  margin: 0;
+}
 
-
-
+a.code-install {
+  background: darken($primary, 5%);
+  color: white;
+  padding: ms(-3) ms(-2);
+  margin-bottom: ms(0);
+  display: block;
+  text-align: right;
+  &:hover {
+    background: darken($primary, 10%);
+    text-decoration: none;
+  }
+}
 
 
 

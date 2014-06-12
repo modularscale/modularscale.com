@@ -30,7 +30,10 @@ $output-item-end   : 8;
   }
   @media (max-width: $break-med) {
     left: 0;
-    width: 100%;
-    @include transform(translateX(96%));
+    @include transform(translateX(100%));
+    .panel-output &,
+    .panel-about & {
+      @include transform(translateX(2%));
+    }
   }
 }

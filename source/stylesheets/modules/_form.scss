@@ -20,9 +20,6 @@
     margin: ms(1) 0 ms(-1);
     padding: ms(-3) 0 0;
     color: tint($dark, 80%);
-    // -webkit-font-smoothing: antialiased;
-    // -moz-osx-font-smoothing: grayscale;
-    // text-rendering: optimizeLegibility;
     &:first-child {
       border-top: none;
       margin-top: ms(-1);

@@ -18,7 +18,7 @@ body, article, section, ul, li {
 
 a {
   &:link, &:visited, &:hover {
-    @include transition(all .5s);
+    @include transition(background-color, .5s);
     color: $primary;
     text-decoration: none;
   }

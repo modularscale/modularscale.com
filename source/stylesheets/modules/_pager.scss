@@ -1,5 +1,4 @@
 .pager {
-  @include transition(all .5s);
   bottom: ($pager-height * -1);
   display: table;
   position: fixed;
@@ -21,7 +20,6 @@
     text-shadow: 0 1px 0 darken($primary, 10%);
     &:hover {
       text-decoration: none;
-      background: darken($primary, 10%);
     }
     &:first-child {
       border: none;

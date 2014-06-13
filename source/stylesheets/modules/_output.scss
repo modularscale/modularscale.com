@@ -17,7 +17,6 @@ $output-item-end   : 8;
     white-space: nowrap;
     border-bottom: 1px solid $primary;
     color: $secondary;
-    @include transition(all .5s);
   }
   .text {
     font-family: $freight-text;
@@ -26,7 +25,7 @@ $output-item-end   : 8;
     @include transition(font-size .5s);
   }
   @media (max-width: $break) {
-    right: ($specimen-width * .04);
+    right: ms(-1);
   }
   @media (max-width: $break-med) {
     left: 0;

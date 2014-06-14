@@ -11,7 +11,7 @@
     <title><%= current_page.data.title || "The Middleman" %></title>
 
     <%= stylesheet_link_tag "style" %>
-    <%= javascript_include_tag  "script" %>
+
     <script type="text/javascript" src="//use.typekit.net/sol4hnp.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   </head>
@@ -24,5 +24,7 @@
       <%= yield %>
     </article>
     <%= partial "partials/pager" %>
+
+    <%= javascript_include_tag  "script" %>
   </body>
 </html>

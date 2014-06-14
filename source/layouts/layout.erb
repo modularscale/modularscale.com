@@ -29,9 +29,11 @@
     </article>
     <%= partial "partials/pager" %>
 
+    <!-- Roll javascript into page for fast load -->
+    <% app_js = sprockets.find_asset('script.js.erb').to_s %>
+    <script>
+    <%= defined?(Uglifier) ? Uglifier.compile(app_js) : app_js %>
+    </script>
 
-    <!-- We may want to flatten JS in as well
-    http://dericmendez.com/2013/05/02/middleman-inline-assets.html -->
-    <%= javascript_include_tag  "script" %>
   </body>
 </html>

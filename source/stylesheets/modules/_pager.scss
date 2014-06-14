@@ -1,10 +1,10 @@
 .pager {
-  bottom: ($pager-height * -1);
-  display: table;
+  display: none;
   position: fixed;
-  background: $primary;
+  bottom: 0;
   height: $pager-height;
   width: 100%;
+  background: $primary;
   @include box-shadow(
     0 (ms(-3) * -1) 0 0 rgba(#000, .1),
     0 -1px 0 0 rgba(#000, .33)
@@ -28,7 +28,7 @@
   @media (max-width: $break) {
   }
   @media (max-width: $break-med) {
-    bottom: 0;
+    display: table;
   }
 }
 

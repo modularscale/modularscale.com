@@ -67,6 +67,9 @@ configure :build do
   # Enable cache buster
   activate :asset_hash
 
+  # gzip
+  activate :gzip
+
   # Use relative URLs
   # activate :relative_assets
 

@@ -102,11 +102,19 @@ input {
 }
 
 
-pre {
+#ms-settings {
+  white-space: pre-wrap;
   color: $secondary;
   background: darken($dark, 5%);
+  -moz-appearance:none;
+  display: block;
+  resize: none;
+  outline: none;
   padding: ms(-1);
   margin: 0;
+  border: none;
+  margin: 0;
+  width: 100%;
 }
 
 a.code-install {

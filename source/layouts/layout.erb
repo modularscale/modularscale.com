@@ -10,7 +10,11 @@
     <!-- Use title if it's in the page YAML frontmatter -->
     <title><%= current_page.data.title || "The Middleman" %></title>
 
-    <%= stylesheet_link_tag "style" %>
+    <!-- Roll stylesheet into page for fast load -->
+    <% css_path = sitemap.resources.select { |p| p.source_file.match(/style[.]scss$/) }.first %>
+    <style>
+        <%= css_path.render %>
+    </style>
 
     <script type="text/javascript" src="//use.typekit.net/sol4hnp.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>

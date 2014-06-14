@@ -28,28 +28,31 @@
 }
 
 .button-pm {
-  outline: none;
-  border: none;
   background: $primary;
   border-radius: 50%;
   padding: 0;
-  -webkit-appearance: none;
-  cursor: pointer;
   border: 2px solid white;
   position: absolute;
   margin-top: (ms(2) + ms(-6)) * -1;
   right: 4.6em;
+  font-size: .75em;
+  @include transition(all .25s);
   &:hover {
     @include animation(pop-plus .25s);
     animation-timing-function: ease-out;
     background: darken($primary, 5%);
   }
   &.remove {
-    @include transform(rotateZ(45deg));
     right: 1.75em;
+    opacity: 0;
+    @include transform(rotateZ(0) scale(0));
     &:hover, &:focus {
       @include animation(pop-minus .25s);
       animation-timing-function: ease-out;
+    }
+    .multi + a + & {
+      opacity: 1;
+      @include transform(rotateZ(45deg));
     }
   }
   &:focus {
@@ -79,6 +82,7 @@ input {
   font-size: inherit;
   padding: ms(-2) ms(-1);
   margin-bottom: 1em;
+  @include animation(form .2s 1 cubic-bezier(.65, -.25, .7, 1.5));
   // border-radius: .25em;
   &:focus {
     border-color: $primary;
@@ -89,6 +93,14 @@ input {
     );
   }
 }
+
+@include keyframes(form) {
+  0% {
+    @include transform(translateY(-100%));
+    opacity: 0;
+  }
+}
+
 
 pre {
   color: $secondary;
@@ -109,6 +121,5 @@ a.code-install {
     text-decoration: none;
   }
 }
-
 
 

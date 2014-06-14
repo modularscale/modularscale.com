@@ -3,9 +3,9 @@
 ###
 
 # Change Compass configuration
-# compass_config do |config|
+compass_config do |config|
   config.output_style = :compressed
-# end
+end
 
 require 'toolkit'
 require 'modular-scale'
@@ -63,6 +63,9 @@ configure :build do
 
   # Minify Javascript on build
   activate :minify_javascript
+
+  # Minify html on build
+  activate :minify_html
 
   # Enable cache buster
   activate :asset_hash

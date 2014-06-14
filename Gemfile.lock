@@ -38,6 +38,7 @@ GEM
     haml (4.0.5)
       tilt
     hike (1.2.3)
+    htmlcompressor (0.1.1)
     http_parser.rb (0.5.3)
     i18n (0.6.9)
     json (1.8.1)
@@ -70,6 +71,9 @@ GEM
       middleman-core (>= 3.0.2)
       multi_json (~> 1.0)
       rack-livereload
+    middleman-minify-html (3.4.0)
+      htmlcompressor (~> 0.1.0)
+      middleman-core (>= 3.2)
     middleman-sprockets (3.3.2)
       middleman-core (>= 3.2)
       sprockets (~> 2.2)
@@ -119,6 +123,7 @@ DEPENDENCIES
   compass (= 1.0.0.alpha.18)
   middleman (~> 3.2.0)
   middleman-livereload (~> 3.1.0)
+  middleman-minify-html (~> 3.4.0)
   modular-scale (~> 2.0.4)
   sass (~> 3.3.4)
   toolkit (~> 2.3.0)

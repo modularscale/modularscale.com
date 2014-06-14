@@ -15,9 +15,6 @@
     <style>
         <%= css_path.render %>
     </style>
-
-    <script type="text/javascript" src="//use.typekit.net/sol4hnp.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   </head>
 
   <body class="panel-calc mode-web">
@@ -34,6 +31,8 @@
     <script>
     <%= defined?(Uglifier) ? Uglifier.compile(app_js) : app_js %>
     </script>
+    <script type="text/javascript" src="//use.typekit.net/sol4hnp.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
   </body>
 </html>

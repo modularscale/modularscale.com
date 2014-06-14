@@ -82,6 +82,7 @@ input {
   font-size: inherit;
   padding: ms(-2) ms(-1);
   margin-bottom: 1em;
+  border-radius: 0;
   @include animation(form .2s 1 cubic-bezier(.65, -.25, .7, 1.5));
   // border-radius: .25em;
   &:focus {

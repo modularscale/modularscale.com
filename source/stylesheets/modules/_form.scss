@@ -45,14 +45,14 @@
   &.remove {
     right: 1.75em;
     opacity: 0;
-    @include transform(rotateZ(0) scale(0));
+    @include transform(rotateZ(225deg) scale(0));
     &:hover, &:focus {
       @include animation(pop-minus .25s);
       animation-timing-function: ease-out;
     }
     .multi + a + & {
       opacity: 1;
-      @include transform(rotateZ(45deg));
+      @include transform(rotateZ(45deg) scale(1));
     }
   }
   &:focus {

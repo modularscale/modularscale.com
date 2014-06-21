@@ -3,7 +3,7 @@ var baseCount = 0;
 function addBase() {
   var formBases = document.getElementById('formBases');
   var newBase = document.createElement('label');
-  var baseValue = document.getElementById('formBases').lastChild.value;
+  var baseValue = document.getElementsByClassName('base')[0].value;
   newBase.innerHTML = '<input type="text" value="' + baseValue + '" step="0.05" onkeyup="changeBase(this)">';
 
   formBases.appendChild(newBase);

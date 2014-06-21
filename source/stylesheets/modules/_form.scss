@@ -102,13 +102,6 @@ input {
       0 0 0 2px $primary
     );
   }
-  &:invalid {
-    border-color: $negitive;
-    outline: none;
-    @include box-shadow(
-      0 0 0 2px $negitive
-    );
-  }
 }
 
 @include keyframes(form) {

@@ -1,6 +1,8 @@
 //= require '_ms.js.erb'
+//= require '_changevalue.js.erb'
 //= require '_panels.js.erb'
 //= require '_form.js.erb'
+//= require '_error.js.erb'
 
 // Vars
 
@@ -8,17 +10,6 @@ var mode = 'web';
 var panel = 'form';
 var bases = '1em';
 var ratios = 1.3;
-
-
-function changeBase(e) {
-  msBase = e.value.match(/^(\d+(?:\.\d+)?)(.*)$/)[1];
-  msUnit = e.value.match(/^(\d+(?:\.\d+)?)(.*)$/)[2];
-  msPage(msBase, msUnit, msRatio);
-}
-function changeRatio(e) {
-  msRatio = e.value;
-  msPage(msBase, msUnit, msRatio);
-}
 
 function stepUnits(u, msBase, msUnit, msRatio) {
   if (msUnit == 'em') {

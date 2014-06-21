@@ -1,0 +1,39 @@
+function changeBase() {
+
+  msBase = [];
+  msUnit = null;
+
+  var bases = document.getElementsByClassName('base');
+  for (var i = 0; i < bases.length; i++) {
+    v = bases[i].value.match(/^(\d+(?:\.\d+)?)(.*)$/);
+    msBase.push(v[1]);
+    if (msUnit == null) {
+      msUnit = v[2];
+    }
+  }
+  msPage(msBase, msUnit, msRatio);
+}
+
+function changeRatio() {
+
+  msRatio = [];
+  msError = false;
+
+  var ratios = document.getElementsByClassName('ratio');
+  for (var i = 0; i < ratios.length; i++) {
+    v = parseFloat(ratios[i].value);
+    if (typeof(v) == 'number') {
+      msRatio.push(v);
+    } else {
+      msError = true;
+    }
+    if (v <= 1) {
+      msError = 'Your ratio needs to be greater than 1';
+    }
+  }
+  if (msError == false) {
+    msPage(msBase, msUnit, msRatio);
+  } else {
+    error(msError);
+  }
+}

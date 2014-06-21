@@ -4,7 +4,7 @@ function addBase() {
   var formBases = document.getElementById('formBases');
   var newBase = document.createElement('label');
   var baseValue = document.getElementsByClassName('base')[0].value;
-  newBase.innerHTML = '<input type="text" value="' + baseValue + '" step="0.05" onkeyup="changeBase(this)">';
+  newBase.innerHTML = '<input type="text" class="base" value="' + baseValue + '" onkeyup="changeBase()">';
 
   formBases.appendChild(newBase);
   baseCount++;
@@ -23,6 +23,7 @@ function removeBase() {
   if (baseCount == 0) {
     formBases.classList.remove('multi');
   }
+  changeBase();
 }
 
 var ratioCount = 0;
@@ -30,7 +31,8 @@ var ratioCount = 0;
 function addRatio() {
   var formRatios = document.getElementById('formRatios');
   var newRatio = document.createElement('label');
-  newRatio.innerHTML = '<input type="number" value="1" step="0.05" onkeyup="changeRatio(this)">';
+  var baseValue = document.getElementsByClassName('ratio')[0].value;
+  newRatio.innerHTML = '<input type="number" class="ratio" value="' + baseValue + '" step="0.05" onkeyup="changeRatio()">';
 
   formRatios.appendChild(newRatio);
   ratioCount++;
@@ -49,4 +51,5 @@ function removeRatio() {
   if (ratioCount == 0) {
     formRatios.classList.remove('multi');
   }
+  changeRatio();
 }

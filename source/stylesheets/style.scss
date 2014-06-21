@@ -16,6 +16,8 @@ $secondary: cs-secondary();
 $dark: hsl(hue(cs-quadrary()), 10%, 35%);
 $light: hsl(hue(cs-quadrary()), 22%, 96%);
 // @include cs-test($primary $secondary $dark $light);
+$negitive: #FF4F21;
+$positive: #6ED823;
 
 $freight-text: 'freight-text-pro', Georgia, serif;
 $freight-sans: 'freight-sans-pro', Verdana, sans-serif;

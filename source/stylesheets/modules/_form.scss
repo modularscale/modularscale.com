@@ -97,10 +97,16 @@ input {
   // border-radius: .25em;
   &:focus {
     border-color: $primary;
-    background: white;
     outline: none;
     @include box-shadow(
       0 0 0 2px $primary
+    );
+  }
+  &:invalid {
+    border-color: $negitive;
+    outline: none;
+    @include box-shadow(
+      0 0 0 2px $negitive
     );
   }
 }

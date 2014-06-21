@@ -32,7 +32,7 @@ function addRatio() {
   var formRatios = document.getElementById('formRatios');
   var newRatio = document.createElement('label');
   var baseValue = document.getElementsByClassName('ratio')[0].value;
-  newRatio.innerHTML = '<input type="number" class="ratio" value="' + baseValue + '" step="0.05" onkeyup="changeRatio()">';
+  newRatio.innerHTML = '<input type="number" class="ratio" min="1.01" value="' + baseValue + '" step="0.01" onkeyup="changeRatio()">';
 
   formRatios.appendChild(newRatio);
   ratioCount++;

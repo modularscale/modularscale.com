@@ -2,3 +2,7 @@ function msPanel(panel) {
   document.body.classList.remove('panel-calc', 'panel-output', 'panel-about');
   document.body.classList.add('panel-' + panel);
 }
+
+var panels = document.getElementsByClassName('panel')
+for (var i = 0; i < panels.length; i++)
+  panels[i].onclick = function() { msPanel(this.dataset.panel)};

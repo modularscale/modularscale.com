@@ -30,7 +30,7 @@ $pager-height: ms(2);
 $break: $form-width + $output-width + $specimen-width;
 $break-med: $form-width + $output-width;
 
-.form, .output, .specimen {
+.panel {
   position: fixed;
   top: 0;
   bottom: 0;

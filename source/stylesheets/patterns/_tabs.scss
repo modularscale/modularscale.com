@@ -1,15 +1,16 @@
 .tabs {
-  border-bottom: 1px solid $primary;
+  border-top: 1px solid $secondary;
   padding: 0 ms(-2);
+  font-size: ms(-1);
 }
 
 a.tab {
   color: inherit;
   text-decoration: none;
-  font-size: ms(-1);
   text-transform: uppercase;
   letter-spacing: ms(-3);
   padding: ms(-3) (ms(-1) - ms(-3)) ms(-3) ms(-1);
+  display: inline-block;
   &:hover {
     background: rgba($primary, .5);
   }

@@ -23,6 +23,21 @@ $output-item-end   : 8;
     font-family: $freight-text;
     color: $dark;
     white-space:nowrap;
+    position: relative;
+    line-height: 1;
+    margin-bottom: ms(-2, 1rem);
+    &:before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      right: 100%;
+      width: 1rem;
+      margin-right: ms(-2, 1rem);
+      background: tint($dark, round(ms(-1, 100%)));
+    }
+    &.m0:before {
+      background: $secondary;
+    }
   }
   @media (max-width: $break) {
     right: ms(-1);

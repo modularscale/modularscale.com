@@ -65,7 +65,7 @@
       @include transform(rotateZ(45deg) scale(1));
     }
   }
-  .single + & {
+  .no-add + & {
     @include transform(rotateZ(-270deg) scale(0));
   }
   &:focus {

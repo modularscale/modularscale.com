@@ -23,7 +23,6 @@ $output-item-end   : 8;
     font-family: $freight-text;
     color: $dark;
     white-space:nowrap;
-    @include transition(font-size .5s);
   }
   @media (max-width: $break) {
     right: ms(-1);

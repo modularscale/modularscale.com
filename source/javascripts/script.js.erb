@@ -9,7 +9,7 @@
 var mode = 'web';
 var panel = 'form';
 var bases = '1em';
-var ratios = 1.3;
+var ratios = 1.5;
 
 function stepUnits(u, msBase, msUnit, msRatio) {
   if (msUnit == 'em') {
@@ -37,6 +37,7 @@ function msPage(msBase, msUnit, msRatio) {
     }
     u--;
   }
+  document.getElementById('text_m0').scrollIntoView(false);
 }
 
 // base
@@ -44,7 +45,7 @@ var msBase = 1;
 // unit
 var msUnit = 'em';
 // ratio
-var msRatio = 1.3;
+var msRatio = 1.5;
 
 document.addEventListener('DOMContentLoaded', function(){
   msPage(msBase, msUnit, msRatio);

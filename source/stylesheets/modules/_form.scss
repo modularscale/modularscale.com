@@ -65,6 +65,9 @@
       @include transform(rotateZ(45deg) scale(1));
     }
   }
+  .single + & {
+    @include transform(rotateZ(-270deg) scale(0));
+  }
   &:focus {
     @include animation(pop-plus .25s);
     background: lighten($primary, 10%);

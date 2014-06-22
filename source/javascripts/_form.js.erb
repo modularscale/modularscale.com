@@ -6,11 +6,14 @@ function addBase() {
   var baseValue = document.getElementsByClassName('base')[0].value;
   newBase.innerHTML = '<input type="text" class="base" value="' + baseValue + '" onkeyup="changeBase()">';
 
-  formBases.appendChild(newBase);
-  baseCount++;
+  if (ratioCount == 0) {
+    formBases.appendChild(newBase);
+    baseCount++;
+  }
 
   if (baseCount == 1) {
     formBases.classList.add('multi');
+    document.getElementById('formRatios').classList.add('single');
   }
 }
 
@@ -22,6 +25,7 @@ function removeBase() {
 
   if (baseCount == 0) {
     formBases.classList.remove('multi');
+    document.getElementById('formRatios').classList.remove('single');
   }
   changeBase();
 }
@@ -34,11 +38,14 @@ function addRatio() {
   var baseValue = document.getElementsByClassName('ratio')[0].value;
   newRatio.innerHTML = '<input type="number" class="ratio" min="1.01" value="' + baseValue + '" step="0.01" onkeyup="changeRatio()">';
 
-  formRatios.appendChild(newRatio);
-  ratioCount++;
+  if (baseCount == 0) {
+    formRatios.appendChild(newRatio);
+    ratioCount++;
+  }
 
   if (ratioCount == 1) {
     formRatios.classList.add('multi');
+    document.getElementById('formBases').classList.add('single');
   }
 }
 
@@ -50,6 +57,7 @@ function removeRatio() {
 
   if (ratioCount == 0) {
     formRatios.classList.remove('multi');
+    document.getElementById('formBases').classList.remove('single');
   }
   changeRatio();
 }

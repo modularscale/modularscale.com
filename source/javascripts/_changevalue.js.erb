@@ -2,22 +2,31 @@ function changeBase() {
 
   msBase = [];
   msUnit = null;
+  var msError = false;
 
   var bases = document.getElementsByClassName('base');
   for (var i = 0; i < bases.length; i++) {
     v = bases[i].value.match(/^(\d+(?:\.\d+)?)(.*)$/);
-    msBase.push(v[1]);
+    if (v[1] > 0) {
+      msBase.push(v[1]);
+    } else {
+      msError = 'Your base must be greater than 0';
+    }
     if (msUnit == null) {
       msUnit = v[2];
     }
   }
-  msPage(msBase, msUnit, msRatio);
+  if (msError == false) {
+    msPage(msBase, msUnit, msRatio);
+  } else {
+    error(msError);
+  }
 }
 
 function changeRatio() {
 
   msRatio = [];
-  msError = false;
+  var msError = false;
 
   var ratios = document.getElementsByClassName('ratio');
   for (var i = 0; i < ratios.length; i++) {

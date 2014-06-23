@@ -88,7 +88,8 @@
 input {
   display: block;
   width: 100%;
-  border: 1px solid $secondary;
+  border: 0 solid nth($color-multi, 1);
+  border-width: 1px 1px 1px ms(-2);
   background-color: white;
   color: $dark;
   font-family: inherit;
@@ -98,6 +99,15 @@ input {
   border-radius: 0;
   @include animation(form .2s 1 cubic-bezier(.65, -.25, .7, 1.5));
   // border-radius: .25em;
+  label:nth-child(2) & {
+    border-color: nth($color-multi, 2);
+  }
+  label:nth-child(3) & {
+    border-color: nth($color-multi, 3);
+  }
+  label:nth-child(4) & {
+    border-color: nth($color-multi, 4);
+  }
   &:focus {
     border-color: $primary;
     outline: none;

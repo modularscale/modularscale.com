@@ -33,10 +33,19 @@ $output-item-end   : 8;
       right: 100%;
       width: 1rem;
       margin-right: ms(-2, 1rem);
-      background: tint($dark, round(ms(-1, 100%)));
+      background: tint(nth($color-multi, 1), round(ms(-1, 100%)));
+    }
+    &.s2 {
+      background: tint(nth($color-multi, 2), round(ms(-1, 100%)));
+    }
+    &.s3 {
+      background: tint(nth($color-multi, 3), round(ms(-1, 100%)));
+    }
+    &.s4 {
+      background: tint(nth($color-multi, 4), round(ms(-1, 100%)));
     }
     &.m0:before {
-      background: $secondary;
+      background: nth($color-multi, 1);
     }
   }
   @media (max-width: $break) {

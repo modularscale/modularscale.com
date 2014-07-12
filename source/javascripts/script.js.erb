@@ -18,13 +18,11 @@ var multiLimit = 3;
 
 function stepUnits(u, msBase, msUnit, msRatio) {
   if (msUnit == 'em') {
-    return (Math.round((ms(u,1,msRatio))*1000)/1000)+'em';
+    return (Math.round((ms(u,1,msRatio)[0])*1000)/1000)+'em';
   } else {
-    return (Math.round((ms(u,msBase,msRatio))*1000)/1000)+msUnit + ' / ' + (Math.round((ms(u,1,msRatio))*1000)/1000)+'em';
+    return (Math.round((ms(u,msBase,msRatio)[0])*1000)/1000)+msUnit + ' / ' + (Math.round((ms(u,1,msRatio)[0])*1000)/1000)+'em';
   }
 }
-
-// alert(ms(3, 1, 1.5));
 
 function msPage(msBase, msUnit, msRatio) {
   // upper bound of scale
@@ -34,10 +32,10 @@ function msPage(msBase, msUnit, msRatio) {
   while (u >= l) {
     if (u >= 0) {
       document.getElementById('m'+u+'value').innerHTML=stepUnits(u, msBase, msUnit, msRatio);
-      document.getElementById('text_m'+u).style.fontSize=(ms(u,msBase,msRatio)+msUnit);
+      document.getElementById('text_m'+u).style.fontSize=(ms(u,msBase,msRatio)[0]+msUnit);
     } else {
       document.getElementById('mn'+Math.abs(u)+'value').innerHTML=stepUnits(u, msBase, msUnit, msRatio);
-      document.getElementById('text_mn'+Math.abs(u)).style.fontSize=(ms(u,msBase,msRatio)+msUnit);
+      document.getElementById('text_mn'+Math.abs(u)).style.fontSize=(ms(u,msBase,msRatio)[0]+msUnit);
     }
     u--;
   }

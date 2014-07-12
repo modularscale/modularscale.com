@@ -35,13 +35,13 @@ $output-item-end   : 8;
       margin-right: ms(-2, 1rem);
       background: tint(nth($color-multi, 1), round(ms(-1, 100%)));
     }
-    &.s2 {
+    &.s1:before {
       background: tint(nth($color-multi, 2), round(ms(-1, 100%)));
     }
-    &.s3 {
+    &.s2:before {
       background: tint(nth($color-multi, 3), round(ms(-1, 100%)));
     }
-    &.s4 {
+    &.s3:before {
       background: tint(nth($color-multi, 4), round(ms(-1, 100%)));
     }
     &.m0:before {

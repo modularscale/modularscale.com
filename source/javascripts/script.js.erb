@@ -29,14 +29,23 @@ function msPage(msBase, msUnit, msRatio) {
   var u = 10;
   // lower bound of scale
   var l = -6;
+
+  // document.getElementByClassName('text').classList.remove('s1 s2 s3');
+
   while (u >= l) {
+
+    var step = ms(u,msBase,msRatio);
+
     if (u >= 0) {
       document.getElementById('m'+u+'value').innerHTML=stepUnits(u, msBase, msUnit, msRatio);
-      document.getElementById('text_m'+u).style.fontSize=(ms(u,msBase,msRatio)[0]+msUnit);
+      document.getElementById('text_m'+u).style.fontSize=(step[0]+msUnit);
+      document.getElementById('text_m'+u).setAttribute('class', 's'+step[1]+' text');
     } else {
       document.getElementById('mn'+Math.abs(u)+'value').innerHTML=stepUnits(u, msBase, msUnit, msRatio);
-      document.getElementById('text_mn'+Math.abs(u)).style.fontSize=(ms(u,msBase,msRatio)[0]+msUnit);
+      document.getElementById('text_mn'+Math.abs(u)).style.fontSize=(step[0]+msUnit);
+      document.getElementById('text_mn'+Math.abs(u)).setAttribute('class', 's'+step[1]+' text');
     }
+
     u--;
   }
   document.getElementById('text_m0').scrollIntoView(false);

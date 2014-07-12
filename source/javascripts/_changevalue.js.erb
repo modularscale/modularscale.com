@@ -10,7 +10,9 @@ function changeBase(e,k) {
   if (k == 38) {
     e.value = thisValue[1]-0 + 1 + thisValue[2];
   } else if (k == 40) {
-    e.value = thisValue[1] - 1 + thisValue[2];
+    if (thisValue[1] > 1) {
+      e.value = thisValue[1] - 1 + thisValue[2];
+    }
   }
 
   var bases = document.getElementsByClassName('base');

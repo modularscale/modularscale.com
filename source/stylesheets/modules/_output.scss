@@ -44,9 +44,6 @@ $output-item-end   : 8;
     &.s3:before {
       background: tint(nth($color-multi, 4), round(ms(-1, 100%)));
     }
-    &.m0:before {
-      background: nth($color-multi, 1);
-    }
   }
   @media (max-width: $break) {
     right: ms(-1);
@@ -60,3 +57,8 @@ $output-item-end   : 8;
     }
   }
 }
+
+#text_m0:before {
+  background: nth($color-multi, 1);
+}
+

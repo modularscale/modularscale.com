@@ -1,8 +1,17 @@
-function changeBase() {
+function changeBase(e,k) {
 
   msBase = [];
   msUnit = null;
   var msError = false;
+
+  var thisValue = e.value.match(/^(\d+(?:\.\d+)?)(.*)$/);
+  console.log(thisValue);
+
+  if (k == 38) {
+    e.value = thisValue[1]-0 + 1 + thisValue[2];
+  } else if (k == 40) {
+    e.value = thisValue[1] - 1 + thisValue[2];
+  }
 
   var bases = document.getElementsByClassName('base');
   for (var i = 0; i < bases.length; i++) {

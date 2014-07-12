@@ -4,7 +4,7 @@ function addBase() {
   var formBases = document.getElementById('formBases');
   var newBase = document.createElement('label');
   var baseValue = document.getElementsByClassName('base')[0].value;
-  newBase.innerHTML = '<input type="text" class="base" value="' + baseValue + '" onkeyup="changeBase()">';
+  newBase.innerHTML = '<input type="text" class="base" value="' + baseValue + '" onkeyup="changeBase(this,event.keyCode)">';
 
   if (ratioCount == 0 && ratioCount < multiLimit) {
     formBases.appendChild(newBase);
@@ -79,3 +79,4 @@ function removeRatio() {
 
   changeRatio();
 }
+

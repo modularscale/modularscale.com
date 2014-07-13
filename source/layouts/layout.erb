@@ -7,12 +7,22 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- iOS stuff -->
+    <!-- Application stuff -->
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png">
+
+    <!-- iOS webapp stuff -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
+    <!-- Windows icons -->
+    <meta name="msapplication-TileColor" content="#625053"/>
+    <meta name="msapplication-square70x70logo" content="/tiny.png"/>
+    <meta name="msapplication-square150x150logo" content="/square.png"/>
+
+
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title><%= current_page.data.title || "The Middleman" %></title>
+    <title>Modularscale</title>
 
     <!-- Roll stylesheet into page for fast load -->
     <% css_path = sitemap.resources.select { |p| p.source_file.match(/style[.]scss$/) }.first %>

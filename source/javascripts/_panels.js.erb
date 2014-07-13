@@ -1,6 +1,10 @@
+var panelNames = ['calc', 'output', 'about'];
+var currentPanel = 'calc';
+
 function msPanel(panel) {
   document.body.classList.remove('panel-calc', 'panel-output', 'panel-about');
   document.body.classList.add('panel-' + panel);
+  currentPanel = panel;
 }
 
 var panels = document.getElementsByClassName('panel')
@@ -33,10 +37,12 @@ function handleTouchMove(evt) {
   var yDiff = yDown - yUp;
 
   if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
-    if ( xDiff > 0 ) {
-      alert('left');
-    } else {
-      alert('right');
+    var panelIndex = panelNames.indexOf(currentPanel);
+    if (xDiff > 0 && panelIndex < 2) {
+      msPanel(panelNames[panelIndex + 1])
+    }
+    if (xDiff <= 0 && panelIndex > 0)  {
+      msPanel(panelNames[panelIndex - 1])
     }
   }
 

@@ -42,17 +42,14 @@
   </form>
 
   <div class="calculator-selection tabs">
-    <a href="#web" class="calculator-lang tab active">Web</a>
-    <a href="#sass" class="calculator-lang tab">Sass</a>
-    <a href="#js" class="calculator-lang tab">JS</a>
+    <a href="javascript:codeMode('web')" class="calculator-lang tab web">Web</a>
+    <a href="javascript:codeMode('sass')" class="calculator-lang tab sass">Sass</a>
+    <a href="javascript:codeMode('js')" class="calculator-lang tab js">JS</a>
   </div>
 
-  <h6 class="label code">Sass settings</h6>
+  <div id="codeSettings" class="code-settings">
 
-<textarea id="ms-settings" onClick="this.select();">msBase: 1em;
-msRatio: 1.3;</textarea>
-
-  <a href="https://github.com/Team-Sass/modular-scale" target="_blank" class="code-install">Install the Sass plugin</a>
+  </div>
 
   <%= partial "partials/ad" %>
 

@@ -4,7 +4,7 @@ $output-item-end   : 8;
 
 .output {
   left: $form-width;
-  right: $specimen-width;
+  right: 1em;
   overflow-x: hidden;
   li {
     display: inline;

@@ -1,0 +1,43 @@
+function baseList() {
+  var baseList = [];
+
+  for (i = 0; i < msBase.length; ++i) {
+    baseList.push(msBase[i] + msUnit);
+  }
+  return baseList;
+}
+
+function codeMode(newMode) {
+  var codeSettings = document.getElementById('codeSettings');
+  if (newMode == 'web') {
+    codeSettings.innerHTML = '';
+  } else if (newMode == 'sass') {
+    codeSettings.innerHTML =
+      '<h6 class="label code">Sass settings</h6>' +
+      '<textarea id="ms-settings" onClick="this.select();">' +
+      '$ms-base: ' + baseList() + ';\n' +
+      '$ms-ratio: ' + msRatio + ';' +
+      '</textarea>' +
+      '<a href="https://github.com/Team-Sass/modular-scale" target="_blank" class="code-install">Install the Sass plugin</a>';
+  } else if (newMode == 'js') {
+    codeSettings.innerHTML =
+      '<h6 class="label code">JS settings</h6>' +
+      '<textarea id="ms-settings" onClick="this.select();">' +
+      'msBases: [' + msBase + '];\n' +
+      'msRatios: [' + msRatio + '];' +
+      '</textarea>' +
+      '<a href="https://github.com/modularscale/modularscale-js" target="_blank" class="code-install">Install the JS plugin</a>';
+  }
+
+  document.body.classList.remove('mode-web', 'mode-sass', 'mode-js');
+  document.body.classList.add('mode-' + newMode);
+
+  mode = newMode;
+}
+
+//   <h6 class="label code">Sass settings</h6>
+
+// <textarea id="ms-settings" onClick="this.select();">msBase: 1em;
+// msRatio: 1.3;</textarea>
+
+//   <a href="https://github.com/Team-Sass/modular-scale" target="_blank" class="code-install">Install the Sass plugin</a>

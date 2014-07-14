@@ -34,10 +34,10 @@ $mono: 'Andale Mono', monospace;
 
 $form-width: 16em;
 $output-width: 18em;
-$specimen-width: 30em;
+$about-width: 30em;
 $pager-height: ms(2);
 
-$break: $form-width + $output-width + $specimen-width;
+$break: $form-width + $output-width + $about-width;
 $break-med: $form-width + $output-width;
 
 .panel {

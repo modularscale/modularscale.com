@@ -1,14 +1,9 @@
 .about {
-  right: 0;
-  width: $specimen-width;
   padding: 1em 2em 4em 1em;
-  @media (max-width: $break) {
-    width: auto;
-    left: $form-width + 1em;
-    @include transform(translateX(96%));
-    .panel-about & {
-      @include transform(translateX(0));
-    }
+  width: $about-width;
+  right: $about-width * -1 + 1;
+  .panel-about & {
+    @include transform(translateX($about-width * -1 + 1));
   }
   @media (max-width: $break-med) {
     left: 2%;
@@ -17,5 +12,11 @@
     .panel-about & {
       @include transform(translateX(2%));
     }
+  }
+  h1, h2 {
+  }
+  h2 {
+    border-top: ms(-5) solid mix($primary, white);
+    font-weight: 400;
   }
 }

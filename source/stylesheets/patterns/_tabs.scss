@@ -14,7 +14,9 @@ a.tab {
   &:hover {
     background: rgba($primary, .5);
   }
-  &.active {
+  body.mode-web &.web,
+  body.mode-sass &.sass,
+  body.mode-js &.js {
     background: darken($primary, 5%);
     color: white;
   }

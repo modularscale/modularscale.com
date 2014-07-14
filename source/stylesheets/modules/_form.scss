@@ -124,6 +124,9 @@ input {
   }
 }
 
+.code-settings {
+  margin-bottom: ms(1);
+}
 
 #ms-settings {
   white-space: pre-wrap;
@@ -145,7 +148,6 @@ a.code-install {
   background: darken($primary, 5%);
   color: white;
   padding: ms(-3) ms(-2);
-  margin-bottom: ms(0);
   display: block;
   text-align: right;
   &:hover {

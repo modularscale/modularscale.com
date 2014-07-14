@@ -4,14 +4,15 @@ function changeBase(e,k) {
   msUnit = null;
   var msError = false;
 
-  var thisValue = e.value.match(/^(\d+(?:\.\d+)?)(.*)$/);
-  console.log(thisValue);
-
-  if (k == 38) {
-    e.value = thisValue[1]-0 + 1 + thisValue[2];
-  } else if (k == 40) {
-    if (thisValue[1] > 1) {
-      e.value = thisValue[1] - 1 + thisValue[2];
+  // Change the base with arrow keys
+  if (e != null) {
+    var thisValue = e.value.match(/^(\d+(?:\.\d+)?)(.*)$/);
+    if (k == 38) {
+      e.value = thisValue[1]-0 + 1 + thisValue[2];
+    } else if (k == 40) {
+      if (thisValue[1] > 1) {
+        e.value = thisValue[1] - 1 + thisValue[2];
+      }
     }
   }
 
@@ -32,6 +33,8 @@ function changeBase(e,k) {
   } else {
     error(msError);
   }
+
+  console.log(msBase);
 }
 
 function changeRatio() {

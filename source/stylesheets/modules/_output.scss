@@ -45,9 +45,6 @@ $output-item-end   : 8;
       background: tint(nth($color-multi, 4), round(ms(-1, 100%)));
     }
   }
-  @media (max-width: $break) {
-    right: ms(-1);
-  }
   @media (max-width: $break-med) {
     left: 0;
     @include transform(translateX(100%));

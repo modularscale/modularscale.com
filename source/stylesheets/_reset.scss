@@ -4,6 +4,7 @@ body {
 
 * {
   @include box-sizing(border-box);
+  outline: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -23,7 +24,7 @@ a {
     color: $primary;
     text-decoration: none;
   }
-  &:hover {
+  &:hover, &:focus {
     text-decoration: underline;
   }
 }

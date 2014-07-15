@@ -71,6 +71,7 @@
   &:focus {
     @include animation(pop-plus .25s);
     background: lighten($primary, 10%);
+    border-color: $primary;
   }
 }
 
@@ -110,7 +111,6 @@ input {
   }
   &:focus {
     border-color: $primary;
-    outline: none;
     @include box-shadow(
       0 0 0 2px $primary
     );
@@ -141,7 +141,6 @@ input {
   -moz-appearance:none;
   display: block;
   resize: none;
-  outline: none;
   padding: ms(-1);
   margin: 0;
   border: none;

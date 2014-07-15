@@ -47,7 +47,7 @@
   right: 4.6em;
   font-size: .75em;
   @include transition(all .25s);
-  &:hover {
+  &:hover, &:focus {
     @include animation(pop-plus .25s);
     animation-timing-function: ease-out;
     background: darken($primary, 5%);
@@ -67,11 +67,6 @@
   }
   .no-add + & {
     @include transform(rotateZ(-270deg) scale(0));
-  }
-  &:focus {
-    @include animation(pop-plus .25s);
-    background: lighten($primary, 10%);
-    border-color: $primary;
   }
 }
 

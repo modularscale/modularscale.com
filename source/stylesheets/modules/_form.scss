@@ -115,6 +115,12 @@ input {
       0 0 0 2px $primary
     );
   }
+  &.submit {
+    position: absolute;
+    visibility: hidden;
+    z-index: -1;
+    width: 0;
+  }
 }
 
 @include keyframes(form) {

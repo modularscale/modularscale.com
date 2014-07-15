@@ -4,6 +4,9 @@ var currentPanel = 'calc';
 function msPanel(panel) {
   document.body.classList.remove('panel-calc', 'panel-output', 'panel-about');
   document.body.classList.add('panel-' + panel);
+  if (panel == 'output') {
+    document.activeElement.blur();
+  }
   currentPanel = panel;
 }
 

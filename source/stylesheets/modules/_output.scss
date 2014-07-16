@@ -25,14 +25,17 @@ $output-item-end   : 8;
     white-space:nowrap;
     position: relative;
     line-height: 1;
-    margin-bottom: ms(-2, 1rem);
+    margin: 0 -16px ms(-2, 1rem);
+    padding: 0 0 ms(-4.5) 16px;
+    overflow: hidden;
     &:before {
       content: '';
       position: absolute;
       height: 100%;
       right: 100%;
-      width: 1rem;
-      margin-right: ms(-2, 1rem);
+      width: ms(-1, 16px);
+      height: 1em;
+      margin-right: ms(-1, -16px);
       background: tint(nth($color-multi, 1), round(ms(-1, 100%)));
     }
     &.s1:before {

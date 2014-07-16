@@ -24,7 +24,28 @@
     <div class="ratios">
 
       <div id="formRatios">
-        <label><input type="number" class="ratio" min="1.01" value="1.5" step="0.001" onkeyup="changeRatio()"></label>
+        <label>
+          <input type="number" class="ratio" min="1.01" value="1.5" step="0.001" onkeyup="changeRatio()">
+          <ul class="ratios-select">
+            <li data-value="1.067">15:16 – minor second</li>
+            <li data-value="1.125">8:9 – major second</li>
+            <li data-value="1.2">5:6 – minor third</li>
+            <li data-value="1.25">4:5 – major third</li>
+            <li data-value="1.333">3:4 – perfect fourth</li>
+            <li data-value="1.414">1:√2 – aug. fourth / dim. fifth</li>
+            <li data-value="1.5">2:3 – perfect fifth</li>
+            <li data-value="1.6">5:8 – minor sixth</li>
+            <li data-value="1.618">1:1.618 – golden section</li>
+            <li data-value="1.667">3:5 – major sixth</li>
+            <li data-value="1.778">9:16 – minor seventh</li>
+            <li data-value="1.875">8:15 – major seventh</li>
+            <li data-value="2">1:2 – octave</li>
+            <li data-value="2.5">2:5 – major tenth</li>
+            <li data-value="2.667">3:8 – major eleventh</li>
+            <li data-value="3">1:3 – major twelfth</li>
+            <li data-value="4">1:4 – double octave</li>
+          </ul>
+        </label>
       </div>
 
       <a class="button-pm add" href="javascript:addRatio()">

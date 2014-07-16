@@ -19,6 +19,7 @@
   }
   form {
     margin-bottom: ms(1);
+    position: relative;
   }
   .label {
     border-top: ms(-3) solid darken($dark, 3%);
@@ -156,4 +157,22 @@ a.code-install {
   }
 }
 
-
+.ratios-select {
+  position: absolute;
+  background: darken($primary, 5%);
+  width: 100%;
+  text-shadow: 0 1px rgba(#000, .33);
+  &:before {
+    content: '>';
+    position: absolute;
+    top: -2em;
+    background: red;
+  }
+  li {
+    padding: ms(-3) ms(-2);
+    &:hover {
+      background: darken($primary, 10%);
+      @include box-shadow(0 0 0 ms(-4) $secondary);
+    }
+  }
+}

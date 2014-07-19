@@ -14,9 +14,13 @@
     }
   }
   h1, h2 {
+    color: $dark;
+    font-weight: 400;
+    font-size: ms(2);
+    line-height: 1;
   }
   h2 {
     border-top: ms(-5) solid mix($primary, white);
-    font-weight: 400;
+    font-size: ms(1);
   }
 }

@@ -178,6 +178,9 @@ a.code-install {
   font-size: 1em;
   font-family: inherit;
   font-style: italic;
+  &.open {
+    background: red;
+  }
 }
 
 .ratios-select {

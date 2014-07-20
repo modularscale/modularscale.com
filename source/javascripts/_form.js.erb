@@ -110,20 +110,32 @@ var ratioDropHTML =
 '<a href="javascript:rS(3,this)">1:3 – major twelfth</a>' +
 '<a href="javascript:rS(4,this)">1:4 – double octave</a>';
 
+function closeRS() {
+  var open = document.getElementsByClassName('open')
+  for (var i = 0; i < open.length; i++)
+    open[i].classList.remove('open');
+}
+
+var open = document.body
+for (var i = 0; i < open.length; i++)
+  open[i].classList.remove('open');
+
+// document.addEventListener('click').function(
+//   console.log('asdf')
+// );
+
 function ratioSelectOpen(v) {
-  var selectOpen = document.getElementsByClassName('select-open')
-  for (var i = 0; i < selectOpen.length; i++) {
-    panels[i].classList.remove('select-open');
-    panels[i].getElementsByClassName('ratios-select')[0].innerHTML = '';
+  if (v.classList.contains('open')) {
+    v.classList.remove('open');
+  } else {
+    closeRS();
+    v.classList.add('open');
   }
 
-
-  v.nextElementSibling.innerHTML = ratioDropHTML;
-  v.parentElement.classList.add('select-open');
 }
 
 function rS(v,t) {
-  console.log(t.innerHTML());
+  // console.log(t.innerHTML());
 }
 
 

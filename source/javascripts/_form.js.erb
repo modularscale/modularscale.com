@@ -45,7 +45,10 @@ function addRatio() {
   var formRatios = document.getElementById('formRatios');
   var newRatio = document.createElement('label');
   var baseValue = document.getElementsByClassName('ratio')[0].value;
-  newRatio.innerHTML = '<input type="number" class="ratio" min="1.01" value="' + baseValue + '" step="0.01" onkeyup="changeRatio()">';
+  newRatio.innerHTML =
+  '<input type="number" class="ratio" min="1.01" value="' + baseValue + '" step="0.01" onkeyup="changeRatio()">' +
+  '<button onclick="ratioSelectOpen(this)" class="ratios-select-open">r</button>' +
+  '<div class="ratios-select"></div>';
 
   if (baseCount == 0 && ratioCount < multiLimit) {
     formRatios.appendChild(newRatio);
@@ -80,3 +83,67 @@ function removeRatio() {
   changeRatio();
 }
 
+var ratios = document.getElementsByClassName('panel')
+for (var i = 0; i < panels.length; i++)
+  panels[i].onclick = function() { msPanel(this.dataset.panel)};
+
+
+
+// Ratio selection dropdown
+
+var ratioDropHTML =
+'<a href="javascript:rS(1.067,this)">15:16 – minor second</a>' +
+'<a href="javascript:rS(1.125,this)">8:9 – major second</a>' +
+'<a href="javascript:rS(1.2,this)">5:6 – minor third</a>' +
+'<a href="javascript:rS(1.25,this)">4:5 – major third</a>' +
+'<a href="javascript:rS(1.333,this)">3:4 – perfect fourth</a>' +
+'<a href="javascript:rS(1.414,this)">1:√2 – aug. fourth / dim. fifth</a>' +
+'<a href="javascript:rS(1.5,this)">2:3 – perfect fifth</a>' +
+'<a href="javascript:rS(1.6,this)">5:8 – minor sixth</a>' +
+'<a href="javascript:rS(1.618,this)">1:1.618 – golden section</a>' +
+'<a href="javascript:rS(1.667,this)">3:5 – major sixth</a>' +
+'<a href="javascript:rS(1.778,this)">9:16 – minor seventh</a>' +
+'<a href="javascript:rS(1.875,this)">8:15 – major seventh</a>' +
+'<a href="javascript:rS(2,this)">1:2 – octave</a>' +
+'<a href="javascript:rS(2.5,this)">2:5 – major tenth</a>' +
+'<a href="javascript:rS(2.667,this)">3:8 – major eleventh</a>' +
+'<a href="javascript:rS(3,this)">1:3 – major twelfth</a>' +
+'<a href="javascript:rS(4,this)">1:4 – double octave</a>';
+
+function ratioSelectOpen(v) {
+  var selectOpen = document.getElementsByClassName('select-open')
+  for (var i = 0; i < selectOpen.length; i++) {
+    panels[i].classList.remove('select-open');
+    panels[i].getElementsByClassName('ratios-select')[0].innerHTML = '';
+  }
+
+
+  v.nextElementSibling.innerHTML = ratioDropHTML;
+  v.parentElement.classList.add('select-open');
+}
+
+function rS(v,t) {
+  console.log(t.innerHTML());
+}
+
+
+
+
+
+// <a href="javascript:rS(1.067,this)">15:16 – minor second</a>
+// <a href="javascript:rS(1.125,this)">8:9 – major second</a>
+// <a href="javascript:rS(1.2,this)">5:6 – minor third</a>
+// <a href="javascript:rS(1.25,this)">4:5 – major third</a>
+// <a href="javascript:rS(1.333,this)">3:4 – perfect fourth</a>
+// <a href="javascript:rS(1.414,this)">1:√2 – aug. fourth / dim. fifth</a>
+// <a href="javascript:rS(1.5,this)">2:3 – perfect fifth</a>
+// <a href="javascript:rS(1.6,this)">5:8 – minor sixth</a>
+// <a href="javascript:rS(1.618,this)">1:1.618 – golden section</a>
+// <a href="javascript:rS(1.667,this)">3:5 – major sixth</a>
+// <a href="javascript:rS(1.778,this)">9:16 – minor seventh</a>
+// <a href="javascript:rS(1.875,this)">8:15 – major seventh</a>
+// <a href="javascript:rS(2,this)">1:2 – octave</a>
+// <a href="javascript:rS(2.5,this)">2:5 – major tenth</a>
+// <a href="javascript:rS(2.667,this)">3:8 – major eleventh</a>
+// <a href="javascript:rS(3,this)">1:3 – major twelfth</a>
+// <a href="javascript:rS(4,this)">1:4 – double octave</a>

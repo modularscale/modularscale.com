@@ -1,5 +1,5 @@
 body {
-  font-family: $freight-sans;
+  font-family: $bernino;
   background: darken($primary,5%);
 }
 
@@ -17,6 +17,11 @@ body, article, section, ul, li {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+small {
+  font-size: ms(-0.4);
+  line-height: 1.4;
 }
 
 a {

@@ -13,7 +13,6 @@ function codeMode(newMode) {
     codeSettings.innerHTML = '';
   } else if (newMode == 'sass') {
     codeSettings.innerHTML =
-      '<h6 class="label code">Sass settings</h6>' +
       '<textarea id="ms-settings" onClick="this.select();">' +
       '$ms-base: ' + baseList() + ';\n' +
       '$ms-ratio: ' + msRatio + ';' +
@@ -21,7 +20,6 @@ function codeMode(newMode) {
       '<a href="https://github.com/Team-Sass/modular-scale" target="_blank" class="code-install">Install the Sass plugin</a>';
   } else if (newMode == 'js') {
     codeSettings.innerHTML =
-      '<h6 class="label code">JS settings</h6>' +
       '<textarea id="ms-settings" onClick="this.select();">' +
       'msBases: [' + msBase + '];\n' +
       'msRatios: [' + msRatio + '];' +

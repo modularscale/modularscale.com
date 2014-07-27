@@ -45,7 +45,10 @@ function addRatio() {
   var formRatios = document.getElementById('formRatios');
   var newRatio = document.createElement('label');
   var baseValue = document.getElementsByClassName('ratio')[0].value;
-  newRatio.innerHTML = '<input type="number" class="ratio" min="1.01" value="' + baseValue + '" step="0.01" onkeyup="changeRatio()">';
+  newRatio.innerHTML =
+  '<input type="number" class="ratio" min="1.001" value="' + baseValue + '" step="0.001" onkeyup="changeRatio()">' +
+  '<button onclick="ratioSelectOpen(this)" class="ratios-select-open">r</button>' +
+  '<div class="ratios-select"></div>';
 
   if (baseCount == 0 && ratioCount < multiLimit) {
     formRatios.appendChild(newRatio);
@@ -80,3 +83,66 @@ function removeRatio() {
   changeRatio();
 }
 
+var ratios = document.getElementsByClassName('panel')
+for (var i = 0; i < panels.length; i++)
+  panels[i].onclick = function() { msPanel(this.dataset.panel)};
+
+
+
+// Ratio selection dropdown
+
+var ratioDropHTML =
+'<a href="javascript:rS(1.067)">15:16 – minor second</a>' +
+'<a href="javascript:rS(1.125)">8:9 – major second</a>' +
+'<a href="javascript:rS(1.2)">5:6 – minor third</a>' +
+'<a href="javascript:rS(1.25)">4:5 – major third</a>' +
+'<a href="javascript:rS(1.333)">3:4 – perfect fourth</a>' +
+'<a href="javascript:rS(1.414)">1:√2 – aug. fourth / dim. fifth</a>' +
+'<a href="javascript:rS(1.5)">2:3 – perfect fifth</a>' +
+'<a href="javascript:rS(1.6)">5:8 – minor sixth</a>' +
+'<a href="javascript:rS(1.618)">1:1.618 – golden section</a>' +
+'<a href="javascript:rS(1.667)">3:5 – major sixth</a>' +
+'<a href="javascript:rS(1.778)">9:16 – minor seventh</a>' +
+'<a href="javascript:rS(1.875)">8:15 – major seventh</a>' +
+'<a href="javascript:rS(2)">1:2 – octave</a>' +
+'<a href="javascript:rS(2.5)">2:5 – major tenth</a>' +
+'<a href="javascript:rS(2.667)">3:8 – major eleventh</a>' +
+'<a href="javascript:rS(3)">1:3 – major twelfth</a>' +
+'<a href="javascript:rS(4)">1:4 – double octave</a>';
+
+function closeRSfn(v) {
+  v.classList.remove('open');
+  v.nextSibling.innerHTML = '';
+  document.getElementById('formRatios').classList.remove('open');
+}
+function closeRS() {
+  var open = document.getElementById('formRatios').getElementsByClassName('open')
+  for (var i = 0; i < open.length; i++)
+    closeRSfn(open[i]);
+}
+
+var open = document.body
+for (var i = 0; i < open.length; i++)
+  open[i].classList.remove('open');
+
+function ratioSelectOpen(v) {
+  if (v.classList.contains('open')) {
+    v.classList.remove('open');
+    v.nextSibling.innerHTML = '';
+    document.getElementById('formRatios').classList.remove('open');
+  } else {
+    closeRS();
+    v.classList.add('open');
+    v.nextSibling.innerHTML = ratioDropHTML;
+    document.getElementById('formRatios').classList.add('open');
+  }
+
+}
+
+function rS(v) {
+  var e = document.getElementById('formRatios').getElementsByClassName('open')[0].previousSibling;
+  e.value = v;
+  closeRS();
+  changeRatio()
+  msPage(msBase, msUnit, msRatio);
+}

@@ -19,6 +19,7 @@
   }
   form {
     margin-bottom: ms(1);
+    position: relative;
   }
   .label {
     border-top: ms(-3) solid darken($dark, 3%);
@@ -68,6 +69,9 @@
   .no-add + & {
     @include transform(rotateZ(-270deg) scale(0));
   }
+  #formRatios.open ~ & {
+    display: none;
+  }
 }
 
 @include keyframes(pop-plus) {
@@ -93,6 +97,7 @@ input {
   padding: ms(-2) ms(-1);
   margin-bottom: 1em;
   border-radius: 0;
+  -webkit-appearance: none;
   @include animation(form .2s 1 cubic-bezier(.65, -.25, .7, 1.5));
   // border-radius: .25em;
   label:nth-child(2) & {
@@ -115,6 +120,9 @@ input {
     visibility: hidden;
     z-index: -1;
     width: 0;
+  }
+  #formRatios & {
+    border-left-width: ms(1);
   }
 }
 
@@ -156,4 +164,43 @@ a.code-install {
   }
 }
 
+.ratios-select-open {
+  position: absolute;
+  width: ms(1);
+  height: (ms(-3)*2)+ms(1);
+  @include transform(translateY(-100%));
+  margin-top: -1em;
+  text-align: center;
+  line-height: 2;
+  color: #fff;
+  z-index: 1;
+  background: none;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1em;
+  font-family: inherit;
+  font-style: italic;
+}
 
+.ratios-select {
+  position: absolute;
+  background: darken($primary, 5%);
+  width: 100%;
+  text-shadow: 0 1px rgba(#000, .33);
+  margin-top: -1em;
+  margin-bottom: ms(1);
+  cursor: pointer;
+  z-index: 2;
+  a {
+    display: block;
+    color: inherit;
+    padding: ms(-1);
+    border-top: 1px solid $secondary;
+    &:hover {
+      background: darken($primary, 10%);
+      text-decoration: none;
+    }
+  }
+}

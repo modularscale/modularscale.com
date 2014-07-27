@@ -51,7 +51,7 @@ $break-med: $form-width + $output-width;
     (ms(-3) * -1) 0 0 0 rgba(#000, .1),
     -1px 0 0 0 rgba(#000, .33)
   );
-  border-top: ms(-2) solid $primary;
+  border-top: ms(-3) solid $primary;
   @include transition(all .5s);
   @media (max-width: $break-med) {
     bottom: $pager-height;

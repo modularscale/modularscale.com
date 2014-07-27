@@ -57,6 +57,10 @@ $break-med: $form-width + $output-width;
     bottom: $pager-height;
     width: 96%;
   }
+  .ios-webapp & {
+    border-top: none;
+    top: 20px;
+  }
 }
 
 @import 'svg';

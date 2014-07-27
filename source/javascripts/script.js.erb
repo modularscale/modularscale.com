@@ -55,3 +55,9 @@ function msPage(msBase, msUnit, msRatio) {
 document.addEventListener('DOMContentLoaded', function(){
   msPage(msBase, msUnit, msRatio);
 });
+
+
+// If iOS web app
+if (window.navigator.standalone && ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false )) {
+  document.body.classList.add('ios-webapp');
+}

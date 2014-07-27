@@ -13,7 +13,7 @@
   width: $form-width;
   background-color: $dark;
   color: $light;
-  text-shadow: 0 1px rgba(#000, .5);
+  // text-shadow: 0 1px rgba(#000, .5);
   @media (max-width: $break-med) {
     width: 96%;
   }
@@ -110,7 +110,6 @@ input {
     border-color: nth($color-multi, 4);
   }
   &:focus {
-    border-color: $primary;
     @include box-shadow(
       0 0 0 2px $primary
     );
@@ -188,7 +187,7 @@ a.code-install {
   position: absolute;
   background: darken($primary, 5%);
   width: 100%;
-  text-shadow: 0 1px rgba(#000, .33);
+  // text-shadow: 0 1px rgba(#000, .33);
   margin-top: -1em;
   margin-bottom: ms(1);
   cursor: pointer;

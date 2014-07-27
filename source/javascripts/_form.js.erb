@@ -113,6 +113,7 @@ var ratioDropHTML =
 function closeRSfn(v) {
   v.classList.remove('open');
   v.nextSibling.innerHTML = '';
+  document.getElementById('formRatios').classList.remove('open');
 }
 function closeRS() {
   var open = document.getElementById('formRatios').getElementsByClassName('open')
@@ -139,7 +140,7 @@ function ratioSelectOpen(v) {
 }
 
 function rS(v) {
-  var e = document.getElementsByClassName('open')[0].previousSibling;
+  var e = document.getElementById('formRatios').getElementsByClassName('open')[0].previousSibling;
   e.value = v;
   closeRS();
   changeRatio()

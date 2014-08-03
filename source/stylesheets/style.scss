@@ -13,7 +13,7 @@ $cs-color-model: rgb;
 
 $primary: cs-primary();
 $secondary: cs-secondary();
-$dark: hsl(hue(cs-quadrary()), 10%, 35%);
+$dark: hsl(hue(cs-quadrary()), 7%, 30%);
 $light: hsl(hue(cs-quadrary()), 22%, 96%);
 // @include cs-test($primary $secondary $dark $light);
 $negitive: #FF4F21;
@@ -27,7 +27,7 @@ $color-multi:
 ;
 
 $freight-text: 'freight-text-pro', Georgia, serif;
-$freight-sans: 'freight-sans-pro', Verdana, sans-serif;
+$bernino: 'jaf-bernino-sans', Verdana, sans-serif;
 $mono: 'Andale Mono', monospace;
 
 @import 'reset';

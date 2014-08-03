@@ -1,11 +1,9 @@
 .logo {
-  font-family: $freight-sans;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  color: $secondary;
-  font-weight: 400;
+  font-size: ms(1.5);
+  letter-spacing: 0.05em;
+  font-weight: 300;
   line-height: 1;
-  margin: 0;
+  margin: 0 0 ms(-1);
 }
 
 .form {
@@ -23,13 +21,13 @@
   }
   .label {
     border-top: ms(-3) solid darken($dark, 3%);
+    font-family: inherit;
     font-size: ms(-.5);
-    font-family: $freight-sans;
     text-transform: uppercase;
     font-weight: 400;
-    letter-spacing: ms(-3);
-    margin: ms(1) 0 ms(-1);
-    padding: ms(-3) 0 0;
+    letter-spacing: ms(-4);
+    margin: ms(2) 0 ms(-1);
+    padding: ms(-2) 0 0;
     color: tint($dark, 80%);
     &:first-child {
       border-top: none;
@@ -85,6 +83,15 @@
   }
 }
 
+%tabularlining {
+  -moz-font-feature-settings:"lnum" 1, "tnum" 1;
+  -moz-font-feature-settings:"lnum=1, tnum=1";
+  -ms-font-feature-settings:"lnum" 1, "tnum" 1;
+  -o-font-feature-settings:"lnum" 1, "tnum" 1;
+  -webkit-font-feature-settings:"lnum" 1, "tnum" 1;
+  font-feature-settings:"lnum" 1, "tnum" 1;
+}
+
 input {
   display: block;
   width: 100%;
@@ -94,6 +101,7 @@ input {
   color: $dark;
   font-family: inherit;
   font-size: inherit;
+  @extend %tabularlining;
   padding: ms(-2) ms(-1);
   margin-bottom: 1em;
   border-radius: 0;
@@ -144,9 +152,8 @@ input {
   display: block;
   resize: none;
   padding: ms(-1);
-  margin: 0;
+  margin: ms(1) 0 0;
   border: none;
-  margin: 0;
   width: 100%;
   font-family: $mono;
 }

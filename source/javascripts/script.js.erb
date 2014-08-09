@@ -4,6 +4,7 @@
 //= require '_form.js.erb'
 //= require '_code.js.erb'
 //= require '_error.js.erb'
+//= require '_url.js.erb'
 
 // Vars
 var mode = 'web';
@@ -16,6 +17,8 @@ var msUnit = 'em';
 var msRatio = [1.5];
 // limit
 var multiLimit = 3;
+
+queryURL();
 
 function stepUnits(u, msBase, msUnit, msRatio) {
   if (msUnit == 'em') {
@@ -50,6 +53,7 @@ function msPage(msBase, msUnit, msRatio) {
     u--;
   }
   document.getElementById('text_m0').scrollIntoView(false);
+  newURL();
 }
 
 document.addEventListener('DOMContentLoaded', function(){

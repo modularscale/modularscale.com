@@ -1,0 +1,25 @@
+// Change the URL
+function newURL() {
+  window.history.pushState('object or string', 'Title',
+    '?' + msBase +
+    '&' + msUnit +
+    '&' + msRatio +
+    '&' + mode +
+    '&' + panel
+  );
+}
+
+// Query the URL on initial load
+function queryURL() {
+  var URL = window.location.href;
+  if (URL.search('&') > 0) {
+    URL = URL.split('?')[1].split('&');
+    if (URL.length = 4) {
+      msBase  = URL[0];
+      msUnit  = URL[1];
+      msRatio = URL[2];
+      mode    = URL[3];
+      panel   = URL[4];
+    }
+  }
+}

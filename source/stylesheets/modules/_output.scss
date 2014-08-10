@@ -13,11 +13,20 @@ $output-item-end   : 8;
       padding-left: 0;
     }
   }
+  .output-function {
+    display: inline-block;
+    width: 7ch;
+    .mode-web & {
+      display: none;
+    }
+  }
   .info {
     font-family: $mono;
     white-space: nowrap;
-    border-bottom: 1px solid $primary;
+    border-top: 1px solid $primary;
     color: $secondary;
+    display: table;
+    width: 100%;
   }
   .text {
     font-family: $freight-text;
@@ -77,8 +86,29 @@ $output-item-end   : 8;
       @include transform(translateX(2%));
     }
   }
+
+  &.table {
+    .text {
+      display: none;
+    }
+  }
 }
 
 #text_m0:before {
   background: $dark;
+}
+
+
+
+.output-mode {
+  position: fixed;
+  z-index: 1;
+  top: ms(1);
+  background: #fff;
+  border: 2px solid $secondary;
+  a {
+    width: ms(2);
+    height: ms(0);
+    float: left;
+  }
 }

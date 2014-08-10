@@ -4,8 +4,7 @@ function newURL() {
     '?' + msBase +
     '&' + msUnit +
     '&' + msRatio +
-    '&' + mode +
-    '&' + panel
+    '&' + mode
   );
 }
 
@@ -15,11 +14,26 @@ function queryURL() {
   if (URL.search('&') > 0) {
     URL = URL.split('?')[1].split('&');
     if (URL.length = 4) {
-      msBase  = URL[0];
+      msBase  = URL[0].split(',');
       msUnit  = URL[1];
-      msRatio = URL[2];
+      msRatio = URL[2].split(',');
       mode    = URL[3];
-      panel   = URL[4];
+
+      document.getElementsByClassName('base')[0].value = msBase[0] + msUnit;
+      document.getElementsByClassName('ratio')[0].value = msRatio[0];
+
+      if (msBase.length > 1) {
+        for (var i = 1; i < msBase.length; i++)
+          addBase(msBase[i] + msUnit);
+      }
+
+      if (msRatio.length > 1) {
+        for (var i = 1; i < msRatio.length; i++)
+          addRatio(msRatio[i]);
+      }
+
+      msPage(msBase,msUnit,msRatio);
+
     }
   }
 }

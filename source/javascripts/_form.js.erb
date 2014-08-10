@@ -1,9 +1,10 @@
 var baseCount = 0;
 
-function addBase() {
+function addBase(v) {
   var formBases = document.getElementById('formBases');
   var newBase = document.createElement('label');
   var baseValue = document.getElementsByClassName('base')[0].value;
+  if(v) { baseValue = v; }
   newBase.innerHTML = '<input type="text" class="base" value="' + baseValue + '" onkeyup="changeBase(this,event.keyCode)">';
 
   if (ratioCount == 0 && ratioCount < multiLimit) {
@@ -41,10 +42,11 @@ function removeBase() {
 
 var ratioCount = 0;
 
-function addRatio() {
+function addRatio(v) {
   var formRatios = document.getElementById('formRatios');
   var newRatio = document.createElement('label');
   var baseValue = document.getElementsByClassName('ratio')[0].value;
+  if(v) { baseValue = v; }
   newRatio.innerHTML =
   '<input type="number" class="ratio" min="1.001" value="' + baseValue + '" step="0.001" onkeyup="changeRatio()">' +
   '<button onclick="ratioSelectOpen(this)" class="ratios-select-open">r</button>' +

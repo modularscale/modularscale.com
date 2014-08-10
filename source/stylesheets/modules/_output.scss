@@ -27,7 +27,6 @@ $output-item-end   : 8;
     line-height: 1;
     margin: 0 -16px ms(-2, 1rem);
     padding: 0 0 ms(-4.5) 16px;
-    overflow: hidden;
     &:before {
       content: '';
       position: absolute;
@@ -36,16 +35,38 @@ $output-item-end   : 8;
       width: ms(-1, 16px);
       height: 1em;
       margin-right: ms(-1, -16px);
-      background: tint(nth($color-multi, 1), round(ms(-1, 100%)));
+      background: nth($color-multi, 1);
+    }
+    &:after {
+      content: 'a';
+      color: red;
+      position: absolute;
+      top: -17px;
+      left: 1px;
+      font-size: 16px;
+      font-family: $bernino;
+      color: darken(nth($color-multi, 1), 5%);
     }
     &.s1:before {
-      background: tint(nth($color-multi, 2), round(ms(-1, 100%)));
+      background: nth($color-multi, 2);
+    }
+    &.s1:after {
+      content: 'b';
+      color: darken(nth($color-multi, 2), 5%);
     }
     &.s2:before {
-      background: tint(nth($color-multi, 3), round(ms(-1, 100%)));
+      background: nth($color-multi, 3);
+    }
+    &.s2:after {
+      content: 'c';
+      color: darken(nth($color-multi, 3), 5%);
     }
     &.s3:before {
-      background: tint(nth($color-multi, 4), round(ms(-1, 100%)));
+      background: nth($color-multi, 4);
+    }
+    &.s3:after {
+      content: 'd';
+      color: darken(nth($color-multi, 4), 5%);
     }
   }
   @media (max-width: $break-med) {
@@ -59,5 +80,5 @@ $output-item-end   : 8;
 }
 
 #text_m0:before {
-  background: nth($color-multi, 1);
+  background: darken(nth($color-multi, 1), 20%);
 }

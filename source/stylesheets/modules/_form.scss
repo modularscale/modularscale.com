@@ -92,6 +92,29 @@
   font-feature-settings:"lnum" 1, "tnum" 1;
 }
 
+label {
+  &:before {
+    position: absolute;
+    width: 1em;
+    right: 0;
+    text-align: center;
+    content: 'a';
+    color: darken(nth($color-multi, 1), 10%);
+  }
+  &:nth-child(2):before {
+    content: 'b';
+    color: darken(nth($color-multi, 2), 10%);
+  }
+  &:nth-child(3):before {
+    content: 'c';
+    color: darken(nth($color-multi, 3), 10%);
+  }
+  &:nth-child(4):before {
+    content: 'd';
+    color: darken(nth($color-multi, 4), 10%);
+  }
+}
+
 input {
   display: block;
   width: 100%;
@@ -107,7 +130,6 @@ input {
   border-radius: 0;
   -webkit-appearance: none;
   @include animation(form .2s 1 cubic-bezier(.65, -.25, .7, 1.5));
-  // border-radius: .25em;
   label:nth-child(2) & {
     border-color: nth($color-multi, 2);
   }

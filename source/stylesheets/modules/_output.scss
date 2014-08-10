@@ -80,5 +80,5 @@ $output-item-end   : 8;
 }
 
 #text_m0:before {
-  background: darken(nth($color-multi, 1), 20%);
+  background: $dark;
 }

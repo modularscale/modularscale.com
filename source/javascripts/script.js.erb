@@ -34,19 +34,28 @@ function msPage(msBase, msUnit, msRatio) {
   // lower bound of scale
   var l = -6;
 
-  // document.getElementByClassName('text').classList.remove('s1 s2 s3');
+  rMsUnit = msUnit;
+  rMsBase = msBase;
+
+  if (msUnit == 'em' || msUnit == 'rem') {
+    rMsUnit = 'px';
+    rMsBase = [];
+    for (var i = 0; i < msBase.length; i++)
+      rMsBase.push(msBase[i]*16);
+  }
+
 
   while (u >= l) {
 
-    var step = ms(u,msBase,msRatio);
+    var step = ms(u,rMsBase,msRatio);
 
     if (u >= 0) {
       document.getElementById('m'+u+'value').innerHTML=stepUnits(u, msBase, msUnit, msRatio);
-      document.getElementById('text_m'+u).style.fontSize=(step[0]+msUnit);
+      document.getElementById('text_m'+u).style.fontSize=(step[0]+rMsUnit);
       document.getElementById('text_m'+u).setAttribute('class', 's'+step[1]+' text');
     } else {
       document.getElementById('mn'+Math.abs(u)+'value').innerHTML=stepUnits(u, msBase, msUnit, msRatio);
-      document.getElementById('text_mn'+Math.abs(u)).style.fontSize=(step[0]+msUnit);
+      document.getElementById('text_mn'+Math.abs(u)).style.fontSize=(step[0]+rMsUnit);
       document.getElementById('text_mn'+Math.abs(u)).setAttribute('class', 's'+step[1]+' text');
     }
 

@@ -1,5 +1,7 @@
 <section class="form panel" data-panel="form">
   <h1 class="logo">Modular Scale</h1>
+  <button>How do I use this?</button>
+  <p class="helptext">This calculator makes a set of numbers called a modular scale, which can be useful in design work.</p>
   <form id="form" action="javascript:msPanel('output')">
     <div class="bases">
       <h6 class="label">Bases</h6>
@@ -18,6 +20,7 @@
           <use xlink:href="#add"></use>
         </svg>
       </a>
+      <p class="helptext">Bases are a scale&#8217;s root numbers. For example, the sizes at which your intended fonts look best. <a href="#">More&nbsp;&rarr;</a></p>
     </div>
 
     <h6 class="label">Ratios</h6>
@@ -39,6 +42,7 @@
           <use xlink:href="#add"></use>
         </svg>
       </a>
+      <p class="helptext">Ratios are multiplied by the base to produce a scale of numbers that is proportionally related. <a href="#">More&nbsp;&rarr;</a></p>
 
     </div>
     <input class="submit" type="submit"/>
@@ -48,10 +52,12 @@
     <a href="javascript:codeMode('web')" class="calculator-lang tab web">Web</a>
     <a href="javascript:codeMode('sass')" class="calculator-lang tab sass">Sass</a>
     <a href="javascript:codeMode('js')" class="calculator-lang tab js">JS</a>
-  </div>
 
-  <div id="codeSettings" class="code-settings">
+    <div id="codeSettings" class="code-settings">
 
+    </div>
+
+    <p class="helptext">Get your scale as a plugin, or reference calculated results right here on the web. <a href="#">More&nbsp;&rarr;</a></p>
   </div>
 
   <%= partial "partials/ad" %>

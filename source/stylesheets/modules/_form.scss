@@ -185,6 +185,7 @@ a.code-install {
   color: white;
   padding: ms(-3) ms(-2);
   display: block;
+  font-size: ms(-.4);
   text-align: right;
   &:hover {
     background: darken($primary, 10%);
@@ -225,4 +226,10 @@ a.code-install {
       text-decoration: none;
     }
   }
+}
+
+// Help text
+.helptext {
+  display: none;
+  font-size: ms(-0.4);
 }

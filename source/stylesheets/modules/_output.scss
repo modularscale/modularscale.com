@@ -6,6 +6,7 @@ $output-item-end   : 8;
   left: $form-width;
   right: 1em;
   overflow-x: hidden;
+  padding-top: ms(2);
   li {
     display: inline;
     padding: .25em .5em;
@@ -103,12 +104,35 @@ $output-item-end   : 8;
 .output-mode {
   position: fixed;
   z-index: 1;
-  top: ms(1);
-  background: #fff;
-  border: 2px solid $secondary;
+  left: $form-width + ms(-1);
+  background: $primary;
+  display: table;
+  border-radius: 0 0 ms(-2) ms(-2);
+  border: 2px solid white;
+  border-top: none;
+  overflow: hidden;
+  @include transition(all .5s);
   a {
-    width: ms(2);
+    font-size: ms(.5);
+    padding: ms(-3) ms(-2);
+    color: white;
     height: ms(0);
-    float: left;
+    display: table-cell;
+    border-left: 1px solid mix(white, $primary);
+    &:first-child {
+      border: none;
+    }
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      background: darken($primary, 5%);
+    }
+  }
+  @media (max-width: $break-med) {
+    @include transform(translateY(-100%));
+    left: ms(-1) * 2;
+    .panel-output & {
+      @include transform(translateY(0));
+    }
   }
 }

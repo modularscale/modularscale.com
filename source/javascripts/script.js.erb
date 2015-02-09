@@ -19,7 +19,7 @@ var multiLimit = 3;
 queryURL();
 
 function stepUnits(u, msBase, msUnit, msRatio) {
-  if (msUnit == 'em') {
+  if (msUnit == 'em' && msBase == 1) {
     return (Math.round((ms(u,1,msRatio)[0])*1000)/1000)+'em';
   } else {
     return (Math.round((ms(u,msBase,msRatio)[0])*1000)/1000)+msUnit + ' / ' + (Math.round((ms(u,1,msRatio)[0])*1000)/1000)+'em';
@@ -35,6 +35,8 @@ function msPage(msBase, msUnit, msRatio) {
   rMsUnit = msUnit;
   rMsBase = msBase;
 
+  // This is a fix for ems not rendering smaller than a certan size.
+  // This converts ems to px and allows the text to deisplay appropriately small.
   if (msUnit == 'em' || msUnit == 'rem') {
     rMsUnit = 'px';
     rMsBase = [];

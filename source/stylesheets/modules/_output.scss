@@ -92,6 +92,9 @@ $output-item-end   : 8;
     .text {
       display: none;
     }
+    ul:first-child {
+      border-top: none;
+    }
     li {
       display: table-cell;
     }

@@ -18,7 +18,7 @@ function changeBase(e,k) {
 
   var bases = document.getElementsByClassName('base');
   for (var i = 0; i < bases.length; i++) {
-    v = bases[i].value.match(/^(\d+(?:\.\d+)?)(.*)$/);
+    v = ('0' + bases[i].value).match(/^(\d+(?:\.\d+)?)(.*)$/);
     if (v[1] > 0) {
       msBase.push(v[1]);
     } else {

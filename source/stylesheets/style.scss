@@ -6,15 +6,15 @@
 
 @charset 'utf-8';
 
-$cs-primary: #3bc8b6;
-$cs-scheme: accented-analogic;
+$cs-primary: #607890;
+$cs-scheme: complement;
 $cs-hue-offset: 10;
 $cs-color-model: rgb;
 
 $primary: cs-primary();
 $secondary: cs-secondary();
 $dark: hsl(hue(cs-quadrary()), 7%, 30%);
-$light: hsl(hue(cs-quadrary()), 22%, 96%);
+$light: hsl(hue(cs-quadrary()), 20%, 90%);
 // @include cs-test($primary $secondary $dark $light);
 $negitive: #FF4F21;
 $positive: #6ED823;

@@ -1,6 +1,6 @@
 .logo {
-  font-size: ms(1.5);
-  letter-spacing: 0.05em;
+  font-size: ms(1.8);
+  letter-spacing: 0.01em;
   font-weight: 300;
   line-height: 1;
   margin: 0 0 ms(-1);
@@ -9,8 +9,8 @@
 .form {
   left: 0;
   width: $form-width;
-  background-color: $dark;
-  color: $light;
+  background-color: $light;
+  color: $dark;
   // text-shadow: 0 1px rgba(#000, .5);
   @media (max-width: $break-med) {
     width: 96%;
@@ -28,7 +28,7 @@
     letter-spacing: ms(-4);
     margin: ms(2) 0 ms(-1);
     padding: ms(-2) 0 0;
-    color: tint($dark, 80%);
+    //color: tint($dark, 80%);
     &:first-child {
       border-top: none;
       margin-top: ms(-1);
@@ -230,6 +230,13 @@ a.code-install {
 
 // Help text
 .helptext {
-  display: none;
+  //display: none;
   font-size: ms(-0.4);
+}
+
+// Credits
+.credits {
+  display: block;
+  margin-top: ms(2);
+  border-top: 1px rgba(0,0,0,0.1) solid;
 }

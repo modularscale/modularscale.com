@@ -20,7 +20,7 @@ function changeBase(e,k) {
   for (var i = 0; i < bases.length; i++) {
     v = ('0' + bases[i].value).match(/^(\d+(?:\.\d+)?)(.*)$/);
     if (v[1] > 0) {
-      msBase.push(v[1]);
+      msBase.push(v[1].slice(1));
     } else {
       msError = 'Your base must be greater than 0';
     }

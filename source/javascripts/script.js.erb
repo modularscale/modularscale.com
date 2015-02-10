@@ -21,6 +21,8 @@ queryURL();
 function stepUnits(u, msBase, msUnit, msRatio) {
   if (msUnit == 'em' && msBase == 1) {
     return (Math.round((ms(u,1,msRatio)[0])*1000)/1000)+'em';
+  } else if (msBase.length > 1) {
+    return (Math.round((ms(u,msBase,msRatio)[0])*1000)/1000)+msUnit;
   } else {
     return (Math.round((ms(u,msBase,msRatio)[0])*1000)/1000)+msUnit + ' / ' + (Math.round((ms(u,1,msRatio)[0])*1000)/1000)+'em';
   }

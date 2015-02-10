@@ -3,6 +3,7 @@
   <button>How do I use this?</button>
   <p class="helptext">This calculator makes a set of numbers called a modular scale, which can be useful in design work.</p>
   <form id="form" action="javascript:msPanel('output')">
+
     <div class="bases">
       <h6 class="label">Bases</h6>
 
@@ -48,6 +49,8 @@
     <input class="submit" type="submit"/>
   </form>
 
+  <div class="error" id="error"></div>
+
   <div class="calculator-selection tabs">
     <a href="javascript:codeMode('web')" class="calculator-lang tab web">Web</a>
     <a href="javascript:codeMode('sass')" class="calculator-lang tab sass">Sass</a>
@@ -59,8 +62,6 @@
 
     <p class="helptext">Get your scale as a plugin, or reference calculated results right here on the web. <a href="#">More&nbsp;&rarr;</a></p>
   </div>
-
-  <!--<%= partial "partials/ad" %>-->
 
   <small class="credits">
     <p>This site is made &amp; maintained by <a href="https://twitter.com/scottkellum">Scott Kellum</a> and <a href="https://twitter.com/nicewebtype">Tim Brown</a>. Copyright © 2010&#8211;2014 <a href="http://tbrown.org/">Tim Brown</a>.</p>

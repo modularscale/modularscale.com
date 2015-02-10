@@ -36,6 +36,21 @@
   }
 }
 
+.error {
+  background: $negitive;
+  padding: ms(-3) ms(-1);
+  color: white;
+  border: 2px solid mix($negitive, $dark);
+  @include transition(all .25s);
+  opacity: 1;
+  margin: 0 0 -1em;
+  &:empty {
+    opacity: 0;
+    padding: 0 ms(-1);
+    margin: -1em 0 -1em;
+  }
+}
+
 .button-pm {
   background: $primary;
   border-radius: 50%;
@@ -84,10 +99,6 @@
 }
 
 %tabularlining {
-  -moz-font-feature-settings:"lnum" 1, "tnum" 1;
-  -moz-font-feature-settings:"lnum=1, tnum=1";
-  -ms-font-feature-settings:"lnum" 1, "tnum" 1;
-  -o-font-feature-settings:"lnum" 1, "tnum" 1;
   -webkit-font-feature-settings:"lnum" 1, "tnum" 1;
   font-feature-settings:"lnum" 1, "tnum" 1;
 }

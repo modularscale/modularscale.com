@@ -1,0 +1,32 @@
+<script>
+  function queryURL() {
+    var URL = window.location.href.split('?')[1].split('&');
+
+    console.log(URL);
+
+    b1 = URL[0].split('=')[1];
+    b2 = URL[1].split('=')[1];
+    r1 = URL[2].split('=')[1];
+    r2 = URL[3].split('=')[1];
+
+    console.log(b2);
+
+    var newURL = '../?' + b1;
+
+    if (b2 != '') {
+      newURL = newURL + ',' + b2;
+    }
+
+    newURL = newURL + '&px&' + r1;
+
+    if (r2 != '0') {
+      newURL = newURL + ',' + r2;
+    }
+
+    newURL = newURL + '&web&text';
+
+    return(newURL);
+  }
+
+  window.location.href = queryURL();
+</script>

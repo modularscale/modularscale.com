@@ -8,14 +8,12 @@ $output-item-end   : 8;
   overflow-x: hidden;
   padding-top: ms(2);
   li {
-    display: inline;
     padding: .25em .5em;
     &:first-child {
       padding-left: 0;
     }
   }
   .output-function {
-    display: inline-block;
     width: 7ch;
     .mode-web & {
       display: none;
@@ -26,7 +24,7 @@ $output-item-end   : 8;
     white-space: nowrap;
     border-top: 1px solid $primary;
     color: $secondary;
-    display: table;
+    display: flex;
     width: 100%;
   }
   .text {
@@ -37,6 +35,7 @@ $output-item-end   : 8;
     line-height: 1;
     margin: 0 -16px ms(-2, 1rem);
     padding: 0 0 ms(-4.5) 16px;
+    overflow: hidden;
     &:before {
       content: '';
       position: absolute;

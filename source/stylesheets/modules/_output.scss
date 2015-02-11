@@ -35,7 +35,7 @@ $output-item-end   : 8;
     line-height: 1;
     margin: 0 -16px ms(-2, 1rem);
     padding: 0 0 ms(-4.5) 16px;
-    overflow: hidden;
+    pointer-events: none;
     &:before {
       content: '';
       position: absolute;
@@ -48,7 +48,6 @@ $output-item-end   : 8;
     }
     &:after {
       content: 'a';
-      color: red;
       position: absolute;
       top: -17px;
       left: 1px;

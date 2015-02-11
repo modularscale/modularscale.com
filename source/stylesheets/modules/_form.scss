@@ -36,6 +36,16 @@
   }
 }
 
+.howto {
+  font-size: ms(-1);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  border-top: 1px solid mix($secondary, $light);
+  display: block;
+  position: relative;
+  text-align: right;
+}
+
 .error {
   background: $negitive;
   padding: ms(-3) ms(-1);

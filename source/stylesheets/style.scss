@@ -16,7 +16,7 @@ $secondary: cs-secondary();
 $dark: hsl(hue(cs-quadrary()), 7%, 30%);
 $light: hsl(hue(cs-quadrary()), 20%, 90%);
 // @include cs-test($primary $secondary $dark $light);
-$negitive: #FF4F21;
+$negitive: #D85151;
 $positive: #6ED823;
 
 $color-multi:

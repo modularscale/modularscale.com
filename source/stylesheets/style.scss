@@ -20,10 +20,10 @@ $negitive: #FF4F21;
 $positive: #6ED823;
 
 $color-multi:
-  $secondary
-  #93CF46
-  #E27436
-  #B875EC
+  lighten($primary,10%)
+  adjust-hue(lighten($primary,10%), 90deg)
+  adjust-hue(lighten($primary,10%), 90deg * 2)
+  adjust-hue(lighten($primary,10%), 90deg * 3)
 ;
 
 $freight-text: 'freight-text-pro', Georgia, serif;

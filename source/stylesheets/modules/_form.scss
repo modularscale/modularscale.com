@@ -40,7 +40,7 @@
   background: $negitive;
   padding: ms(-3) ms(-1);
   color: white;
-  border: 2px solid mix($negitive, $dark);
+  border: 2px solid mix($negitive, $light);
   @include transition(all .25s);
   opacity: 1;
   margin: 0 0 -1em;
@@ -180,7 +180,7 @@ input {
 #ms-settings {
   white-space: pre-wrap;
   color: $secondary;
-  background: darken($dark, 5%);
+  background: darken($light, 5%);
   -moz-appearance:none;
   display: block;
   resize: none;
@@ -221,8 +221,8 @@ a.code-install {
 .ratios-select {
   position: absolute;
   background: darken($primary, 5%);
+  color: white;
   width: 100%;
-  // text-shadow: 0 1px rgba(#000, .33);
   margin-top: -1em;
   margin-bottom: ms(1);
   cursor: pointer;
@@ -231,7 +231,7 @@ a.code-install {
     display: block;
     color: inherit;
     padding: ms(-1);
-    border-top: 1px solid $secondary;
+    border-top: 1px solid $primary;
     &:hover {
       background: darken($primary, 10%);
       text-decoration: none;

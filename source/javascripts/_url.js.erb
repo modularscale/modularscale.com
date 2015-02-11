@@ -14,11 +14,12 @@ function queryURL() {
   var URL = window.location.href;
   if (URL.search('&') > 0) {
     URL = URL.split('?')[1].split('&');
-    if (URL.length = 4) {
-      msBase  = URL[0].split(',');
-      msUnit  = URL[1];
-      msRatio = URL[2].split(',');
-      mode    = URL[3];
+    if (URL.length = 5) {
+      msBase     = URL[0].split(',');
+      msUnit     = URL[1];
+      msRatio    = URL[2].split(',');
+      mode       = URL[3];
+      outputMode = URL[4];
 
       document.getElementsByClassName('base')[0].value = msBase[0] + msUnit;
       document.getElementsByClassName('ratio')[0].value = msRatio[0];
@@ -35,6 +36,7 @@ function queryURL() {
 
       msPage(msBase,msUnit,msRatio);
       codeMode(mode);
+      outputM(outputMode);
 
     }
   }

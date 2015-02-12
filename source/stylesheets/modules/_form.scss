@@ -251,8 +251,11 @@ a.code-install {
 
 // Help text
 .helptext {
-  //display: none;
+  display: none;
   font-size: ms(-0.4);
+  body.help & {
+    display: block;
+  }
 }
 
 // Credits

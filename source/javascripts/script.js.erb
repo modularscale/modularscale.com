@@ -19,13 +19,23 @@ var multiLimit = 3;
 queryURL();
 
 function stepUnits(u, msBase, msUnit, msRatio) {
-  if (msUnit == 'em' && msBase == 1) {
-    return (Math.round((ms(u,1,msRatio)[0])*1000)/1000)+'em';
-  } else if (msBase.length > 1) {
-    return (Math.round((ms(u,msBase,msRatio)[0])*1000)/1000)+msUnit;
-  } else {
-    return (Math.round((ms(u,msBase,msRatio)[0])*1000)/1000)+msUnit + ' / ' + (Math.round((ms(u,1,msRatio)[0])*1000)/1000)+'em';
+  var step = (Math.round((ms(u,msBase,msRatio)[0])*1000)/1000);
+
+  var output = (
+    step+msUnit
+    );
+
+  if (msBase[0] != 1 || msUnit != 'em') {
+    output = output + '</span><span>' +
+    Math.round(step/msBase[0]*1000)/1000+'em';
   }
+
+  if (msUnit === 'px') {
+    output = output + '</span><span class="at16">' +
+    Math.round(step/16*1000)/1000+'ems@16';
+  }
+
+  return '<span>' + output + '</span>';
 }
 
 function msPage(msBase, msUnit, msRatio) {

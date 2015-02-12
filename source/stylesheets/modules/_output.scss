@@ -9,12 +9,14 @@ $output-item-end   : 8;
   padding-top: ms(2);
   li {
     padding: .25em .5em;
+    display: flex;
     &:first-child {
       padding-left: 0;
     }
   }
   .output-function {
-    width: 7ch;
+    width: 4em;
+    font-weight: bold;
     .mode-web & {
       display: none;
     }
@@ -26,6 +28,10 @@ $output-item-end   : 8;
     color: $secondary;
     display: flex;
     width: 100%;
+    span {
+      min-width: 6em;
+      margin-right: 1em;
+    }
   }
   .text {
     font-family: $freight-text;
@@ -93,9 +99,12 @@ $output-item-end   : 8;
     ul:first-child {
       border-top: none;
     }
-    li {
-      display: table-cell;
-    }
+  }
+}
+
+@media (max-width: 42em) {
+  .at16 {
+    display: none;
   }
 }
 

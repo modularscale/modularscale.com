@@ -36,16 +36,6 @@
   }
 }
 
-.howto {
-  font-size: ms(-1);
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  border-top: 1px solid mix($secondary, $light);
-  display: block;
-  position: relative;
-  text-align: right;
-}
-
 .error {
   background: $negitive;
   padding: ms(-3) ms(-1);
@@ -65,7 +55,7 @@
   background: $primary;
   border-radius: 50%;
   padding: 0;
-  border: 2px solid white;
+  border: 1px solid white;
   position: absolute;
   margin-top: (ms(2) + ms(-6)) * -1;
   right: 4.6em;
@@ -250,8 +240,14 @@ a.code-install {
 }
 
 // Help text
+.howto {
+  font-size: 0.9rem;
+  padding-bottom: ms(-1);
+  border-bottom: 1px rgba(0,0,0,0.1) solid;
+}
 .helptext {
   display: none;
+  //font-size: 0.9rem;
   font-size: ms(-0.4);
   body.help & {
     display: block;

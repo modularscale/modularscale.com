@@ -23,12 +23,10 @@
     border-top: ms(-3) solid darken($dark, 3%);
     font-family: inherit;
     font-size: ms(-.5);
-    text-transform: uppercase;
     font-weight: 400;
-    letter-spacing: ms(-4);
+    letter-spacing: ms(-5);
     margin: ms(2) 0 ms(-1);
     padding: ms(-2) 0 0;
-    //color: tint($dark, 80%);
     &:first-child {
       border-top: none;
       margin-top: ms(-1);

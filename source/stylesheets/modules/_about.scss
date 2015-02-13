@@ -3,6 +3,7 @@
   padding: 1em 2em 4em 1em;
   width: $about-width;
   right: $about-width * -1 + 1;
+  line-height: ms(1,1);
   .panel-about & {
     @include transform(translateX($about-width * -1 + 1));
   }
@@ -14,14 +15,36 @@
       @include transform(translateX(2%));
     }
   }
-  h1, h2 {
+  h2 {
     color: $dark;
     font-weight: 400;
-    font-size: ms(2);
-    line-height: 1;
-  }
-  h2 {
-    border-top: ms(-5) solid mix($primary, white);
     font-size: ms(1);
+    line-height: 1;
+    margin-top: ms(-1);
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  ol,
+  ul {
+    padding-left: ms(1);
+    list-style-type: square;
+  }
+  ol {
+    list-style-type: decimal;
+  }
+  li {
+    list-style-type: inherit;
+    font-size: ms(-.33);
+    margin-bottom: ms(-1);
+  }
+  code {
+    background-color: lighten($light,5%);
+    border: 1px solid $light;
+    padding: ms(-4) ms(-2);
+    color: $primary;
+  }
+  a {
+    text-decoration: underline;
   }
 }

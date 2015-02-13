@@ -1,6 +1,7 @@
 body {
   font-family: $bernino;
   background: darken($primary,5%);
+  line-height: ms(.5,1);
 }
 
 * {
@@ -21,7 +22,7 @@ body, article, section, ul, li {
 
 small {
   font-size: ms(-0.4);
-  line-height: 1.4;
+  line-height: ms(.5,1);
 }
 
 a {

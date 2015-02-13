@@ -33,7 +33,7 @@ function stepUnits(u, msBase, msUnit, msRatio) {
 
   if (msUnit === 'px') {
     output = output + '</span><span class="at16">' +
-    Math.round(step/16*1000)/1000+'ems@16';
+    Math.round(step/16*1000)/1000+'<a href="http://nicewebtype.com/notes/2012/07/19/leave-default-font-size-alone-and-embrace-the-em/" title="What is ems @ 16?">em @ 16</a>';
   }
 
   return '<span>' + output + '</span>';

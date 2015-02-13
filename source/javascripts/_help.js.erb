@@ -3,20 +3,18 @@ var help = false
 function helpT() {
   if (help) {
     document.body.classList.remove('help');
-    document.cookie = 'helpOff';
+    document.cookie = 'helpF';
     help = false;
   } else {
     document.body.classList.add('help');
-    document.cookie = 'helpOn';
+    document.cookie = 'helpT';
     help = true;
   }
 }
 
-if (document.cookie.split(' ')[1] == 'helpOn') {
+if (document.cookie.split('help')[1] == 'T') {
   helpT();
 }
-
-console.log(document.cookie);
 
 // Toggle about panel section
 function aboutA(a) {

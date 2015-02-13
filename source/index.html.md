@@ -32,3 +32,7 @@ Both plugins work the same way:
 3. Finally, near the bottom of the calculator, use the Sass or JS tab to copy configuration code into your project
 
 When you have things all set up, use the function `ms(0)` in your Sass or JS. Change the number in the function, and you get different values from your scale. You can also refer back to function values in the output pane here at modularscale.com — when you are using the plugins, you can just drop these functions into your project to get the associated value.
+
+## About this website
+
+This website was first introduced at [Build 2010](http://vimeo.com/17079380) by Tim Brown and re-launched at [AEA Atlanta 2015](http://aneventapart.com/event/atlanta-2015) by Tim Brown and Scott Kellum. The re-launch was the result of an effort to consolidate, improve, and promote tools and best practices around using modular scales that Tim and Scott had been working on.

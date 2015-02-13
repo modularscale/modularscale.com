@@ -41,6 +41,15 @@ require 'color-schemer'
 # Reload the browser automatically whenever files change
 activate :livereload
 
+# Deployment
+activate :bitballoon do |bitballoon|
+  bitballoon.token = ENV["BB_TOKEN"]
+  bitballoon.site  = "modularscale.bitballoon.com"
+
+  # Optional: always run a build before deploying
+  bitballoon.build_before = true
+end
+
 # Methods defined in the helpers block are available in templates
 # helpers do
 #   def some_helper

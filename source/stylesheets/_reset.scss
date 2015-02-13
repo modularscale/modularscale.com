@@ -1,6 +1,8 @@
+html {
+  background-color: $light;
+}
 body {
   font-family: $bernino;
-  background: darken($primary,5%);
   line-height: ms(.5,1);
 }
 

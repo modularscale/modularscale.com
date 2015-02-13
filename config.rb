@@ -7,9 +7,7 @@ compass_config do |config|
   config.output_style = :compressed
 end
 
-require 'toolkit'
 require 'modular-scale'
-require 'breakpoint'
 require 'color-schemer'
 
 ###

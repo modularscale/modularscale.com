@@ -6,29 +6,28 @@
 
 @charset 'utf-8';
 
-$cs-primary: #3bc8b6;
-$cs-scheme: accented-analogic;
+$cs-primary: #607890;
+$cs-scheme: complement;
 $cs-hue-offset: 10;
 $cs-color-model: rgb;
 
 $primary: cs-primary();
 $secondary: cs-secondary();
 $dark: hsl(hue(cs-quadrary()), 7%, 30%);
-$light: hsl(hue(cs-quadrary()), 22%, 96%);
+$light: hsl(hue(cs-quadrary()), 20%, 90%);
 // @include cs-test($primary $secondary $dark $light);
-$negitive: #FF4F21;
+$negitive: #D85151;
 $positive: #6ED823;
 
 $color-multi:
-  $secondary
-  #93CF46
-  #E27436
-  #B875EC
+  lighten($primary,10%)
+  adjust-hue(lighten($primary,10%), 90deg)
+  adjust-hue(lighten($primary,10%), 90deg * 2)
+  adjust-hue(lighten($primary,10%), 90deg * 3)
 ;
 
 $freight-text: 'freight-text-pro', Georgia, serif;
-// $bernino: 'jaf-bernino-sans', Verdana, sans-serif;
-$bernino: 'freight-sans-pro', Verdana, sans-serif;
+$bernino: 'jaf-bernino-sans', Verdana, sans-serif;
 $mono: 'Andale Mono', monospace;
 
 @import 'reset';
@@ -49,8 +48,8 @@ $break-med: $form-width + $output-width;
   overflow: auto;
   background-color: white;
   @include box-shadow(
-    (ms(-3) * -1) 0 0 0 rgba(#000, .1),
-    -1px 0 0 0 rgba(#000, .33)
+    (ms(-3) * -1) 0 0 0 rgba(0,0,0,0.05),
+    -1px 0 0 0 rgba(0,0,0,0.1)
   );
   border-top: ms(-3) solid $primary;
   @include transition(all .5s);

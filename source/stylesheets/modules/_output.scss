@@ -9,12 +9,14 @@ $output-item-end   : 8;
   padding-top: ms(2);
   li {
     padding: .25em .5em;
+    display: flex;
     &:first-child {
       padding-left: 0;
     }
   }
   .output-function {
-    width: 7ch;
+    width: 4em;
+    font-weight: bold;
     .mode-web & {
       display: none;
     }
@@ -26,6 +28,10 @@ $output-item-end   : 8;
     color: $secondary;
     display: flex;
     width: 100%;
+    span {
+      min-width: 6em;
+      margin-right: 1em;
+    }
   }
   .text {
     font-family: $freight-text;
@@ -35,7 +41,7 @@ $output-item-end   : 8;
     line-height: 1;
     margin: 0 -16px ms(-2, 1rem);
     padding: 0 0 ms(-4.5) 16px;
-    overflow: hidden;
+    pointer-events: none;
     &:before {
       content: '';
       position: absolute;
@@ -48,7 +54,6 @@ $output-item-end   : 8;
     }
     &:after {
       content: 'a';
-      color: red;
       position: absolute;
       top: -17px;
       left: 1px;
@@ -94,9 +99,12 @@ $output-item-end   : 8;
     ul:first-child {
       border-top: none;
     }
-    li {
-      display: table-cell;
-    }
+  }
+}
+
+@media (max-width: 42em) {
+  .at16 {
+    display: none;
   }
 }
 
@@ -112,14 +120,17 @@ $output-item-end   : 8;
   left: $form-width + ms(-1);
   background: $primary;
   display: table;
-  border-radius: 0 0 ms(-2) ms(-2);
-  border: 2px solid white;
   border-top: none;
+  @include box-shadow(
+    0 ms(-3) 0 0 rgba(0,0,0,0.05),
+    0 1px 0 0 rgba(0,0,0,0.1)
+  );
   overflow: hidden;
   @include transition(all .5s);
   a {
-    font-size: ms(.5);
-    padding: ms(-3) ms(-2);
+    font-size: ms(0);
+    font-weight: 300;
+    padding: ms(-1) ms(0) ms(-1);
     color: white;
     height: ms(0);
     display: table-cell;

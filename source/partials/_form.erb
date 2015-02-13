@@ -1,5 +1,7 @@
 <section class="form panel" data-panel="form">
   <h1 class="logo">Modular Scale</h1>
+  <p class="howto">Not sure how this calculator works? <a href="javascript:helpT();">Here are some tips</a>.</p>
+  <p class="helptext">This calculator makes a set of numbers called a modular scale, which you use like a ruler. <a href="javascript:aboutA('how-do-i-use-this');">More&nbsp;&rarr;</a></p>
   <form id="form" action="javascript:msPanel('output')">
 
     <div class="bases">
@@ -19,10 +21,11 @@
           <use xlink:href="#add"></use>
         </svg>
       </a>
+      <p class="helptext"><em>Bases</em> are a scale&#8217;s root numbers. For example, the size at which your body text typeface looks best. <a href="javascript:aboutA('whats-a-good-base');">More&nbsp;&rarr;</a></p>
     </div>
 
-    <h6 class="label">Ratios</h6>
     <div class="ratios">
+      <h6 class="label">Ratios</h6>
 
       <div id="formRatios">
         <label>
@@ -40,6 +43,7 @@
           <use xlink:href="#add"></use>
         </svg>
       </a>
+      <p class="helptext"><em>Ratios</em> are multiplied by the base to produce a scale of numbers that is proportionally related. <a href="javascript:aboutA('whats-a-good-ratio');">More&nbsp;&rarr;</a></p>
 
     </div>
     <input class="submit" type="submit"/>
@@ -51,13 +55,15 @@
     <a href="javascript:codeMode('web')" class="calculator-lang tab web">Web</a>
     <a href="javascript:codeMode('sass')" class="calculator-lang tab sass">Sass</a>
     <a href="javascript:codeMode('js')" class="calculator-lang tab js">JS</a>
+
+    <div id="codeSettings" class="code-settings">
+
+    </div>
+
+    <p class="helptext">Get your scale as a plugin, or reference calculated results right here on the web. <a href="javascript:aboutA('should-i-use-the-sass--js-plugins');">More&nbsp;&rarr;</a></p>
   </div>
 
-  <div id="codeSettings" class="code-settings">
-
-  </div>
-
-  <small>
-    <p>This site is made &amp; maintained by <a href="http://scottkellum.com/">Scott Kellum</a> and <a href="https://twitter.com/nicewebtype">Tim Brown</a>. Copyright © 2010&#8211;2014 <a href="http://tbrown.org/">Tim Brown</a>.</p>
+  <small class="credits">
+    <p>This site is made &amp; maintained by <a href="http://scottkellum.com/">Scott Kellum</a> and <a href="https://twitter.com/nicewebtype">Tim Brown</a>. Copyright © 2010&#8211;2015 <a href="http://tbrown.org/">Tim Brown</a>.</p>
   </small>
 </section>

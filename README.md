@@ -1,4 +1,4 @@
-# [modularscale](http://modularscale.pgdn.us/)
+# [modularscale](http://modularscale.com/)
 
 ### Running locally
 
@@ -16,7 +16,7 @@ To build the app, run `bundle exec middleman build` and it will generate a `buil
 
 ## Licence
 
-Copyright (c) 2014, Tim Brown and Scott Kellum
+Copyright (c) 2015, Tim Brown and Scott Kellum
 All rights reserved.
 
 BSD license

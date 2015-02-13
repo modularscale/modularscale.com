@@ -1,0 +1,26 @@
+var help = false
+
+function helpT() {
+  if (help) {
+    document.body.classList.remove('help');
+    document.cookie = 'helpOff';
+    help = false;
+  } else {
+    document.body.classList.add('help');
+    document.cookie = 'helpOn';
+    help = true;
+  }
+}
+
+if (document.cookie.split(' ')[1] == 'helpOn') {
+  helpT();
+}
+
+console.log(document.cookie);
+
+// Toggle about panel section
+function aboutA(a) {
+  msPanel('about');
+  var top = document.getElementById(a).offsetTop;
+  document.getElementById('about').scrollTop = (top - 12);
+}

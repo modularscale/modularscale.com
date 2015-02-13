@@ -1,4 +1,4 @@
-# [modularscale](http://modularscale.pgdn.us/)
+# [modularscale](http://modularscale.com/)
 
 ### Running locally
 

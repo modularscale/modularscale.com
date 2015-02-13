@@ -17,12 +17,12 @@ function codeMode(newMode) {
       '$ms-base: ' + baseList() + ';\n' +
       '$ms-ratio: ' + msRatio + ';' +
       '</textarea>' +
-      '<a href="https://github.com/Team-Sass/modular-scale" target="_blank" class="code-install">Install the Sass plugin</a>';
+      '<a href="https://github.com/modularscale/modularscale-sass" target="_blank" class="code-install">Install the Sass plugin</a>';
   } else if (newMode == 'js') {
     codeSettings.innerHTML =
       '<textarea id="ms-settings" onClick="this.select();">' +
-      'msBases: [' + msBase + '];\n' +
-      'msRatios: [' + msRatio + '];' +
+      'msBases = [' + msBase + '];\n' +
+      'msRatios = [' + msRatio + '];' +
       '</textarea>' +
       '<a href="https://github.com/modularscale/modularscale-js" target="_blank" class="code-install">Install the JS plugin</a>';
   }

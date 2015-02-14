@@ -12,8 +12,9 @@ a.tab {
   //letter-spacing: ms(-4);
   padding: ms(-3) ms(-1);
   display: inline-block;
-  &:hover, &:focus {
-    background: rgba($primary, .5);
+  &:hover,
+  &:focus {
+    background: mix($primary,$light,15%);
   }
   body.mode-web &.web,
   body.mode-sass &.sass,

@@ -17,29 +17,16 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#607890">
 
-    <!-- For third-generation iPad with high-resolution Retina display: -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png">
-    <!-- For iPhone with high-resolution Retina display: -->
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
-    <!-- For first- and second-generation iPad: -->
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
-    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
-
     <!-- Windows icons -->
     <meta name="msapplication-TileColor" content="#607890"/>
     <meta name="msapplication-square70x70logo" content="/tiny.png"/>
     <meta name="msapplication-square150x150logo" content="/square.png"/>
 
-
-    <!-- Use title if it's in the page YAML frontmatter -->
     <title>Modularscale</title>
 
     <!-- Roll stylesheet into page for fast load -->
     <% css_path = sitemap.resources.select { |p| p.source_file.match(/style[.]scss$/) }.first %>
-    <style>
-        <%= css_path.render %>
-    </style>
+    <style><%= css_path.render %></style>
   </head>
 
   <body class="panel-calc mode-web">
@@ -53,9 +40,7 @@
 
     <!-- Roll javascript into page for fast load -->
     <% app_js = sprockets.find_asset('script.js.erb').to_s %>
-    <script>
-    <%= defined?(Uglifier) ? Uglifier.compile(app_js) : app_js %>
-    </script>
+    <script><%= defined?(Uglifier) ? Uglifier.compile(app_js) : app_js %></script>
 
   </body>
 </html>

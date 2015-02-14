@@ -44,7 +44,7 @@ activate :livereload
 # Deployment
 activate :bitballoon do |bitballoon|
   bitballoon.token = ENV["BB_TOKEN"]
-  bitballoon.site  = "modularscale.bitballoon.com"
+  bitballoon.site  = "modularscale.com"
 
   # Optional: always run a build before deploying
   bitballoon.build_before = true
@@ -78,7 +78,7 @@ configure :build do
   # activate :asset_hash
 
   # gzip
-  activate :gzip
+  # activate :gzip
 
   # Use relative URLs
   # activate :relative_assets

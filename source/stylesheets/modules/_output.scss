@@ -147,8 +147,10 @@ $output-item-end   : 8;
   @media (max-width: $break-med) {
     @include transform(translateY(-100%));
     left: ms(-1) * 2;
+    opacity: 0;
     .panel-output & {
       @include transform(translateY(0));
+      opacity: 1;
     }
     .panel-output.ios-webapp & {
       top: 20px;

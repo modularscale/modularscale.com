@@ -78,7 +78,7 @@ configure :build do
   # activate :asset_hash
 
   # gzip
-  # activate :gzip
+  activate :gzip
 
   # Use relative URLs
   # activate :relative_assets

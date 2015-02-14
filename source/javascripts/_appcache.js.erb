@@ -1,9 +1,11 @@
 // http://www.html5rocks.com/en/tutorials/appcache/beginner/
 
-var appCache = window.applicationCache;
+document.addEventListener("DOMContentLoaded", function(event) {
+  var appCache = window.applicationCache;
 
-appCache.update(); // Attempt to update the user's cache.
+  appCache.update(); // Attempt to update the user's cache.
 
-if (appCache.status == window.applicationCache.UPDATEREADY) {
-  appCache.swapCache();  // The fetch was successful, swap in the new cache.
-}
+  if (appCache.status == window.applicationCache.UPDATEREADY) {
+    appCache.swapCache();  // The fetch was successful, swap in the new cache.
+  }
+});

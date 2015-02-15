@@ -1,11 +1,20 @@
 // http://www.html5rocks.com/en/tutorials/appcache/beginner/
 
-document.addEventListener("DOMContentLoaded", function(event) {
-  var appCache = window.applicationCache;
+function update() {
+  var formPanel = document.getElementById('formPanel');
+  formPanel.innerHTML = '<a class="update-ready" href="javascript:window.location.reload();">A new version of Modular Scale is avalible, click here to refresh.</a>' + formPanel.innerHTML;
+}
 
-  appCache.update(); // Attempt to update the user's cache.
+// Check if a new cache is available on page load.
+window.addEventListener('load', function(e) {
 
-  if (appCache.status == window.applicationCache.UPDATEREADY) {
-    appCache.swapCache();  // The fetch was successful, swap in the new cache.
-  }
-});
+  window.applicationCache.addEventListener('updateready', function(e) {
+    if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+      // Browser downloaded a new app cache.
+      update();
+    } else {
+      // Manifest didn't changed. Nothing new to server.
+    }
+  }, false);
+
+}, false);

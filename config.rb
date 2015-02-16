@@ -44,7 +44,7 @@ activate :livereload
 # Deployment
 activate :bitballoon do |bitballoon|
   bitballoon.token = ENV["BB_TOKEN"]
-  bitballoon.site  = "modularscale.com"
+  bitballoon.site  = "www.modularscale.com"
 
   # Optional: always run a build before deploying
   bitballoon.build_before = true

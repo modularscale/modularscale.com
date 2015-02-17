@@ -1,4 +1,5 @@
 //= require '_typekit.js.erb'
+//= require '_mixpanel.js.erb'
 //= require '_ms.js.erb'
 //= require '_changevalue.js.erb'
 //= require '_panels.js.erb'
@@ -40,6 +41,12 @@ function stepUnits(u, msBase, msUnit, msRatio) {
 }
 
 function msPage(msBase, msUnit, msRatio) {
+
+  // Analytics
+  mixpanel.track('Unit:' + msUnit);
+  mixpanel.track('Bases: ' + msBase.length);
+  mixpanel.track('Ratios: ' + msRatio.length);
+
   // upper bound of scale
   var u = 10;
   // lower bound of scale

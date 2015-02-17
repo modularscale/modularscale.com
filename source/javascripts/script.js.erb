@@ -42,11 +42,6 @@ function stepUnits(u, msBase, msUnit, msRatio) {
 
 function msPage(msBase, msUnit, msRatio) {
 
-  // Analytics
-  // mixpanel.track('Unit:' + msUnit);
-  // mixpanel.track('Bases: ' + msBase.length);
-  // mixpanel.track('Ratios: ' + msRatio.length);
-
   // upper bound of scale
   var u = 10;
   // lower bound of scale
@@ -83,6 +78,15 @@ function msPage(msBase, msUnit, msRatio) {
   }
   document.getElementById('text_m0').scrollIntoView(false);
   newURL();
+
+  // Analytics
+  mixpanel.track('scale', {
+    'Units'        : msUnit,
+    'Bases'        : msBase.length,
+    'Ratios'       : msRatio.length,
+    'Base values'  : msBase,
+    'Ratio values' : msRatio
+  });
 }
 
 document.addEventListener('DOMContentLoaded', function(){

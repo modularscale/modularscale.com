@@ -9,7 +9,7 @@ function helpT() {
     document.body.classList.add('help');
     document.cookie = 'helpT';
     help = true;
-    mixpanel.track('Toggled help');
+    // mixpanel.track('Toggled help');
   }
 }
 
@@ -20,7 +20,7 @@ if (document.cookie.split('help')[1] == 'T') {
 // Toggle about panel section
 function aboutA(a) {
   msPanel('about');
-  mixpanel.track('Help link: ' + a);
+  // mixpanel.track('Help link: ' + a);
   var top = document.getElementById(a).offsetTop;
   document.getElementById('about').scrollTop = (top - 12);
 }

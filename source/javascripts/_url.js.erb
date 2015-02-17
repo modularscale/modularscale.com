@@ -11,10 +11,10 @@ function newURL() {
 
 // Query the URL on initial load
 function queryURL() {
-  var URL = window.location.href;
+  var URL = window.location.search;
   if (URL.search('&') > 0) {
     URL = URL.split('?')[1].split('&');
-    if (URL.length = 5) {
+    if (URL.length = 5) {      
       msBase     = URL[0].split(',');
       msUnit     = URL[1];
       msRatio    = URL[2].split(',');

@@ -1,11 +1,11 @@
 <script>
   function queryURL() {
-    var URL = window.location.href.split('?')[1].split('&');
+    var oldURL = window.location.search.split('?')[1].split('&');
 
-    b1 = URL[0].split('=')[1];
-    b2 = URL[1].split('=')[1];
-    r1 = URL[2].split('=')[1];
-    r2 = URL[3].split('=')[1];
+    b1 = oldURL[0].split('=')[1];
+    b2 = oldURL[1].split('=')[1];
+    r1 = oldURL[2].split('=')[1];
+    r2 = oldURL[3].split('=')[1];
 
     var newURL = '../?' + b1;
 
@@ -23,6 +23,5 @@
 
     return(newURL);
   }
-
   window.location.href = queryURL();
 </script>

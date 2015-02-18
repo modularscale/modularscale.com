@@ -1,6 +1,6 @@
 // Change the URL
 function newURL() {
-  window.history.pushState('object or string', 'Title',
+  window.history.replaceState('object or string', 'Title',
     '?' + msBase +
     '&' + msUnit +
     '&' + msRatio +
@@ -14,7 +14,7 @@ function queryURL() {
   var URL = window.location.search;
   if (URL.search('&') > 0) {
     URL = URL.split('?')[1].split('&');
-    if (URL.length = 5) {      
+    if (URL.length = 5) {
       msBase     = URL[0].split(',');
       msUnit     = URL[1];
       msRatio    = URL[2].split(',');

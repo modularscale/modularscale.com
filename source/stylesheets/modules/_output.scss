@@ -112,6 +112,10 @@ $output-item-end   : 8;
   background: $dark;
 }
 
+.table .info.m0 {
+  background: tint($light,66%);
+}
+
 
 
 .output-mode {

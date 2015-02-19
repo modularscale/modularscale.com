@@ -1,6 +1,6 @@
 // Change the URL
 function newURL() {
-  window.history.replaceState('object or string', 'Title',
+  window.history.replaceState('', 'Modularscale',
     '?' + msBase +
     '&' + msUnit +
     '&' + msRatio +
@@ -12,6 +12,13 @@ function newURL() {
 // Query the URL on initial load
 function queryURL() {
   var URL = window.location.search;
+
+  // Ignore UTM codes if they exist in the URL
+  // They conflict with the URL handilng of this tool
+  if (URL.search('utm_') > 0) {
+    return null
+  }
+
   if (URL.search('&') > 0) {
     URL = URL.split('?')[1].split('&');
     if (URL.length = 5) {

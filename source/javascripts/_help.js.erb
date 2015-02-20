@@ -1,4 +1,5 @@
-var help = false
+var help = false;
+var lastHelp = null;
 
 function helpT() {
   if (help) {
@@ -28,6 +29,12 @@ function aboutA(a) {
   // mixpanel.track('Help link: ' + a);
   var top = document.getElementById(a).offsetTop;
   document.getElementById('about').scrollTop = (top - 12);
+
+  if (lastHelp == a) {
+    mixpanel.track('help toggle attempt');
+  }
+
+  lastHelp = a;
 
   mixpanel.track('Help', {
     'Link' : a

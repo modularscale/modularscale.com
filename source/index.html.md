@@ -39,4 +39,14 @@ First introduced at [Build 2010](http://vimeo.com/17079380) by Tim Brown, this s
 
 This site is designed using [JAF Bernini Sans](https://typekit.com/fonts/jaf-bernino-sans), designed by [Tim Ahrens & Shoko Mugikura](http://justanotherfoundry.com/), as well as [Freight Text](https://typekit.com/fonts/freight-text-pro), designed by [Joshua Darden](http://dardenstudio.com/), both served from [Typekit](https://typekit.com/). It is built on [Middleman](https://middlemanapp.com/), [Sass](http://sass-lang.com/), and [Compass](http://compass-style.org/) using the modular scale plugins and [color-schemer](https://github.com/at-import/color-schemer). You can view the [full source on GitHub](https://github.com/modularscale/modularscale). Hosted on [BitBalloon](https://www.bitballoon.com/).
 
+## Privacy Policy
+
+We collect usage statistics on this website such as but not limited to browser, OS, referrer, bases being used, ratios being used, and what help links people are using. We do this to get a general overview of how we are doing and to help focus our efforts on where we can do better. We do not collect any personal data about you or that can identify you.
+
+Do not put any information in form fields you do not want us to see. If personal information does come through the form we may not share it publicly. From time to time we will share generalized information on things we have learned from our statistics such as but not limited to most used bases and ratios.
+
+If you have any questions, please reach out to me at [scott@scottkellum.com](mailto:scott@scottkellum.com)
+
+Statistics provider:
+
 <a href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_blue.png" alt="Mobile Analytics" /></a>

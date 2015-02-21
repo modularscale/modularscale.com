@@ -1,3 +1,7 @@
+svg {
+  fill: currentcolor;
+}
+
 .svg-pm {
   width: ms(1.5);
   height: ms(1.5);
@@ -5,9 +9,9 @@
   display: block;
   margin: 0;
 }
-.svg-pm-bkg {
-  fill: darken($primary, 5%);
-}
-.svg-pm-bar {
-  fill: white;
-}
+// .svg-pm-bkg {
+//   fill: darken($primary, 5%);
+// }
+// .svg-pm-bar {
+//   fill: white;
+// }

@@ -12,12 +12,14 @@
       </div>
 
       <a class="button-pm add" href="javascript:addBase()">
-        <svg class="svg-pm" viewBox="0 0 15 15">
+        <svg class="svg-pm" viewBox="0 0 15 15" aria-labelledby="title">
+          <title id="title">Add base</title>
           <use xlink:href="#add"></use>
         </svg>
       </a>
       <a class="button-pm remove" href="javascript:removeBase()">
-        <svg class="svg-pm" viewBox="0 0 15 15">
+        <svg class="svg-pm" viewBox="0 0 15 15" aria-labelledby="title">
+          <title id="title">Remove base</title>
           <use xlink:href="#add"></use>
         </svg>
       </a>
@@ -29,17 +31,23 @@
 
       <div id="formRatios">
         <label>
-          <input type="number" class="ratio" min="1.001" value="1.5" step="0.001" onkeyup="changeRatio()"><div onclick="ratioSelectOpen(this)" class="ratios-select-open">r</div><div class="ratios-select"></div>
+          <input type="number" class="ratio" min="1.001" value="1.5" step="0.001" onkeyup="changeRatio()"><div onclick="ratioSelectOpen(this)" class="ratios-select-open">
+            <svg viewBox="0 0 10 10" class="ratios-select-svg" aria-labelledby="title">
+              <title id="title">Select a ratio</title>
+              <path d="m0 3 l10 0 -5 5 z"/>
+            </svg></div><div class="ratios-select"></div>
         </label>
       </div>
 
       <a class="button-pm add" href="javascript:addRatio()">
-        <svg class="svg-pm" viewBox="0 0 15 15">
+        <svg class="svg-pm" viewBox="0 0 15 15" aria-labelledby="title">
+          <title id="title">Add ratio</title>
           <use xlink:href="#add"></use>
         </svg>
       </a>
       <a class="button-pm remove" href="javascript:removeRatio()">
-        <svg class="svg-pm" viewBox="0 0 15 15">
+        <svg class="svg-pm" viewBox="0 0 15 15" aria-labelledby="title">
+          <title id="title">Remove ratio</title>
           <use xlink:href="#add"></use>
         </svg>
       </a>

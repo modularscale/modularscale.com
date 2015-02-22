@@ -9,6 +9,8 @@ $output-item-end   : 8;
   padding-top: ms(2);
   li {
     padding: .25em .5em;
+    display: -ms-flexbox;
+    display: -webkit-box;
     display: flex;
     &:first-child {
       padding-left: 0;
@@ -26,6 +28,8 @@ $output-item-end   : 8;
     white-space: nowrap;
     border-top: 1px solid $light;
     color: $secondary;
+    display: -ms-flexbox;
+    display: -webkit-box;
     display: flex;
     width: 100%;
     span {

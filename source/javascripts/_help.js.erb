@@ -1,18 +1,17 @@
-var help = false;
+var help = 'help-off';
 var lastHelp = null;
 
 function helpT() {
-  if (help) {
-    document.body.classList.remove('help');
-    document.cookie = 'helpF';
-    help = false;
+  if (help == 'help') {
+    help = 'help-off';
+    document.body.className = 'panel-' + panel + ' mode-' + mode + ' ' + help;
     mixpanel.track('Help toggle', {
       'Toggled' : 'off'
     });
   } else {
-    document.body.classList.add('help');
     document.cookie = 'helpT';
-    help = true;
+    help = 'help';
+    document.body.className = 'panel-' + panel + ' mode-' + mode + ' ' + help;
     mixpanel.track('Help toggle', {
       'Toggled' : 'on'
     });

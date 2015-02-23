@@ -2,8 +2,7 @@ var panelNames = ['calc', 'output', 'about'];
 var currentPanel = 'calc';
 
 function msPanel(panel) {
-  document.body.classList.remove('panel-calc', 'panel-output', 'panel-about');
-  document.body.classList.add('panel-' + panel);
+  document.body.className = 'panel-' + panel + ' mode-' + mode + ' ' + help;
   if (panel == 'output') {
     document.activeElement.blur();
   }
@@ -75,7 +74,6 @@ function handleTouchMove(evt) {
 
 function outputM(m) {
   outputMode = m;
-  document.getElementById('output').classList.remove('table', 'text');
-  document.getElementById('output').classList.add(m);
+  document.getElementById('output').className = 'output panel ' + m;
   msPage(msBase, msUnit, msRatio);
 };

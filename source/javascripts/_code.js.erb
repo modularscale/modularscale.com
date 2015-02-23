@@ -27,10 +27,9 @@ function codeMode(newMode) {
       '<a href="https://github.com/modularscale/modularscale-js" target="_blank" class="code-install">Install the JS plugin</a>';
   }
 
-  document.body.classList.remove('mode-web', 'mode-sass', 'mode-js');
-  document.body.classList.add('mode-' + newMode);
-
   mode = newMode;
+  document.body.className = 'panel-' + panel + ' mode-' + mode + ' ' + help;
+
   newURL();
 }
 

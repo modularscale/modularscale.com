@@ -49,7 +49,7 @@ function addRatio(v) {
   if(v) { baseValue = v; }
   newRatio.innerHTML =
   '<input type="number" class="ratio" min="1.001" value="' + baseValue + '" step="0.001" onkeyup="changeRatio()">' +
-  '<div onclick="ratioSelectOpen(this)" class="ratios-select-open">r</div>' +
+  '<div onclick="ratioSelectOpen(this)" class="ratios-select-open"><svg viewBox="0 0 10 10" class="ratios-select-svg" aria-labelledby="title"><title id="title">Select a ratio</title><path d="m0 3 l10 0 -5 5 z"/></svg></div>' +
   '<div class="ratios-select"></div>';
 
   if (baseCount == 0 && ratioCount < multiLimit) {

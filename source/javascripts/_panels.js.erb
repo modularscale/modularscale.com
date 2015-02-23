@@ -40,24 +40,18 @@ function handleTouchMove(evt) {
 
   if (document.documentElement.clientWidth > 545) {
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
-
-      mixpanel.track('swipe', {
-        'size': large
-      });
-
       if (xDiff > 0) {
         msPanel('about');
       } else {
         msPanel('calc');
       }
-    }
-  } else {
-    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
 
       mixpanel.track('swipe', {
         'size': small
       });
-
+    }
+  } else {
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
       var panelIndex = panelNames.indexOf(currentPanel);
       if (xDiff > 0 && panelIndex < 2) {
         msPanel(panelNames[panelIndex + 1])
@@ -65,6 +59,10 @@ function handleTouchMove(evt) {
       if (xDiff <= 0 && panelIndex > 0)  {
         msPanel(panelNames[panelIndex - 1])
       }
+
+      mixpanel.track('swipe', {
+        'size': small
+      });
     }
   }
 

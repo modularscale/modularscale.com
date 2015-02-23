@@ -41,6 +41,11 @@ function handleTouchMove(evt) {
 
   if (document.documentElement.clientWidth > 545) {
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
+
+      mixpanel.track('swipe', {
+        'size': large
+      });
+
       if (xDiff > 0) {
         msPanel('about');
       } else {
@@ -49,6 +54,11 @@ function handleTouchMove(evt) {
     }
   } else {
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
+
+      mixpanel.track('swipe', {
+        'size': small
+      });
+
       var panelIndex = panelNames.indexOf(currentPanel);
       if (xDiff > 0 && panelIndex < 2) {
         msPanel(panelNames[panelIndex + 1])

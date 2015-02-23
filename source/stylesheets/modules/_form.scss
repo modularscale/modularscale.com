@@ -139,7 +139,6 @@ input {
   margin-bottom: 1em;
   border-radius: 0;
   -webkit-appearance: none;
-  @include animation(form .2s 1 cubic-bezier(.65, -.25, .7, 1.5));
   label:nth-child(2) & {
     border-color: nth($color-multi, 2);
   }
@@ -162,13 +161,6 @@ input {
   }
   #formRatios & {
     border-left-width: ms(1.5);
-  }
-}
-
-@include keyframes(form) {
-  0% {
-    @include transform(translateY(-100%));
-    opacity: 0;
   }
 }
 

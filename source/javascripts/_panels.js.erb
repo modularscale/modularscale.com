@@ -45,10 +45,6 @@ function handleTouchMove(evt) {
       } else {
         msPanel('calc');
       }
-
-      mixpanel.track('swipe', {
-        'size': small
-      });
     }
   } else {
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
@@ -59,10 +55,6 @@ function handleTouchMove(evt) {
       if (xDiff <= 0 && panelIndex > 0)  {
         msPanel(panelNames[panelIndex - 1])
       }
-
-      mixpanel.track('swipe', {
-        'size': small
-      });
     }
   }
 

@@ -48,3 +48,23 @@
     text-decoration: underline;
   }
 }
+
+.about-close {
+  background: $primary;
+  border-radius: 50%;
+  padding: 0;
+  border: 1px solid white;
+  position: fixed;
+  font-size: .75em;
+  top: 1em;
+  right: (1em / .75) - 1em;
+  z-index: 1;
+  @include transition(all .25s);
+  .panel-about & {
+    @include transform(rotateZ(225deg));
+    right: ms(0);
+  }
+  &:hover, &:focus {
+    background: lighten($primary,10%);
+  }
+}

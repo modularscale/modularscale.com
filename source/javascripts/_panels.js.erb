@@ -14,6 +14,14 @@ for (var i = 0; i < panels.length; i++)
   panels[i].onclick = function() { msPanel(this.dataset.panel)};
 
 
+function aboutT() {
+  if (currentPanel == 'about') {
+    msPanel('calc');
+  } else {
+    msPanel('about');
+  }
+}
+
 
 // http://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
 document.addEventListener('touchstart', handleTouchStart, false);

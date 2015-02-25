@@ -36,6 +36,12 @@
     <article class="about panel" data-panel="about" id="about">
       <%= yield %>
     </article>
+    <a href="javascript:aboutT();" class="about-close">
+      <svg class="svg-pm" viewBox="0 0 15 15" aria-labelledby="title">
+        <title id="title">Close panel</title>
+        <use xlink:href="#add"></use>
+      </svg>
+    </a>
     <%= partial "partials/pager" %>
 
     <!-- Roll javascript into page for fast load -->

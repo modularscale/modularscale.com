@@ -50,6 +50,7 @@
 }
 
 .about-close {
+  display: none;
   background: $primary;
   border-radius: 50%;
   padding: 0;
@@ -66,5 +67,8 @@
   }
   &:hover, &:focus {
     background: lighten($primary,10%);
+  }
+  @media (min-width: $break-med) {
+    display: block;
   }
 }

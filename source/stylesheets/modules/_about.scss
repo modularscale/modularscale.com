@@ -63,7 +63,6 @@
   @include transition(all .25s);
   .panel-about & {
     @include transform(rotateZ(225deg));
-    right: ms(0);
   }
   &:hover, &:focus {
     background: lighten($primary,10%);

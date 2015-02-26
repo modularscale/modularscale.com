@@ -17,8 +17,10 @@ for (var i = 0; i < panels.length; i++)
 function aboutT() {
   if (currentPanel == 'about') {
     msPanel('calc');
+    mixpanel.track('About toggle close');
   } else {
     msPanel('about');
+    mixpanel.track('About toggle open');
   }
 }
 

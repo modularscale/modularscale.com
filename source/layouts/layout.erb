@@ -27,9 +27,13 @@
     <meta property="og:title" content="Modular Scale" />
     <meta property="og:description" content="Calculate, visualize, and learn about modular scales." />
     <meta property="og:image" content="http://www.modularscale.com/twitter-share.png" />
-    <meta name="twitter:title" content="Modular Scale" />
-    <meta name="twitter:description" content="Calculate, visualize, and learn about modular scales." />
-    <meta name="twitter:image:src" content="http://www.modularscale.com/twitter-share.png" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@modularscale">
+    <meta name="twitter:creator" content="@nicewebtype">
+    <meta name="twitter:title" content="Modular Scale">
+    <meta name="twitter:description" content="Calculate, visualize, and learn about modular scales.">
+    <meta name="twitter:image:src" content="http://www.modularscale.com/twitter-share.png">
+
     <!-- Roll stylesheet into page for fast load -->
     <% css_path = sitemap.resources.select { |p| p.source_file.match(/style[.]scss$/) }.first %>
     <style><%= css_path.render %></style>

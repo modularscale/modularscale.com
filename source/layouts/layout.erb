@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <title>Modularscale</title>
 
     <!-- Always force latest IE rendering engine or request Chrome Frame -->
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
@@ -22,8 +23,13 @@
     <meta name="msapplication-square70x70logo" content="/tiny.png"/>
     <meta name="msapplication-square150x150logo" content="/square.png"/>
 
-    <title>Modularscale</title>
-
+    <!-- Social stuff -->
+    <meta property="og:title" content="Modular Scale" />
+    <meta property="og:description" content="Calculate, visualize, and learn about modular scales." />
+    <meta property="og:image" content="http://www.modularscale.com/twitter-share.png" />
+    <meta name="twitter:title" content="Modular Scale" />
+    <meta name="twitter:description" content="Calculate, visualize, and learn about modular scales." />
+    <meta name="twitter:image:src" content="http://www.modularscale.com/twitter-share.png" />
     <!-- Roll stylesheet into page for fast load -->
     <% css_path = sitemap.resources.select { |p| p.source_file.match(/style[.]scss$/) }.first %>
     <style><%= css_path.render %></style>

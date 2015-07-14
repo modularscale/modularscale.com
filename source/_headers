@@ -1,2 +1,5 @@
 /*
-  Cache-Control: no-transform,public,max-age=604800,s-maxage=604800
+  cache-control:no-transform,public,max-age=2592000,s-maxage=2592000
+  expires: Wed, 01 Jan 2020 20:00:00 GMT
+  Vary: Accept-Encoding
+  X-Cache: HIT

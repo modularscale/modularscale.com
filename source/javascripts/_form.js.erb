@@ -42,49 +42,6 @@ function removeBase() {
 
 var ratioCount = 0;
 
-function addRatio(v) {
-  var formRatios = document.getElementById('formRatios');
-  var newRatio = document.createElement('label');
-  var baseValue = document.getElementsByClassName('ratio')[0].value;
-  if(v) { baseValue = v; }
-  newRatio.innerHTML =
-  '<input type="number" class="ratio" min="1.001" value="' + baseValue + '" step="0.001" onkeyup="changeRatio()">' +
-  '<div onclick="ratioSelectOpen(this)" class="ratios-select-open"><svg viewBox="0 0 10 10" class="ratios-select-svg" aria-labelledby="title"><title id="title">Select a ratio</title><path d="m0 3 l10 0 -5 5 z"/></svg></div>' +
-  '<div class="ratios-select"></div>';
-
-  if (baseCount == 0 && ratioCount < multiLimit) {
-    formRatios.appendChild(newRatio);
-    ratioCount++;
-  }
-
-  if (ratioCount == 1) {
-    formRatios.classList.add('multi');
-    document.getElementById('formBases').classList.add('no-add');
-  }
-
-  if (ratioCount == multiLimit) {
-    formRatios.classList.add('no-add');
-  }
-}
-
-function removeRatio() {
-  if (ratioCount > 0) {
-    document.getElementById('formRatios').lastChild.remove();
-    ratioCount--;
-  }
-
-  if (ratioCount == 0) {
-    formRatios.classList.remove('multi');
-    document.getElementById('formBases').classList.remove('no-add');
-  }
-
-  if (ratioCount < multiLimit) {
-    formRatios.classList.remove('no-add');
-  }
-
-  changeRatio();
-}
-
 var ratios = document.getElementsByClassName('panel')
 for (var i = 0; i < panels.length; i++)
   panels[i].onclick = function() { msPanel(this.dataset.panel)};

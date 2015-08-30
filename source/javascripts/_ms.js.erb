@@ -11,7 +11,7 @@ var ms = function(s,b,r) {
   }
 
   // Create new base array
-  var bases = [b[0]];
+  var bases = [[b[0],0]];
 
   // Normalize base values
   for (var i = 1; i < b.length; i++) {
@@ -32,9 +32,10 @@ var ms = function(s,b,r) {
         base = base * r;
       }
     }
-    // Push into new array
-    bases.push(base);
+    // Push into new array with the strand order.
+    bases.push([base,i]);
   }
+
   // Sort array from smallest to largest.
   bases = bases.sort();
 
@@ -43,5 +44,5 @@ var ms = function(s,b,r) {
   // Find base to use in calculation
   var base = Math.round((s / bases.length - step) * bases.length);
 
-  return [(Math.pow(r, step) * bases[base]), base];
+  return [(Math.pow(r, step) * bases[base][0]), bases[base][1]];
 }

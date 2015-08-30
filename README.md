@@ -14,6 +14,22 @@ From now on, you can skip #1 and #3.
 
 To build the app, run `bundle exec middleman build` and it will generate a `build` directory.
 
+## Conduct
+
+We strive to create a welcoming place here for collaboration, ideas, and support. We can’t build the community we want without your help and understanding. In an effort to ensure this is a safe place for the community we will not hesitate remove comments that go against the guidelines and block people who are repeat offenders of the guidelines.
+
+1. Be nice
+  - Do not trash talk anyone for ideas, concepts, or things they use.
+  - Do not trash talk anyone for personal beliefs, race, background, gender, or any other personal aspect of their lives.
+  - Do not trash talk anyone, period.
+  - Do not rip on this project, this projects dependencies, or any other project. You may not like somthing but there are methods of critique that don’t involve devaluing peoples work.
+2. This project is built and maintained in free time. Be considerate that this is a labor of love. While we gladly accept feedback and feature requests, please understand the following:
+  - A timeline for fixes and features will be at the maintainers discression.
+  - Priority of fixes and features will be at the maintainers discression.
+  - Scope for new features is at the maintainers discression.
+
+The guidelines are interpreted and enforced by @scottkellum and @tbrown. It is under our sole discression to make decisions regarding enforcement of this code.
+
 ## Licence
 
 Copyright © 2015, Tim Brown and Scott Kellum

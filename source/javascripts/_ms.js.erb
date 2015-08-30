@@ -1,113 +1,47 @@
-var msValue = 0;
+// Default values
+var msScale = 0;
 var msBases = 1;
-var msRatios = (1+ Math.sqrt(5))/2;
+var msRatios = 1.5;
 
-// Unique via http://jsfiddle.net/gabrieleromanato/BrLfv/
-var msUnique = function(origArr) {
+var ms = function(s,b,r) {
 
-    origArr = origArr.sort(function(a,b) {
-      var x = a[0];
-      var y = b[0];
-      return x-y;
-    });
+  // Fast calc if not multi stranded
+  if(typeof(b) === 'number') {
+    return Math.pow(r, s) * b;
+  }
 
-    newArr = [];
-    var lastVal = null;
+  // Create new base array
+  var bases = [b[0]];
 
-    for (var i = 0; i < origArr.length; i++) {
-      var currentVal = origArr[i][0];
-      if (currentVal != lastVal) {
-        newArr.push(origArr[i]);
-      };
-
-      lastVal = currentVal;
-
+  // Normalize base values
+  for (var i = 1; i < b.length; i++) {
+    // initial base value
+    var base = b[i];
+    // If the base is bigger than the main base
+    if(base > b[0]) {
+      // divide the value until it aligns with main base.
+      while(base > b[0]) {
+        base = base / r;
+      }
+      base = base * r;
     }
-
-    return newArr;
-}
-
-// Main function
-function ms(value, bases, ratios) {
-
-  if (typeof value === 'string') {
-    value = 1;
-  }
-  if (value == undefined) {
-    value = msValue;
-  }
-  if (bases == undefined) {
-    bases = msBases;
-  }
-  if (ratios == undefined) {
-    ratios = msRatios;
-  }
-
-  // Error hangling
-  if (bases <= 0) {
-    bases = 1;
-  }
-  if (typeof Math.abs(bases[0]) != 'number') {
-    bases = 1;
-  }
-
-  // Make arrays
-  var bases = (''+bases).split(',');
-  var ratios = (''+ratios).split(',');
-
-  // Seed return array
-  var r = [];
-  var strand = null;
-
-  for (var ratio = 0; ratio < ratios.length; ratio++) {
-    for (var base = 0; base < bases.length; base++) {
-
-      strand = (base + ratio);
-
-      // Seed list with an initial value
-      // r.push(bases[base]);
-
-      // Find values on a positive scale
-      if (value >= 0) {
-        // Find lower values on the scale
-        var i = 0;
-        while((Math.pow(ratios[ratio], i) * bases[base]) >= bases[0]) {
-          r.push([Math.pow(ratios[ratio], i) * bases[base], strand]);
-          i--;
-        }
-
-        // Find higher possible values on the scale
-        var i = 0;
-        while(Math.pow(ratios[ratio], i) * bases[base] <= Math.pow(ratios[ratio], value + 1) * bases[base]) {
-          r.push([Math.pow(ratios[ratio], i) * bases[base], strand]);
-          i++;
-        }
-      } else {
-        // Find values on a negitve scale
-        var i = 0;
-        while((Math.pow(ratios[ratio], i) * bases[base]) <= bases[0]) {
-          r.push([Math.pow(ratios[ratio], i) * bases[base], strand]);
-          i++;
-        }
-
-        // // Find higher possible values on the scale
-        var i = 0;
-        while((Math.pow(ratios[ratio], i) * bases[base]) >= (Math.pow(ratios[ratio], value - 1) * bases[base])) {
-          if (Math.pow(ratios[ratio], i) * bases[base] <= bases[0]) {
-            r.push([Math.pow(ratios[ratio], i) * bases[base], strand]);
-          }
-          i--;
-        }
+    // If the base is smaller than the main base.
+    else if (base < b[0]) {
+      // pump up the value until it aligns with main base.
+      while(base < b[0]) {
+        base = base * r;
       }
     }
+    // Push into new array
+    bases.push(base);
   }
+  // Sort array from smallest to largest.
+  bases = bases.sort();
 
-  r = msUnique(r);
+  // Find step to use in calculation
+  var step = Math.floor(s / bases.length);
+  // Find base to use in calculation
+  var base = Math.round((s / bases.length - step) * bases.length);
 
-  // reverse array if value is negitive
-  if(value < 0) {
-    r = r.reverse();
-  }
-
-  return r[Math.abs(value)];
+  return [(Math.pow(r, step) * bases[base]), base];
 }

@@ -123,6 +123,9 @@ label {
     content: 'd';
     color: darken(nth($color-multi, 4), 10%);
   }
+  #formRatios &:before {
+    content: '';
+  }
 }
 
 input {

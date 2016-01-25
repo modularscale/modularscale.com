@@ -13,15 +13,15 @@
 var mode = 'web';
 var panel = 'form';
 var outputMode = 'text';
-var msBase = [1];
+var msBase = 1;
 var msUnit = 'em';
-var msRatio = [1.5];
-var multiLimit = 3;
+var msRatio = 1.5;
+var multiLimit = 5;
 
 queryURL();
 
 function stepUnits(u, msBase, msUnit, msRatio) {
-  var step = (Math.round((ms(u,msBase,msRatio)[0])*1000)/1000);
+  var step = (Math.round((ms(u,{base: msBase,ratio: msRatio}))*1000)/1000);
 
   var output = (
     step+msUnit
@@ -62,20 +62,21 @@ function msPage(msBase, msUnit, msRatio) {
 
   while (u >= l) {
 
-    var step = ms(u,rMsBase,msRatio);
+    var step = ms(u,{base: rMsBase,ratio: msRatio});
 
     if (u >= 0) {
       document.getElementById('m'+u+'value').innerHTML=stepUnits(u, msBase, msUnit, msRatio);
-      document.getElementById('text_m'+u).style.fontSize=(step[0]+rMsUnit);
-      document.getElementById('text_m'+u).setAttribute('class', 's'+step[1]+' text');
+      document.getElementById('text_m'+Math.abs(u)).setAttribute('class', 's'+'1'+' text');
+      document.getElementById('text_m'+u).style.fontSize=(step+rMsUnit);
     } else {
       document.getElementById('mn'+Math.abs(u)+'value').innerHTML=stepUnits(u, msBase, msUnit, msRatio);
-      document.getElementById('text_mn'+Math.abs(u)).style.fontSize=(step[0]+rMsUnit);
-      document.getElementById('text_mn'+Math.abs(u)).setAttribute('class', 's'+step[1]+' text');
+      document.getElementById('text_mn'+Math.abs(u)).setAttribute('class', 's'+'1'+' text');
+      document.getElementById('text_mn'+Math.abs(u)).style.fontSize=(step+rMsUnit);
     }
 
     u--;
   }
+
   document.getElementById('text_m0').scrollIntoView(false);
   newURL();
 

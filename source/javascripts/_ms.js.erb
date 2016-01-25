@@ -1,48 +1,56 @@
-// Default values
-var msScale = 0;
-var msBases = 1;
-var msRatios = 1.5;
+// Function settings
+var modularscale = {
+  base: 16,
+  ratio: 1.5,
+};
 
-var ms = function(s,b,r) {
+// Function
+function msFunction(v,settings) {
+
+  // Parse settings
+  // Write initial settings if undefined
+  if (settings === undefined) {
+    settings = modularscale;
+  }
+  // Initiate values
+  var base = settings.base;
+  var ratio = settings.ratio;
+  // Fill in the blanks with default values
+  if (ratio === undefined) {
+    ratio = modularscale.ratio;
+  }
+  if (base === undefined) {
+    base = modularscale.base;
+  }
 
   // Fast calc if not multi stranded
-  if(typeof(b) === 'number') {
-    return Math.pow(r, s) * b;
+  if (!Array.isArray(base) || base.length === 1) {
+    return (Math.pow(ratio,v) * base);
   }
 
-  // Create new base array
-  var bases = [[b[0],0]];
-
-  // Normalize base values
-  for (var i = 1; i < b.length; i++) {
-    // initial base value
-    var base = b[i];
-    // If the base is bigger than the main base
-    if(base > b[0]) {
-      // divide the value until it aligns with main base.
-      while(base > b[0]) {
-        base = base / r;
-      }
-      base = base * r;
+  // Normalize bases
+  // Find the upper bounds for base values
+  var baseHigh = Math.pow(ratio,1) * base[0];
+  for (var i = 1; i < base.length; i++) {
+    // shift up if value too low
+    while (base[i] < base[0]) {
+      base[i] = Math.pow(ratio,1) * base[i];
     }
-    // If the base is smaller than the main base.
-    else if (base < b[0]) {
-      // pump up the value until it aligns with main base.
-      while(base < b[0]) {
-        base = base * r;
-      }
+    // Shift down if too high
+    while (base[i] >= baseHigh) {
+      base[i] = Math.pow(ratio,-1) * base[i];
     }
-    // Push into new array with the strand order.
-    bases.push([base,i]);
   }
+  // Sort bases
+  base.sort();
 
-  // Sort array from smallest to largest.
-  bases = bases.sort();
+  // Figure out what base to use with modulo
+  var rBase = Math.round((v / base.length - Math.floor(v/base.length)) * base.length);
 
-  // Find step to use in calculation
-  var step = Math.floor(s / bases.length);
-  // Find base to use in calculation
-  var base = Math.round((s / bases.length - step) * bases.length);
+  // Return
+  return Math.pow(ratio,Math.floor(v/base.length)) * base[rBase];
+};
 
-  return [(Math.pow(r, step) * bases[base][0]), bases[base][1]];
+function ms(v,settings) {
+  return msFunction(v,settings);
 }

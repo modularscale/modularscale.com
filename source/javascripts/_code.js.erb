@@ -13,16 +13,20 @@ function codeMode(newMode) {
     codeSettings.innerHTML = '';
   } else if (newMode == 'sass') {
     codeSettings.innerHTML =
-      '<textarea id="ms-settings" onClick="this.select();">' +
-      '$ms-base: ' + baseList() + ';\n' +
-      '$ms-ratio: ' + msRatio + ';' +
+      '<textarea id="ms-settings" onClick="this.select();" rows="4">' +
+      '$modularscale: (\n' +
+      '  base: ' + msBase + ',\n' +
+      '  ratio: ' + msRatio + '\n' +
+      ');' +
       '</textarea>' +
       '<a href="https://github.com/modularscale/modularscale-sass" target="_blank" class="code-install">Install the Sass plugin</a>';
   } else if (newMode == 'js') {
     codeSettings.innerHTML =
-      '<textarea id="ms-settings" onClick="this.select();">' +
-      'msBases = [' + msBase + '];\n' +
-      'msRatios = [' + msRatio + '];' +
+      '<textarea id="ms-settings" onClick="this.select();" rows="4">' +
+      'modularscale = {\n' +
+      '  base: [' + msBase + '],\n' +
+      '  ratio: ' + msRatio + '\n' +
+      '};' +
       '</textarea>' +
       '<a href="https://github.com/modularscale/modularscale-js" target="_blank" class="code-install">Install the JS plugin</a>';
   }

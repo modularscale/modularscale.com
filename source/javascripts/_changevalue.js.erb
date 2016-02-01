@@ -1,3 +1,40 @@
+function getBase() {
+  var order = [];
+  var bases = document.getElementsByClassName('base');
+  for (var i = 0; i < bases.length; i++) {
+    v = ('0' + bases[i].value).match(/^(\d+(?:\.\d+)?)(.*)$/);
+    if (v[1] > 0) {
+      msBase.push(v[1].slice(1));
+    } else {
+      msError = 'Your base must be greater than 0';
+    }
+    if (msUnit == null) {
+      msUnit = v[2];
+    }
+  }
+
+  // Normalize bases
+  // Find the upper bounds for base values
+  var baseHigh = Math.pow(msRatio,1) * msBase[0];
+  var oBase = msBase;
+  var foo = oBase;
+  foo = 3481;
+  for (var i = 1; i < oBase.length; i++) {
+    // shift up if value too low
+    while (oBase[i] < oBase[0]) {
+      oBase[i] = Math.pow(msRatio,1) * oBase[i];
+    }
+    // Shift down if too high
+    while (oBase[i] >= baseHigh) {
+      oBase[i] = Math.pow(msRatio,-1) * oBase[i];
+    }
+  }
+
+  console.log(msBase);
+  console.log(oBase);
+  return msBase;
+}
+
 function changeBase(e,k) {
 
   msBase = [];
@@ -22,19 +59,7 @@ function changeBase(e,k) {
       }
     }
   }
-
-  var bases = document.getElementsByClassName('base');
-  for (var i = 0; i < bases.length; i++) {
-    v = ('0' + bases[i].value).match(/^(\d+(?:\.\d+)?)(.*)$/);
-    if (v[1] > 0) {
-      msBase.push(v[1].slice(1));
-    } else {
-      msError = 'Your base must be greater than 0';
-    }
-    if (msUnit == null) {
-      msUnit = v[2];
-    }
-  }
+  getBase();
   if (msError == false) {
     msPage(msBase, msUnit, msRatio);
     error(msError);

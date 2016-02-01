@@ -5,7 +5,7 @@ var modularscale = {
 };
 
 // Function
-function msFunction(v,settings) {
+function ms(v,settings) {
 
   // Parse settings
   // Write initial settings if undefined
@@ -50,7 +50,3 @@ function msFunction(v,settings) {
   // Return
   return Math.pow(ratio,Math.floor(v/base.length)) * base[rBase];
 };
-
-function ms(v,settings) {
-  return msFunction(v,settings);
-}

@@ -1,7 +1,6 @@
 function getBase() {
-  var order = [];
-  var bases = document.getElementsByClassName('base');
   msBase = [];
+  var bases = document.getElementsByClassName('base');
   for (var i = 0; i < bases.length; i++) {
     v = ('0' + bases[i].value).match(/^(\d+(?:\.\d+)?)(.*)$/);
     if (v[1] > 0) {
@@ -15,6 +14,29 @@ function getBase() {
   }
 
   return msBase;
+};
+
+function baseOrder() {
+  var base = getBase();
+  var order = [];
+  // Normalize bases
+  // Find the upper bounds for base values
+  var baseHigh = Math.pow(msRatio,1) * base[0];
+  for (var i = 1; i < base.length; i++) {
+    // shift up if value too low
+    while (base[i] < base[0]) {
+      base[i] = Math.pow(msRatio,1) * base[i];
+    }
+    // Shift down if too high
+    while (base[i] >= baseHigh) {
+      base[i] = Math.pow(msRatio,-1) * base[i];
+    }
+  }
+  var sBase = base.concat().sort();
+  for (var i = 0; i < base.length; i++) {
+    order.push(sBase.indexOf(base[i]));
+  }
+  return order;
 };
 
 function changeBase(e,k) {

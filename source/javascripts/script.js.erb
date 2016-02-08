@@ -63,14 +63,20 @@ function msPage(msBase, msUnit, msRatio) {
   while (u >= l) {
 
     var step = ms(u,{base: rMsBase,ratio: msRatio});
+    var p = baseOrder();
+    var pl = p.length;
 
     if (u >= 0) {
       document.getElementById('m'+u+'value').innerHTML=stepUnits(u, msBase, msUnit, msRatio);
-      document.getElementById('text_m'+Math.abs(u)).setAttribute('class', 's'+'1'+' text');
+      document.getElementById('text_m'+Math.abs(u)).setAttribute('class', 's' +
+        p[Math.round(((u/(pl)) - Math.floor(u/(pl))) * (pl))]
+        + ' text');
       document.getElementById('text_m'+u).style.fontSize=(step+rMsUnit);
     } else {
       document.getElementById('mn'+Math.abs(u)+'value').innerHTML=stepUnits(u, msBase, msUnit, msRatio);
-      document.getElementById('text_mn'+Math.abs(u)).setAttribute('class', 's'+'1'+' text');
+      document.getElementById('text_mn'+Math.abs(u)).setAttribute('class', 's'+
+        p[Math.round(((u/(pl)) - Math.floor(u/(pl))) * (pl))]
+        +' text');
       document.getElementById('text_mn'+Math.abs(u)).style.fontSize=(step+rMsUnit);
     }
 

@@ -39,6 +39,24 @@ function baseOrder() {
   return order;
 };
 
+function keyStep(e,k) {
+  var thisValue = e.value.match(/^(\d+(?:\.\d+)?)(.*)$/);
+  var step = 10;
+  if (window.event.altKey) {
+    step = 1;
+  }
+  if (window.event.shiftKey) {
+    step = 100;
+  }
+  if (k == 38) {
+    e.value = ((thisValue[1]-0) * 10 + step) / 10 + thisValue[2];
+  } else if (k == 40) {
+    if (thisValue[1] > 1) {
+    e.value = ((thisValue[1]-0) * 10 - step) / 10 + thisValue[2];
+    }
+  }
+}
+
 function changeBase(e,k) {
 
   msBase = [];
@@ -47,21 +65,7 @@ function changeBase(e,k) {
 
   // Change the base with arrow keys
   if (e != null) {
-    var thisValue = e.value.match(/^(\d+(?:\.\d+)?)(.*)$/);
-    var step = 10;
-    if (window.event.altKey) {
-      step = 1;
-    }
-    if (window.event.shiftKey) {
-      step = 100;
-    }
-    if (k == 38) {
-      e.value = ((thisValue[1]-0) * 10 + step) / 10 + thisValue[2];
-    } else if (k == 40) {
-      if (thisValue[1] > 1) {
-      e.value = ((thisValue[1]-0) * 10 - step) / 10 + thisValue[2];
-      }
-    }
+    keyStep(e,k);
   }
   getBase();
   if (msError == false) {
@@ -74,29 +78,29 @@ function changeBase(e,k) {
   codeMode(mode);
 }
 
-function changeRatio() {
+function changeRatio(e,k) {
 
   msRatio = [];
-  var msError = false;
+  msError = false;
 
-  var ratios = document.getElementsByClassName('ratio');
-  for (var i = 0; i < ratios.length; i++) {
-    v = parseFloat(ratios[i].value);
-    if (typeof(v) == 'number') {
-      msRatio.push(v);
-    } else {
-      msError = true;
-    }
-    if (v <= 1) {
-      msError = 'Your ratio needs to be greater than 1';
-    }
+  // Change the base with arrow keys
+  if (e != null) {
+    keyStep(e,k);
   }
-  if (msError == false) {
-    msPage(msBase, msUnit, msRatio);
+
+  var r = document.getElementById('ratio').value;
+  if (isNaN(r/1)) {
+    r = r.split('@');
+    r = Math.pow((r[0]/msBase),(1/r[1]));
+  }
+
+  if (r <= 1) {
+    msError = 'Your ratio needs to be greater than 1';
     error(msError);
   } else {
-    error(msError);
+    msRatio = r;
+    msPage(msBase, msUnit, msRatio);
+    codeMode(mode);
+    error(null);
   }
-
-  codeMode(mode);
 }

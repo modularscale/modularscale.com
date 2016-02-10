@@ -91,16 +91,23 @@ function changeRatio(e,k) {
   var r = document.getElementById('ratio').value;
   if (isNaN(r/1)) {
     r = r.split('@');
-    r = Math.pow((r[0]/msBase),(1/r[1]));
-  }
-
-  if (r <= 1) {
+    if (r[1] != '') {
+      if (msBase.length > 1) {
+        var b = msBase[Math.round(((r[1]/msBase.length) - Math.floor(r[1]/msBase.length))*msBase.length)];
+        r = Math.pow((r[0]/b),(1/Math.floor(r[1]/msBase.length)));
+      } else {
+        r = Math.pow((r[0]/msBase),(1/r[1]));
+      }
+      error(null);
+    } else {
+      msError = 'Your ratio needs to be greater than 1 or be formatted <em>n</em>@<em>n</em>';
+    }
+  } if (r <= 1) {
     msError = 'Your ratio needs to be greater than 1';
-    error(msError);
   } else {
     msRatio = r;
     msPage(msBase, msUnit, msRatio);
     codeMode(mode);
-    error(null);
   }
+  error(msError);
 }

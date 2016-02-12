@@ -3,7 +3,7 @@ function newURL() {
   window.history.replaceState('', 'Modularscale',
     '?' + getBase() +
     '&' + msUnit +
-    '&' + msRatio +
+    '&' + document.getElementById('ratio').value +
     '&' + mode +
     '&' + outputMode
   );

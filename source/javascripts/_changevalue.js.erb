@@ -80,7 +80,6 @@ function changeBase(e,k) {
 
 function changeRatio(e,k) {
 
-  msRatio = [];
   msError = false;
 
   // Change the base with arrow keys
@@ -91,7 +90,7 @@ function changeRatio(e,k) {
   var r = document.getElementById('ratio').value;
   if (isNaN(r/1)) {
     r = r.split('@');
-    if (r[1] != '') {
+    if (r[1] != '' && typeof(r[1]/1) === 'number') {
       if (msBase.length > 1) {
         var b = msBase[Math.round(((r[1]/msBase.length) - Math.floor(r[1]/msBase.length))*msBase.length)];
         r = Math.pow((r[0]/b),(1/Math.floor(r[1]/msBase.length)));
@@ -100,6 +99,7 @@ function changeRatio(e,k) {
       }
       error(null);
     } else {
+      r = msRatio;
       msError = 'Your ratio needs to be greater than 1 or be formatted <em>n</em>@<em>n</em>';
     }
   } if (r <= 1) {

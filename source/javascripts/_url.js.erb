@@ -24,21 +24,28 @@ function queryURL() {
     if (URL.length = 5) {
       msBase     = URL[0].split(',');
       msUnit     = URL[1];
-      msRatio    = URL[2].split(',');
+      msRatio    = URL[2];
       mode       = URL[3];
       outputMode = URL[4];
 
       document.getElementsByClassName('base')[0].value = msBase[0] + msUnit;
-      document.getElementsByClassName('ratio')[0].value = msRatio[0];
+      document.getElementById('ratio').value = msRatio;
 
       if (msBase.length > 1) {
         for (var i = 1; i < msBase.length; i++)
           addBase(msBase[i] + msUnit);
       }
 
-      if (msRatio.length > 1) {
-        for (var i = 1; i < msRatio.length; i++)
-          addRatio(msRatio[i]);
+      if (isNaN(msRatio/1)) {
+        msRatio = msRatio.split('@');
+        if (msRatio[1] != '' && typeof(msRatio[1]/1) === 'number') {
+          if (msBase.length > 1) {
+            var b = msBase[Math.round(((msRatio[1]/msBase.length) - Math.floor(msRatio[1]/msBase.length))*msBase.length)];
+            msRatio = Math.pow((msRatio[0]/b),(1/Math.floor(msRatio[1]/msBase.length)));
+          } else {
+            msRatio = Math.pow((msRatio[0]/msBase),(1/msRatio[1]));
+          }
+        }
       }
 
       msPage(msBase,msUnit,msRatio);

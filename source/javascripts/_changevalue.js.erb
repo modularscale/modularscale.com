@@ -77,37 +77,23 @@ function keyStep(e,k,s) {
 
 // Change base triggered by onkeup on form
 function changeBase(e,k) {
-
-  var msError = false;
-
   // Change the base with arrow keys
   if (e != false) {
     keyStep(e,k,1);
   }
-
   // Query new base and unit
   getBase();
-
-  // If no errors, update page
-  if (!msError) {
-    msPage(msBase, msUnit, msRatio);
-  } else {
-    error(msError);
-  }
+  msPage(msBase, msUnit, msRatio);
 }
 
 function changeRatio(e,k) {
-
   msError = false;
-
   // Change the base with arrow keys
   if (e != null) {
     keyStep(e,k,.1);
   }
-
   // Query ratio input
   var r = document.getElementById('ratio').value;
-
   // Run all the things
   msRatio = revRatio(r,msBase);
   msPage(msBase, msUnit, msRatio);

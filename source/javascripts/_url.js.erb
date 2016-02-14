@@ -36,17 +36,7 @@ function queryURL() {
           addBase(msBase[i] + msUnit);
       }
 
-      if (isNaN(msRatio/1)) {
-        msRatio = msRatio.split('@');
-        if (msRatio[1] != '' && typeof(msRatio[1]/1) === 'number') {
-          if (msBase.length > 1) {
-            var b = msBase[Math.round(((msRatio[1]/msBase.length) - Math.floor(msRatio[1]/msBase.length))*msBase.length)];
-            msRatio = Math.pow((msRatio[0]/b),(1/Math.floor(msRatio[1]/msBase.length)));
-          } else {
-            msRatio = Math.pow((msRatio[0]/msBase),(1/msRatio[1]));
-          }
-        }
-      }
+      msRatio = revRatio(msRatio,msBase);
 
       msPage(msBase,msUnit,msRatio);
       codeMode(mode);

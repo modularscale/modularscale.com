@@ -1,21 +1,31 @@
+// Find bases from form
 function getBase() {
+  // Reset base & unit values
   msBase = [];
+  msUnit = '';
+  // Pull base inputs
   var bases = document.getElementsByClassName('base');
+  // loop through to aggrigate values.
   for (var i = 0; i < bases.length; i++) {
-    v = ('0' + bases[i].value).match(/^(\d+(?:\.\d+)?)(.*)$/);
-    if (v[1] > 0) {
-      msBase.push(v[1].slice(1));
+    // Split the units off
+    v = splitUnit(bases[i].value);
+    // Write the numbers to the global base var
+    if (v[0] > 0) {
+      msBase.push(v[0]);
     } else {
+      // If the base is not a number or less than 0, issue a warning.
       msError = 'Your base must be greater than 0';
     }
-    if (msUnit == null) {
-      msUnit = v[2];
+    // Pull the unit
+    if (msUnit === '') {
+      msUnit = v[1];
     }
   }
 
   return msBase;
 };
 
+// What order are the bases in?
 function baseOrder() {
   var base = getBase();
   var order = [];
@@ -32,50 +42,58 @@ function baseOrder() {
       base[i] = Math.pow(msRatio,-1) * base[i];
     }
   }
+  // New sorted base var to compare with
   var sBase = base.concat().sort();
+  // Compare sorted with unsorted to find order.
   for (var i = 0; i < base.length; i++) {
     order.push(sBase.indexOf(base[i]));
   }
+
   return order;
 };
 
-function keyStep(e,k) {
-  var thisValue = e.value.match(/^(\d+(?:\.\d+)?)(.*)$/);
-  var step = 10;
+// Use arrow keys to change values
+// takes the element, key, and increment
+function keyStep(e,k,s) {
+  // Get the numerical value of the element
+  var v = splitUnit(e.value);
+  // Change step multiplyer with alt or shift keys
   if (window.event.altKey) {
-    step = 1;
+    s = s/10;
   }
   if (window.event.shiftKey) {
-    step = 100;
+    s = s*10;
   }
+  // Return value and recombine with unit.
+  // 100s are there to avoid floating points.
   if (k == 38) {
-    e.value = ((thisValue[1]-0) * 10 + step) / 10 + thisValue[2];
+    e.value = ((v[0]-0)*100 + s*100)/100 + v[1];
   } else if (k == 40) {
-    if (thisValue[1] > 1) {
-    e.value = ((thisValue[1]-0) * 10 - step) / 10 + thisValue[2];
+    if (v[0] > 1) {
+    e.value = ((v[0]-0)*100 - s*100)/100 + v[1];
     }
   }
 }
 
+// Change base triggered by onkeup on form
 function changeBase(e,k) {
 
-  msBase = [];
-  msUnit = null;
   var msError = false;
 
   // Change the base with arrow keys
-  if (e != null) {
-    keyStep(e,k);
+  if (e != false) {
+    keyStep(e,k,1);
   }
+
+  // Query new base and unit
   getBase();
-  if (msError == false) {
+
+  // If no errors, update page
+  if (!msError) {
     msPage(msBase, msUnit, msRatio);
-    error(msError);
   } else {
     error(msError);
   }
-
-  codeMode(mode);
 }
 
 function changeRatio(e,k) {
@@ -84,30 +102,13 @@ function changeRatio(e,k) {
 
   // Change the base with arrow keys
   if (e != null) {
-    keyStep(e,k);
+    keyStep(e,k,.1);
   }
 
+  // Query ratio input
   var r = document.getElementById('ratio').value;
-  if (isNaN(r/1)) {
-    r = r.split('@');
-    if (r[1] != '' && typeof(r[1]/1) === 'number') {
-      if (msBase.length > 1) {
-        var b = msBase[Math.round(((r[1]/msBase.length) - Math.floor(r[1]/msBase.length))*msBase.length)];
-        r = Math.pow((r[0]/b),(1/Math.floor(r[1]/msBase.length)));
-      } else {
-        r = Math.pow((r[0]/msBase),(1/r[1]));
-      }
-      error(null);
-    } else {
-      r = msRatio;
-      msError = 'Your ratio needs to be greater than 1 or be formatted <em>n</em>@<em>n</em>';
-    }
-  } if (r <= 1) {
-    msError = 'Your ratio needs to be greater than 1';
-  } else {
-    msRatio = r;
-    msPage(msBase, msUnit, msRatio);
-    codeMode(mode);
-  }
-  error(msError);
+
+  // Run all the things
+  msRatio = revRatio(r,msBase);
+  msPage(msBase, msUnit, msRatio);
 }

@@ -1,6 +1,7 @@
 //= require '_typekit.js.erb'
 //= require '_mixpanel.js.erb'
 //= require '_ms.js.erb'
+//= require '_util.js.erb'
 //= require '_changevalue.js.erb'
 //= require '_panels.js.erb'
 //= require '_form.js.erb'
@@ -17,6 +18,7 @@ var msBase = 1;
 var msUnit = 'em';
 var msRatio = 1.5;
 var multiLimit = 5;
+var msError = false;
 
 queryURL();
 
@@ -85,6 +87,9 @@ function msPage(msBase, msUnit, msRatio) {
 
   document.getElementById('text_m0').scrollIntoView(false);
   newURL();
+
+  error(msError);
+  codeMode(mode);
 
   // Analytics
   mixpanel.track('scale', {

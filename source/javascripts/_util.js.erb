@@ -20,7 +20,7 @@ function revRatio(r,b) {
     // Only run if the character following is a number
     if (r[1] != '' && typeof(r[1]/1) === 'number') {
       // But don’t run if the target is less than the base value.
-      if (r[0] < msBase[0]) {
+      if (r[0] < msBase.concat().sort(function(a,b){return a-b})[msBase.length-1]) {
         msError = 'Your target must be a higher value';
         return msRatio;
       }

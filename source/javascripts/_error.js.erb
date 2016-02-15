@@ -1,6 +1,8 @@
+// Used to surface errors to the user
 function error(e) {
   var el = document.getElementById('error');
 
+  // Write the error
   if (e) {
     el.innerHTML = e;
   } else {

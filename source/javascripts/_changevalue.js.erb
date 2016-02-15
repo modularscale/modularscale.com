@@ -83,7 +83,7 @@ function changeBase(e,k) {
   }
   // Query new base and unit
   getBase();
-  msPage(msBase, msUnit, msRatio);
+  msPage();
 }
 
 function changeRatio(e,k) {
@@ -96,5 +96,5 @@ function changeRatio(e,k) {
   var r = document.getElementById('ratio').value;
   // Run all the things
   msRatio = revRatio(r,msBase);
-  msPage(msBase, msUnit, msRatio);
+  msPage();
 }

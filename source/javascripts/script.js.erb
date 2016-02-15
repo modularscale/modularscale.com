@@ -20,76 +20,49 @@ var msRatio = 1.5;
 var multiLimit = 3;
 var msError = false;
 var msPrecision = 1000;
+// upper bound of scale
+var upper = 16;
+// lower bound of scale
+var lower = -6;
 
 // Get URL configuration
 queryURL();
 
-function stepUnits(u, msBase, msUnit, msRatio) {
-  var step = (Math.round((ms(u,{base: msBase,ratio: msRatio}))*msPrecision)/msPrecision);
+function msPage() {
 
-  var output = (
-    step+msUnit
-    );
-
-  if (msBase[0] != 1 || msUnit != 'em') {
-    output = output + '</span><span>' +
-    Math.round(step/msBase[0]*msPrecision)/msPrecision+'em';
+  // Normalize bases into an array
+  if (typeof(msBase) === 'number') {
+    msBase = [msBase];
   }
-
-  if (msUnit === 'px') {
-    output = output + '</span><span class="at16">' +
-    Math.round(step/16*msPrecision)/msPrecision+'<a href="http://nicewebtype.com/notes/2012/07/19/leave-default-font-size-alone-and-embrace-the-em/" title="What is ems @ 16?">em @ 16</a>';
-  }
-
-  return '<span>' + output + '</span>';
-}
-
-function msPage(msBase, msUnit, msRatio) {
-
-  // upper bound of scale
-  var u = 16;
-  // lower bound of scale
-  var l = -6;
-
-  rMsUnit = msUnit;
-  rMsBase = msBase;
-
-  // This is a fix for ems not rendering smaller than a certan size.
-  // This converts ems to px and allows the text to deisplay appropriately small.
-  if (msUnit == 'em' || msUnit == 'rem') {
-    rMsUnit = 'px';
-    rMsBase = [];
-    for (var i = 0; i < msBase.length; i++)
-      rMsBase.push(msBase[i]*16);
-  }
-
-
-  while (u >= l) {
-
-    var step = ms(u,{base: rMsBase,ratio: msRatio});
-    var p = baseOrder();
-    var pl = p.length;
-
-    if (u >= 0) {
-      document.getElementById('m'+u+'value').innerHTML=stepUnits(u, msBase, msUnit, msRatio);
-      document.getElementById('text_m'+Math.abs(u)).setAttribute('class', 's' +
-        p[Math.round(((u/(pl)) - Math.floor(u/(pl))) * (pl))]
-        + ' text');
-      document.getElementById('text_m'+u).style.fontSize=(step+rMsUnit);
-    } else {
-      document.getElementById('mn'+Math.abs(u)+'value').innerHTML=stepUnits(u, msBase, msUnit, msRatio);
-      document.getElementById('text_mn'+Math.abs(u)).setAttribute('class', 's'+
-        p[Math.round(((u/(pl)) - Math.floor(u/(pl))) * (pl))]
-        +' text');
-      document.getElementById('text_mn'+Math.abs(u)).style.fontSize=(step+rMsUnit);
+  // Pick where to render the output
+  var thread = 'output';
+  // seed innerHTML
+  iHTML = '';
+  // Loop throught outputs
+  for (var i = upper; i >= lower; i--) {
+    // Find the target value
+    var v = ms(i,{base:msBase,ratio:msRatio})
+    // Find the value to render in the style tag
+    var vR = v+msUnit;
+    // Find what base is being used
+    var s = baseOrder()[modulo(i,msBase.length)];
+    // If em/rem convert to px due to small size display bugs
+    if (msUnit === 'em' || msUnit === 'rem') {
+      vR = v*16+'px';
     }
-
-    u--;
+    // Add to innerHTML tempalte
+    iHTML = iHTML +
+      '<ul class="info m'+i+'">' +
+      '<li class="output-function">ms('+i+')</li> ' +
+      '<li id="m'+i+'value"><span>'+Math.round(v*msPrecision)/msPrecision+msUnit+'</span></li>' +
+      '</ul><div class="s'+s+' text" id="text_m'+i+'" style="font-size:'+vR+';">The quick brown fox jumps over the lazy dog</div>'
   }
 
+  document.getElementById('output').innerHTML = iHTML;
   document.getElementById('text_m0').scrollIntoView(false);
-  newURL();
 
+  // URL, error handilng, and code mode
+  newURL();
   error(msError);
   codeMode(mode);
 
@@ -97,12 +70,12 @@ function msPage(msBase, msUnit, msRatio) {
   mixpanel.track('scale', {
     'Units'        : msUnit,
     'Bases'        : msBase.length,
-    'Ratios'       : msRatio.length,
     'Base values'  : msBase,
     'Ratio values' : msRatio
   });
 }
 
+// Scroll to the base
 document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('text_m0').scrollIntoView(false);
 });

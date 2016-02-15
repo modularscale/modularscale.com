@@ -23,7 +23,7 @@ function addBase() {
   }
   // Query base and recalculate page
   getBase();
-  msPage(msBase, msUnit, msRatio);
+  msPage();
 }
 
 // Function to remove bases
@@ -43,7 +43,7 @@ function removeBase() {
   }
   // Query base and recalculate page
   getBase();
-  msPage(msBase, msUnit, msRatio);
+  msPage();
 }
 
 // Global for if ratio select is toggled
@@ -70,5 +70,5 @@ function rS(v) {
   ratioSelectToggle();
   // Update page
   changeRatio();
-  msPage(msBase, msUnit, msRatio);
+  msPage();
 }

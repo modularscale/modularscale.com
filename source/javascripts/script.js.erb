@@ -19,11 +19,14 @@ var msUnit = 'em';
 var msRatio = 1.5;
 var multiLimit = 3;
 var msError = false;
+var msPrecision = 1000;
 
+// Get URL configuration
 queryURL();
 
+//
 function stepUnits(u, msBase, msUnit, msRatio) {
-  var step = (Math.round((ms(u,{base: msBase,ratio: msRatio}))*1000)/1000);
+  var step = (Math.round((ms(u,{base: msBase,ratio: msRatio}))*msPrecision)/msPrecision);
 
   var output = (
     step+msUnit
@@ -31,12 +34,12 @@ function stepUnits(u, msBase, msUnit, msRatio) {
 
   if (msBase[0] != 1 || msUnit != 'em') {
     output = output + '</span><span>' +
-    Math.round(step/msBase[0]*1000)/1000+'em';
+    Math.round(step/msBase[0]*msPrecision)/msPrecision+'em';
   }
 
   if (msUnit === 'px') {
     output = output + '</span><span class="at16">' +
-    Math.round(step/16*1000)/1000+'<a href="http://nicewebtype.com/notes/2012/07/19/leave-default-font-size-alone-and-embrace-the-em/" title="What is ems @ 16?">em @ 16</a>';
+    Math.round(step/16*msPrecision)/msPrecision+'<a href="http://nicewebtype.com/notes/2012/07/19/leave-default-font-size-alone-and-embrace-the-em/" title="What is ems @ 16?">em @ 16</a>';
   }
 
   return '<span>' + output + '</span>';

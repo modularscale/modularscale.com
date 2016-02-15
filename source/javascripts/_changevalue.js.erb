@@ -67,10 +67,10 @@ function keyStep(e,k,s) {
   // Return value and recombine with unit.
   // 100s are there to avoid floating points.
   if (k == 38) {
-    e.value = ((v[0]-0)*100 + s*100)/100 + v[1];
+    e.value = ((v[0]-0)*msPrecision + s*msPrecision)/msPrecision + v[1];
   } else if (k == 40) {
     if (v[0] > 1) {
-    e.value = ((v[0]-0)*100 - s*100)/100 + v[1];
+    e.value = ((v[0]-0)*msPrecision - s*msPrecision)/msPrecision + v[1];
     }
   }
 }

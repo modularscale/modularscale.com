@@ -7,25 +7,20 @@ function addBase() {
   var formBases = document.getElementById('formBases');
   var newBase = document.createElement('label');
   var baseValue = document.getElementsByClassName('base')[0].value;
-
   // New base template
   newBase.innerHTML = '<input type="text" class="base" value="' + baseValue + '" onkeyup="changeBase(this,event.keyCode)">';
-
   // Add new base to the base list
   formBases.appendChild(newBase);
   // Increase base count
   baseCount++;
-
   // Trigger class that lets CSS know multiple bases are shown
   if (baseCount == 1) {
     formBases.classList.add('multi');
   }
-
   // Trigger CSS to show bases have reached their limit
   if (baseCount == multiLimit) {
     formBases.classList.add('no-add');
   }
-
   // Query base and recalculate page
   getBase();
   msPage(msBase, msUnit, msRatio);
@@ -38,17 +33,14 @@ function removeBase() {
     document.getElementById('formBases').lastChild.remove();
     baseCount--;
   }
-
   // Trigger class that lets CSS know one base is left
   if (baseCount == 0) {
     formBases.classList.remove('multi');
   }
-
   // Trigger class that lets CSS know the base limit is gone
   if (baseCount < multiLimit) {
     formBases.classList.remove('no-add');
   }
-
   // Query base and recalculate page
   getBase();
   msPage(msBase, msUnit, msRatio);

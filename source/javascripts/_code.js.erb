@@ -1,5 +1,5 @@
 // Writes the code panel
-function codeMode(newMode) {
+function codeMode(newMode,l) {
   // query the setting UI
   var codeSettings = document.getElementById('codeSettings');
   // Default is web, no UI
@@ -33,5 +33,7 @@ function codeMode(newMode) {
   // Write mode to body class
   document.body.className = 'panel-' + panel + ' mode-' + mode + ' ' + help;
   // Ensure the URL includes the mode
-  newURL();
+  if (l === undefined) {
+    newURL();
+  }
 }

@@ -28,7 +28,7 @@ var lower = -6;
 // Get URL configuration
 queryURL();
 
-function msPage() {
+function msPage(l) {
 
   // Normalize bases into an array
   if (typeof(msBase) === 'number') {
@@ -62,9 +62,8 @@ function msPage() {
   document.getElementById('text_m0').scrollIntoView(false);
 
   // URL, error handilng, and code mode
-  newURL();
   error(msError);
-  codeMode(mode);
+  codeMode(mode,l);
 
   // Analytics
   mixpanel.track('scale', {
@@ -74,6 +73,8 @@ function msPage() {
     'Ratio values' : msRatio
   });
 }
+// run msPage without URL (arg l passed in through codeMode())
+msPage(1);
 
 // Scroll to the base
 document.addEventListener('DOMContentLoaded', function(){

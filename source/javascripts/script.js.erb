@@ -11,31 +11,31 @@
 //= require '_help.js.erb'
 
 // Vars
-var mode = 'web';
-var panel = 'form';
-var outputMode = 'text';
-var msBase = 1;
-var msUnit = 'em';
-var msRatio = 1.5;
-var multiLimit = 3;
-var msError = false;
+var mode        = 'web';
+var panel       = 'form';
+var outputMode  = 'text';
+var msBase      = 1;
+var msUnit      = 'em';
+var msRatio     = 1.5;
+var multiLimit  = 3;
+var msError     = false;
 var msPrecision = 1000;
-// upper bound of scale
-var upper = 16;
-// lower bound of scale
-var lower = -6;
+var thread      = 0;
+var threads     = 0;
+var upper       = 16;
+var lower       = -6;
+var output      = document.getElementById('output');
 
 // Get URL configuration
 queryURL();
 
+// Update page
 function msPage(l) {
 
   // Normalize bases into an array
   if (typeof(msBase) === 'number') {
     msBase = [msBase];
   }
-  // Pick where to render the output
-  var thread = 'output';
   // seed innerHTML
   iHTML = '';
   // Loop throught outputs
@@ -58,7 +58,7 @@ function msPage(l) {
       '</ul><div class="s'+s+' text" id="text_m'+i+'" style="font-size:'+vR+';">The quick brown fox jumps over the lazy dog</div>'
   }
 
-  document.getElementById('output').innerHTML = iHTML;
+  output.childNodes[thread].innerHTML = iHTML;
   document.getElementById('text_m0').scrollIntoView(false);
 
   // URL, error handilng, and code mode
@@ -75,12 +75,6 @@ function msPage(l) {
 }
 // run msPage without URL (arg l passed in through codeMode())
 msPage(1);
-
-// Scroll to the base
-document.addEventListener('DOMContentLoaded', function(){
-  document.getElementById('text_m0').scrollIntoView(false);
-});
-
 
 // If iOS web app
 if (window.navigator.standalone && ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false )) {

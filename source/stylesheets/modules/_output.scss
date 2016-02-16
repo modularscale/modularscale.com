@@ -5,8 +5,20 @@ $output-item-end   : 8;
 .output {
   left: $form-width;
   right: 1em;
-  overflow-x: hidden;
-  padding-top: ms(2);
+  display: flex;
+  padding: 0;
+  > div {
+    padding: ms(2) 1em;
+    flex: 1;
+    overflow: auto;
+    @include box-shadow(
+      (ms(-3) * -1) 0 0 0 rgba(0,0,0,0.05),
+      -1px 0 0 0 rgba(0,0,0,0.1)
+    );
+  }
+  > div:empty {
+    display: none;
+  }
   li {
     padding: .25em .5em;
     display: -ms-flexbox;

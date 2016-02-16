@@ -6,6 +6,7 @@
 //= require '_panels.js.erb'
 //= require '_form.js.erb'
 //= require '_code.js.erb'
+//= require '_threads.js.erb'
 //= require '_error.js.erb'
 //= require '_url.js.erb'
 //= require '_help.js.erb'
@@ -55,11 +56,11 @@ function msPage(l) {
       '<ul class="info m'+i+'">' +
       '<li class="output-function">ms('+i+')</li> ' +
       '<li id="m'+i+'value"><span>'+Math.round(v*msPrecision)/msPrecision+msUnit+'</span></li>' +
-      '</ul><div class="s'+s+' text" id="text_m'+i+'" style="font-size:'+vR+';">The quick brown fox jumps over the lazy dog</div>'
+      '</ul><div class="s'+s+' text text_m'+i+'" style="font-size:'+vR+';">The quick brown fox jumps over the lazy dog</div>'
   }
 
   output.childNodes[thread].innerHTML = iHTML;
-  document.getElementById('text_m0').scrollIntoView(false);
+  output.childNodes[thread].getElementsByClassName('text_m0')[0].scrollIntoView(false);
 
   // URL, error handilng, and code mode
   error(msError);

@@ -99,6 +99,9 @@ $output-item-end   : 8;
     content: 'd';
     color: darken(nth($color-multi, 4), 5%);
   }
+  .text_m0:before {
+    background: $dark;
+  }
   @media (max-width: $break-med) {
     left: 0;
     @include transform(translateX(100%));
@@ -122,10 +125,6 @@ $output-item-end   : 8;
   .at16 {
     display: none;
   }
-}
-
-#text_m0:before {
-  background: $dark;
 }
 
 .table .info.m0 {

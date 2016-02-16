@@ -1,4 +1,30 @@
 function threadSelect(t) {
-  thread = t;
-  msPage();
+  // Pull fresh, untransformed, values
+  getBase();
+  // Don’t run unless it's a new thread
+  if (thread != t) {
+    // How many bases are currently here?
+    var bLength = $[thread].b.length;
+    // Pick new thread
+    thread = t;
+    // Remove active class
+    output.getElementsByClassName('active')[0].classList.remove('active');
+    // Add active class on the newly active panel
+    output.childNodes[thread].classList.add('active');
+    // Render panel if not rendered
+    if (threads < thread) {
+      $.push({
+        b:  $[threads].b,
+        u:  $[threads].u,
+        r: $[threads].r,
+      });
+      threads++;
+      msPage();
+    }
+    // Remove bases
+    document.getElementById('formBases').innerHTML = '<label><input type="text" class="base" value="1em" step="1" onkeyup="changeBase(this,event.keyCode)"></label>'
+    baseCount = 0;
+    // Update the form panel
+    formUpdate();
+  }
 }

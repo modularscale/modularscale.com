@@ -15,6 +15,10 @@ $output-item-end   : 8;
       (ms(-3) * -1) 0 0 0 rgba(0,0,0,0.05),
       -1px 0 0 0 rgba(0,0,0,0.1)
     );
+    @include filter(opacity(.8) saturate(0%));
+    &.active {
+      @include filter(none);
+    }
   }
   > div:empty {
     display: none;

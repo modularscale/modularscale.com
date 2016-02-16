@@ -2,13 +2,15 @@
 var baseCount = 0;
 
 // Adds base form
-function addBase() {
+function addBase(b) {
   // Get elements
   var formBases = document.getElementById('formBases');
   var newBase = document.createElement('label');
-  var baseValue = document.getElementsByClassName('base')[0].value;
+  if (!b) {
+    var b = document.getElementsByClassName('base')[0].value;
+  }
   // New base template
-  newBase.innerHTML = '<input type="text" class="base" value="' + baseValue + '" onkeyup="changeBase(this,event.keyCode)">';
+  newBase.innerHTML = '<input type="text" class="base" value="' + b + '" onkeyup="changeBase(this,event.keyCode)">';
   // Add new base to the base list
   formBases.appendChild(newBase);
   // Increase base count

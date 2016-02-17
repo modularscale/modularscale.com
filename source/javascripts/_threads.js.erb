@@ -1,6 +1,8 @@
 function threadSelect(t) {
   // Pull fresh, untransformed, values
   getBase();
+  // # of threads
+  var threads = $.length-1;
   // Don’t run unless it's a new thread
   if (thread != t) {
     // How many bases are currently here?
@@ -14,11 +16,10 @@ function threadSelect(t) {
     // Render panel if not rendered
     if (threads < thread) {
       $.push({
-        b:  $[threads].b,
-        u:  $[threads].u,
+        b: $[threads].b,
+        u: $[threads].u,
         r: $[threads].r,
       });
-      threads++;
       msPage();
     }
     // Remove bases

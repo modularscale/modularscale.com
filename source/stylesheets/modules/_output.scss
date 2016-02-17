@@ -7,6 +7,7 @@ $output-item-end   : 8;
   right: 1em;
   display: flex;
   padding: 0;
+  background-color: $light;
   > div {
     padding: ms(2) 1em;
     flex: 1;
@@ -15,9 +16,12 @@ $output-item-end   : 8;
       (ms(-3) * -1) 0 0 0 rgba(0,0,0,0.05),
       -1px 0 0 0 rgba(0,0,0,0.1)
     );
-    @include filter(opacity(.8) saturate(0%));
+    @include filter(saturate(0%));
+    opacity: .8;
+    background: #fff;
     &.active {
       @include filter(none);
+      opacity: 1;
     }
   }
   > div:empty {

@@ -48,6 +48,9 @@ function threadRemove() {
     $.pop();
     thread = $.length-1
     document.getElementById('threads').classList.remove('max');
+    for (var i = 0; i < $.length; i++){
+      output.childNodes[i].getElementsByClassName('text_m0')[0].scrollIntoView(false);
+    }
   }
   if ($.length === 1) {
     document.getElementById('threads').classList.add('min');

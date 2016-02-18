@@ -66,7 +66,9 @@ function msPage(l) {
   }
 
   output.childNodes[thread].innerHTML = iHTML;
-  output.childNodes[thread].getElementsByClassName('text_m0')[0].scrollIntoView(false);
+  for (var i = 0; i < $.length; i++){
+    output.childNodes[i].getElementsByClassName('text_m0')[0].scrollIntoView(false);
+  }
 
   // URL, error handilng, and code mode
   error(msError);

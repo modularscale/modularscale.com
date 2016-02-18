@@ -20,9 +20,9 @@ function revRatio(r,b) {
     // Only run if the character following is a number
     if (r[1] != '' && typeof(r[1]/1) === 'number') {
       // But don’t run if the target is less than the base value.
-      if (r[0] < msBase[0]) {
+      if (r[0] < $[thread].b.concat().sort(function(a,b){return a-b})[$[thread].b.length-1]) {
         msError = 'Your target must be a higher value';
-        return msRatio;
+        return $[thread].r;
       }
       // If everything passes, run reverse calc
       else if (Array.isArray(b) && b.length > 1) {
@@ -35,11 +35,11 @@ function revRatio(r,b) {
       }
     } else {
       msError = 'Your ratio needs to be greater than 1 or be formatted <em>n</em>@<em>n</em>';
-      return msRatio;
+      return $[thread].r;
     }
   } else if (r <= 1) {
     msError = 'Your ratio needs to be greater than 1';
-    return msRatio;
+    return $[thread].r;
   } else {
     // If no other errors, just pass r on through
     // it's just a good ratio number

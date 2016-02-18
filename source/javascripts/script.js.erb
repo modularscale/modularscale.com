@@ -5,108 +5,85 @@
 //= require '_changevalue.js.erb'
 //= require '_panels.js.erb'
 //= require '_form.js.erb'
+//= require '_form-update.js.erb'
 //= require '_code.js.erb'
+//= require '_threads.js.erb'
 //= require '_error.js.erb'
 //= require '_url.js.erb'
 //= require '_help.js.erb'
 
 // Vars
-var mode = 'web';
-var panel = 'form';
-var outputMode = 'text';
-var msBase = 1;
-var msUnit = 'em';
-var msRatio = 1.5;
-var multiLimit = 3;
-var msError = false;
+var mode        = 'web';
+var panel       = 'form';
+var outputMode  = 'text';
+var multiLimit  = 3;
+var msError     = false;
 var msPrecision = 1000;
+var thread      = 0;
+var upper       = 16;
+var lower       = -6;
+var output      = document.getElementById('output');
+
+// scale settings stored here
+var $ = [
+  {
+    b: 1,
+    u: 'em',
+    r: 1.5
+  }
+];
 
 // Get URL configuration
 queryURL();
 
-function stepUnits(u, msBase, msUnit, msRatio) {
-  var step = (Math.round((ms(u,{base: msBase,ratio: msRatio}))*msPrecision)/msPrecision);
+// Update page
+function msPage(l) {
 
-  var output = (
-    step+msUnit
-    );
-
-  if (msBase[0] != 1 || msUnit != 'em') {
-    output = output + '</span><span>' +
-    Math.round(step/msBase[0]*msPrecision)/msPrecision+'em';
+  // Normalize bases into an array
+  if (typeof($[thread].b) === 'number') {
+    $[thread].b = [$[thread].b];
   }
-
-  if (msUnit === 'px') {
-    output = output + '</span><span class="at16">' +
-    Math.round(step/16*msPrecision)/msPrecision+'<a href="http://nicewebtype.com/notes/2012/07/19/leave-default-font-size-alone-and-embrace-the-em/" title="What is ems @ 16?">em @ 16</a>';
-  }
-
-  return '<span>' + output + '</span>';
-}
-
-function msPage(msBase, msUnit, msRatio) {
-
-  // upper bound of scale
-  var u = 16;
-  // lower bound of scale
-  var l = -6;
-
-  rMsUnit = msUnit;
-  rMsBase = msBase;
-
-  // This is a fix for ems not rendering smaller than a certan size.
-  // This converts ems to px and allows the text to deisplay appropriately small.
-  if (msUnit == 'em' || msUnit == 'rem') {
-    rMsUnit = 'px';
-    rMsBase = [];
-    for (var i = 0; i < msBase.length; i++)
-      rMsBase.push(msBase[i]*16);
-  }
-
-
-  while (u >= l) {
-
-    var step = ms(u,{base: rMsBase,ratio: msRatio});
-    var p = baseOrder();
-    var pl = p.length;
-
-    if (u >= 0) {
-      document.getElementById('m'+u+'value').innerHTML=stepUnits(u, msBase, msUnit, msRatio);
-      document.getElementById('text_m'+Math.abs(u)).setAttribute('class', 's' +
-        p[Math.round(((u/(pl)) - Math.floor(u/(pl))) * (pl))]
-        + ' text');
-      document.getElementById('text_m'+u).style.fontSize=(step+rMsUnit);
-    } else {
-      document.getElementById('mn'+Math.abs(u)+'value').innerHTML=stepUnits(u, msBase, msUnit, msRatio);
-      document.getElementById('text_mn'+Math.abs(u)).setAttribute('class', 's'+
-        p[Math.round(((u/(pl)) - Math.floor(u/(pl))) * (pl))]
-        +' text');
-      document.getElementById('text_mn'+Math.abs(u)).style.fontSize=(step+rMsUnit);
+  // seed innerHTML
+  iHTML = '';
+  // Loop throught outputs
+  for (var i = upper; i >= lower; i--) {
+    // Find the target value
+    var v = ms(i,{base:$[thread].b,ratio:$[thread].r})
+    // Find the value to render in the style tag
+    var vR = v+$[thread].u;
+    // Find what base is being used
+    var s = baseOrder()[modulo(i,$[thread].b.length)];
+    // If em/rem convert to px due to small size display bugs
+    if ($[thread].u === 'em' || $[thread].u === 'rem') {
+      vR = v*16+'px';
     }
-
-    u--;
+    // Add to innerHTML tempalte
+    iHTML = iHTML +
+      '<ul class="info m'+i+'">' +
+      '<li class="output-function">ms('+i+')</li> ' +
+      '<li id="m'+i+'value"><span>'+Math.round(v*msPrecision)/msPrecision+$[thread].u+'</span></li>' +
+      '</ul><div class="s'+s+' text text_m'+i+'" style="font-size:'+vR+';">The quick brown fox jumps over the lazy dog</div>'
   }
 
-  document.getElementById('text_m0').scrollIntoView(false);
-  newURL();
+  output.childNodes[thread].innerHTML = iHTML;
+  for (var i = 0; i < $.length; i++){
+    output.childNodes[i].getElementsByClassName('text_m0')[0].scrollIntoView(false);
+  }
 
+  // URL, error handilng, and code mode
   error(msError);
-  codeMode(mode);
+  codeMode(mode,l);
 
   // Analytics
   mixpanel.track('scale', {
-    'Units'        : msUnit,
-    'Bases'        : msBase.length,
-    'Ratios'       : msRatio.length,
-    'Base values'  : msBase,
-    'Ratio values' : msRatio
+    'Units'        : $[thread].u,
+    'Bases'        : $[thread].b.length,
+    'Base values'  : $[thread].b,
+    'Ratio values' : $[thread].b
   });
 }
-
-document.addEventListener('DOMContentLoaded', function(){
-  document.getElementById('text_m0').scrollIntoView(false);
-});
-
+// run msPage without URL (arg l passed in through codeMode())
+msPage(1);
 
 // If iOS web app
 if (window.navigator.standalone && ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false )) {

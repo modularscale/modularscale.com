@@ -1,5 +1,7 @@
 // Writes the code panel
-function codeMode(newMode) {
+function codeMode(newMode,l) {
+  // Reset base
+  getBase();
   // query the setting UI
   var codeSettings = document.getElementById('codeSettings');
   // Default is web, no UI
@@ -11,8 +13,8 @@ function codeMode(newMode) {
     codeSettings.innerHTML =
       '<textarea id="ms-settings" onClick="this.select();" rows="4">' +
       '$modularscale: (\n' +
-      '  base: ' + msBase + ',\n' +
-      '  ratio: ' + msRatio + '\n' +
+      '  base: ' + $[thread].b + ',\n' +
+      '  ratio: ' + $[thread].r + '\n' +
       ');' +
       '</textarea>' +
       '<a href="https://github.com/modularscale/modularscale-sass" target="_blank" class="code-install">Install the Sass plugin</a>';
@@ -22,8 +24,8 @@ function codeMode(newMode) {
     codeSettings.innerHTML =
       '<textarea id="ms-settings" onClick="this.select();" rows="4">' +
       'modularscale = {\n' +
-      '  base: [' + msBase + '],\n' +
-      '  ratio: ' + msRatio + '\n' +
+      '  base: [' + $[thread].b + '],\n' +
+      '  ratio: ' + $[thread].r + '\n' +
       '};' +
       '</textarea>' +
       '<a href="https://github.com/modularscale/modularscale-js" target="_blank" class="code-install">Install the JS plugin</a>';
@@ -33,5 +35,7 @@ function codeMode(newMode) {
   // Write mode to body class
   document.body.className = 'panel-' + panel + ' mode-' + mode + ' ' + help;
   // Ensure the URL includes the mode
-  newURL();
+  if (l === undefined) {
+    newURL();
+  }
 }

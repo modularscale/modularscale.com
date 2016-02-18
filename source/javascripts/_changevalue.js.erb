@@ -1,8 +1,8 @@
 // Find bases from form
 function getBase() {
   // Reset base & unit values
-  msBase = [];
-  msUnit = '';
+  $[thread].b = [];
+  $[thread].u = '';
   // Pull base inputs
   var bases = document.getElementsByClassName('base');
   // loop through to aggrigate values.
@@ -11,18 +11,18 @@ function getBase() {
     v = splitUnit(bases[i].value);
     // Write the numbers to the global base var
     if (v[0] > 0) {
-      msBase.push(v[0]);
+      $[thread].b.push(v[0]);
     } else {
       // If the base is not a number or less than 0, issue a warning.
       msError = 'Your base must be greater than 0';
     }
     // Pull the unit
-    if (msUnit === '') {
-      msUnit = v[1];
+    if ($[thread].u === '') {
+      $[thread].u = v[1];
     }
   }
 
-  return msBase;
+  return $[thread].b;
 };
 
 // What order are the bases in?
@@ -31,15 +31,15 @@ function baseOrder() {
   var order = [];
   // Normalize bases
   // Find the upper bounds for base values
-  var baseHigh = Math.pow(msRatio,1) * base[0];
+  var baseHigh = Math.pow($[thread].r,1) * base[0];
   for (var i = 1; i < base.length; i++) {
     // shift up if value too low
     while (base[i] < base[0]) {
-      base[i] = Math.pow(msRatio,1) * base[i];
+      base[i] = Math.pow($[thread].r,1) * base[i];
     }
     // Shift down if too high
     while (base[i] >= baseHigh) {
-      base[i] = Math.pow(msRatio,-1) * base[i];
+      base[i] = Math.pow($[thread].r,-1) * base[i];
     }
   }
   // New sorted base var to compare with
@@ -83,7 +83,7 @@ function changeBase(e,k) {
   }
   // Query new base and unit
   getBase();
-  msPage(msBase, msUnit, msRatio);
+  msPage();
 }
 
 function changeRatio(e,k) {
@@ -95,6 +95,6 @@ function changeRatio(e,k) {
   // Query ratio input
   var r = document.getElementById('ratio').value;
   // Run all the things
-  msRatio = revRatio(r,msBase);
-  msPage(msBase, msUnit, msRatio);
+  $[thread].r = revRatio(r,$[thread].b);
+  msPage();
 }

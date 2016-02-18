@@ -22,7 +22,6 @@
 }
 
 .label {
-  border-top: ms(-3) solid darken($dark, 3%);
   font-family: inherit;
   font-size: ms(-.5);
   font-weight: 400;
@@ -32,6 +31,12 @@
   &:first-child {
     border-top: none;
     margin-top: ms(-1);
+  }
+  &.max .min {
+    opacity: .3;
+  }
+  &.min .max {
+    opacity: .3;
   }
 }
 

@@ -29,3 +29,27 @@ function threadSelect(t) {
     formUpdate();
   }
 }
+
+function threadAdd() {
+  if ($.length < 5) {
+    threadSelect($.length);
+    document.getElementById('threads').classList.remove('min');
+  }
+  if ($.length === 5) {
+    document.getElementById('threads').classList.add('max');
+  }
+}
+
+function threadRemove() {
+  if ($.length > 1) {
+    output.getElementsByClassName('active')[0].classList.remove('active');
+    output.childNodes[$.length-2].classList.add('active');
+    output.childNodes[$.length-1].innerHTML = '';
+    $.pop();
+    thread = $.length-1
+    document.getElementById('threads').classList.remove('max');
+  }
+  if ($.length === 1) {
+    document.getElementById('threads').classList.add('min');
+  }
+}

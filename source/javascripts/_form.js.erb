@@ -4,6 +4,7 @@ var baseCount = 0;
 // Adds base form
 function addBase(b) {
   // Get elements
+  console.log(b);
   var formBases = document.getElementById('formBases');
   var newBase = document.createElement('label');
   if (!b) {
@@ -16,16 +17,13 @@ function addBase(b) {
   // Increase base count
   baseCount++;
   // Trigger class that lets CSS know multiple bases are shown
-  if (baseCount == 1) {
+  if (baseCount === 1) {
     formBases.classList.add('multi');
   }
   // Trigger CSS to show bases have reached their limit
-  if (baseCount == multiLimit) {
+  if (baseCount === multiLimit) {
     formBases.classList.add('no-add');
   }
-  // Query base and recalculate page
-  getBase();
-  msPage();
 }
 
 // Function to remove bases

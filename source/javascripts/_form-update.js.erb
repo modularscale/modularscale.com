@@ -2,8 +2,9 @@ function formUpdate() {
   document.getElementsByClassName('base')[0].value = $[thread].b[0] + $[thread].u;
   document.getElementById('ratio').value = $[thread].r;
   if ($[thread].b.length > 1) {
-    for (var i = 1; i < $[thread].b.length; i++) {
-      addBase($[thread].b[i] + $[thread].u);
+    for (var j = 1; j < $[thread].b.length; j++) {
+      // console.log($[thread].b[j]);
+      addBase($[thread].b[j] + $[thread].u);
     }
   }
 }

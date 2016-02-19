@@ -20,7 +20,7 @@ $output-item-end   : 8;
     opacity: .8;
     background: #fff;
     &.active {
-      @include filter(none);
+      @include filter(saturate(100%));
       opacity: 1;
     }
   }

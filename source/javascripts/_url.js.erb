@@ -1,12 +1,18 @@
 // Change the URL
 function newURL() {
-  // window.history.replaceState('', 'Modularscale',
-  //   '?' + getBase() +
-  //   '&' + $[thread].u +
-  //   '&' + document.getElementById('ratio').value +
-  //   '&' + mode +
-  //   '&' + outputMode
-  // );
+  var url = '';
+  $[thread].b = getBase();
+  $[thread].r = document.getElementById('ratio').value;
+  for (var i = $.length - 1; i >= 0; i--) {
+    url =
+    '?' + $[i].b +
+    '&' + $[i].u +
+    '&' + $[i].r +
+    '&' + mode +
+    '&' + outputMode
+    + url
+  }
+  window.history.replaceState('', 'Modularscale', url);
 }
 
 // Query the URL on initial load
@@ -20,22 +26,22 @@ function queryURL() {
   }
 
   if (URL.search('&') > 0) {
-    URL = URL.split('?')[1].split('&');
-    if (URL.length = 5) {
-      $[thread].b = URL[0].split(',');
-      $[thread].u = URL[1];
-      $[thread].r = URL[2];
-      mode        = URL[3];
-      outputMode  = URL[4];
+    URL = URL.split('?');
+    for (var i = 1; i < URL.length; i++) {
+      console.log(URL[i]);
+      if (i > 1) {
+        threadAdd();
+      }
+      URL[i] = URL[i].split('&');
+      $[i-1].b = URL[i][0].split(',');
+      $[i-1].u = URL[i][1];
+      $[i-1].r = URL[i][2];
 
       formUpdate();
-
-      $[thread].r = revRatio($[thread].r,$[thread].b);
-
-      msPage();
       codeMode(mode);
       outputM(outputMode);
 
+      msPage();
     }
   }
 }

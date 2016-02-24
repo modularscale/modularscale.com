@@ -9,8 +9,8 @@
 //= require '_code.js.erb'
 //= require '_threads.js.erb'
 //= require '_error.js.erb'
-//= require '_url.js.erb'
 //= require '_help.js.erb'
+//= require '_url.js.erb'
 
 // Vars
 var mode        = 'web';
@@ -32,9 +32,6 @@ var $ = [
     r: 1.5
   }
 ];
-
-// Get URL configuration
-queryURL();
 
 // Update page
 function msPage(l) {
@@ -89,3 +86,5 @@ msPage(1);
 if (window.navigator.standalone && ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false )) {
   document.body.classList.add('ios-webapp');
 }
+
+queryURL();

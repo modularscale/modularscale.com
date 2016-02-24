@@ -28,7 +28,6 @@ function queryURL() {
   if (URL.search('&') > 0) {
     URL = URL.split('?');
     for (var i = 1; i < URL.length; i++) {
-      console.log(URL[i]);
       if (i > 1) {
         threadAdd();
       }
@@ -36,6 +35,21 @@ function queryURL() {
       $[i-1].b = URL[i][0].split(',');
       $[i-1].u = URL[i][1];
       $[i-1].r = URL[i][2];
+
+      if (URL[i][2].split(',').length > 1) {
+        var r = URL[i][2].split(',');
+        for (var j = 0; j < r.length; j++) {
+          if (j > 0) {
+            threadAdd();
+          }
+          $[thread].r = r[j];
+          formUpdate();
+          codeMode(mode);
+          outputM(outputMode);
+
+          msPage();
+        }
+      }
 
       formUpdate();
       codeMode(mode);

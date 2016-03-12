@@ -25,12 +25,21 @@ function queryURL() {
     return null
   }
 
+  // Search for settings
   if (URL.search('&') > 0) {
+    // Split multiple settings up
     URL = URL.split('?');
+    // Loop through settings
     for (var i = 1; i < URL.length; i++) {
+      // Add a new thread if doing another pass
       if (i > 1) {
         threadAdd();
+        // reset to a single base
+        while ($[i-1].b.length > 1) {
+          removeBase();
+        }
       }
+      // Split the thread into its settings
       URL[i] = URL[i].split('&');
       $[i-1].b = URL[i][0].split(',');
       $[i-1].u = URL[i][1];

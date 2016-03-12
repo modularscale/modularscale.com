@@ -54,11 +54,25 @@ function msPage(l) {
     if ($[thread].u === 'em' || $[thread].u === 'rem') {
       vR = v*16+'px';
     }
+    // Find output values to display
+    var baseOne = '';
+    var atSixteen = '';
+    if ($[thread].b[0] != 1 || $[thread].u != 'em') {
+      baseOne = '<li><span>'+
+        Math.round(v/$[thread].b[0]*msPrecision)/msPrecision +
+        'em</span></li>';
+    }
+    if ($[thread].u === 'px') {
+      atSixteen = '<li><span>'+
+        Math.round(v/16*msPrecision)/msPrecision +
+        '<a href="http://nicewebtype.com/notes/2012/07/19/leave-default-font-size-alone-and-embrace-the-em/" title="What is ems @ 16?">em @ 16</a></span></li>';
+    }
     // Add to innerHTML tempalte
     iHTML = iHTML +
       '<ul class="info m'+i+'">' +
       '<li class="output-function">ms('+i+')</li> ' +
       '<li id="m'+i+'value"><span>'+Math.round(v*msPrecision)/msPrecision+$[thread].u+'</span></li>' +
+      baseOne + atSixteen +
       '</ul><div class="s'+s+' text text_m'+i+'" style="font-size:'+vR+';">The quick brown fox jumps over the lazy dog</div>'
   }
 

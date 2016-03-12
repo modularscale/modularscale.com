@@ -30,9 +30,8 @@ function revRatio(r,b) {
         // Find the ordered base
         b = b[modulo(r[1],l)];
         r[1] = Math.floor(r[1]/l);
-
-        return Math.pow((r[0]/b),(1/r[1]));
       }
+      return Math.pow((r[0]/b),(1/r[1]));
     } else {
       msError = 'Your ratio needs to be greater than 1 or be formatted <em>n</em>@<em>n</em>';
       return $[thread].r;

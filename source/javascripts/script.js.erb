@@ -42,6 +42,8 @@ function msPage(l) {
   }
   // seed innerHTML
   iHTML = '';
+  // Process ratio
+  $[thread].r = revRatio($[thread].r,$[thread].b);
   // Loop throught outputs
   for (var i = upper; i >= lower; i--) {
     // Find the target value

@@ -1,25 +1,28 @@
 var help = 'help-off';
 var lastHelp = null;
+var trueCookie = '🍪';
+var falseCookie = '🚫';
 
 function helpT() {
   if (help == 'help') {
     help = 'help-off';
     document.body.className = 'panel-' + panel + ' mode-' + mode + ' ' + help;
+    document.cookie = falseCookie;
     mixpanel.track('Help toggle', {
       'Toggled' : 'off'
     });
   } else {
-    document.cookie = 'helpT';
     help = 'help';
     document.body.className = 'panel-' + panel + ' mode-' + mode + ' ' + help;
+    document.cookie = trueCookie;
     mixpanel.track('Help toggle', {
       'Toggled' : 'on'
     });
   }
 }
 
-if (document.cookie.split('help')[1] == 'T') {
-  helpT();
+if (document.cookie.includes(trueCookie)) {
+  helpT()
 }
 
 // Toggle about panel section

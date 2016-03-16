@@ -64,7 +64,7 @@ function msPage(l) {
         Math.round(v/$[thread].b[0]*msPrecision)/msPrecision +
         'em</span></li>';
     }
-    if ($[thread].u === 'px') {
+    if ($[thread].u === 'px' && $[thread].b[0] != 16) {
       atSixteen = '<li><span>'+
         Math.round(v/16*msPrecision)/msPrecision +
         '<a href="http://nicewebtype.com/notes/2012/07/19/leave-default-font-size-alone-and-embrace-the-em/" title="What is ems @ 16?">em @ 16</a></span></li>';

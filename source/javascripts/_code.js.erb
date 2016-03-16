@@ -1,3 +1,18 @@
+var abc = ['a','b','c','d'];
+
+function codeBases(t,m) {
+  if (m === 'sass') {
+    var vals = '';
+    for (var i = 0; i < $[t].b.length; i++) {
+      vals = vals + ' ' + $[t].b[i] + $[t].u;
+    }
+    return '  base:' + vals + ',\n';
+  }
+  else {
+    return '  base: [' + $[t].b + '],\n';
+  }
+}
+
 // Writes the code panel
 function codeMode(newMode,l) {
   // Reset base
@@ -5,30 +20,38 @@ function codeMode(newMode,l) {
   // query the setting UI
   var codeSettings = document.getElementById('codeSettings');
   // Default is web, no UI
-  if (newMode == 'web') {
+  if (newMode === 'web') {
     codeSettings.innerHTML = '';
   }
-  // Sass mode template
-  else if (newMode == 'sass') {
+  else {
+    var bracket = ['{','}'];
+    if (newMode === 'sass') {
+      bracket = ['(',')'];
+    }
+    // Get thread HTML
+    var threadHTML = '';
+    for (var i = 1; i < $.length; i++) {
+      threadHTML = threadHTML +
+        ',\n' +
+        '  ' + abc[i-1] + ': ' + bracket[0] + '\n' +
+        '  ' + codeBases(i,newMode) +
+        '    ratio: ' + $[i].r + '\n' +
+        '  ' + bracket[1] + ''
+    }
+    console.log(threadHTML);
+    var linkHTML = '<a href="https://github.com/modularscale/modularscale-js" target="_blank" class="code-install">Install the JS plugin</a>';
+    if (newMode === 'sass') {
+      linkHTML = '<a href="https://github.com/modularscale/modularscale-sass" target="_blank" class="code-install">Install the Sass plugin</a>';
+    }
+    // Write modes HTML
     codeSettings.innerHTML =
       '<textarea id="ms-settings" onClick="this.select();" rows="4">' +
-      '$modularscale: (\n' +
-      '  base: ' + $[thread].b + ',\n' +
-      '  ratio: ' + $[thread].r + '\n' +
-      ');' +
+      '$modularscale: ' + bracket[0] + '\n' +
+      codeBases(0,newMode) +
+      '  ratio: ' + $[0].r + threadHTML + '\n' +
+      bracket[1] + ';' +
       '</textarea>' +
-      '<a href="https://github.com/modularscale/modularscale-sass" target="_blank" class="code-install">Install the Sass plugin</a>';
-  }
-  // JS mode template
-  else if (newMode == 'js') {
-    codeSettings.innerHTML =
-      '<textarea id="ms-settings" onClick="this.select();" rows="4">' +
-      'modularscale = {\n' +
-      '  base: [' + $[thread].b + '],\n' +
-      '  ratio: ' + $[thread].r + '\n' +
-      '};' +
-      '</textarea>' +
-      '<a href="https://github.com/modularscale/modularscale-js" target="_blank" class="code-install">Install the JS plugin</a>';
+      linkHTML;
   }
   // Write the new mode as a var
   mode = newMode;

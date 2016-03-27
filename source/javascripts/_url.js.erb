@@ -8,9 +8,7 @@ function newURL() {
     '?' + $[i].b +
     '&' + $[i].u +
     '&' + $[i].r +
-    '&' + mode +
-    '&' + outputMode
-    + url
+    '' + url
   }
   window.history.replaceState('', 'Modularscale', url);
 }
@@ -53,16 +51,12 @@ function queryURL() {
           }
           $[thread].r = r[j];
           formUpdate();
-          codeMode(mode);
-          outputM(outputMode);
 
           msPage();
         }
       }
 
       formUpdate();
-      codeMode(mode);
-      outputM(outputMode);
 
       msPage();
     }

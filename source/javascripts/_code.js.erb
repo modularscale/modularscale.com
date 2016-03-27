@@ -35,7 +35,7 @@ function codeMode(newMode,l) {
         ',\n' +
         '  ' + abc[i-1] + ': ' + bracket[0] + '\n' +
         '  ' + codeBases(i,newMode) +
-        '    ratio: ' + $[i].r + '\n' +
+        '    ratio: ' + revRatio($[i].r,$[i].b) + '\n' +
         '  ' + bracket[1] + ''
     }
     var linkHTML = '<a href="https://github.com/modularscale/modularscale-js" target="_blank" class="code-install">Install the JS plugin</a>';
@@ -47,7 +47,7 @@ function codeMode(newMode,l) {
       '<textarea id="ms-settings" onClick="this.select();" rows="4">' +
       '$modularscale: ' + bracket[0] + '\n' +
       codeBases(0,newMode) +
-      '  ratio: ' + $[0].r + threadHTML + '\n' +
+      '  ratio: ' + revRatio($[0].r,$[0].b) + threadHTML + '\n' +
       bracket[1] + ';' +
       '</textarea>' +
       linkHTML;

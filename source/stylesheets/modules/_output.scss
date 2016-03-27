@@ -35,6 +35,12 @@ $output-item-end   : 8;
     &:first-child {
       padding-left: 0;
     }
+    &:nth-child(n+3) {
+      opacity: .67;
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
   .output-function {
     width: 4em;

@@ -58,9 +58,12 @@ $output-item-end   : 8;
     display: -webkit-box;
     display: flex;
     width: 100%;
-    span {
-      min-width: 6em;
+    li {
+      width: 5.8em;
       margin-right: 1em;
+      &:first-child {
+        width: 3.8em;
+      }
     }
   }
   .text {

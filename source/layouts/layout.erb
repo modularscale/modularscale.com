@@ -46,10 +46,22 @@
     <article class="about panel" data-panel="about" id="about">
       <%= yield %>
     </article>
-    <a href="javascript:aboutT();" class="about-close">
+    <a href="javascript:threadAdd(0)" class="scale-add button-pm">
       <svg class="svg-pm" viewBox="0 0 15 15" aria-labelledby="title">
-        <title id="title">Close panel</title>
+        <title id="title">Add scale</title>
         <use xlink:href="#add"></use>
+      </svg>
+    </a>
+    <a href="javascript:threadRemove(0)" class="scale-remove button-pm">
+      <svg class="svg-pm" viewBox="0 0 15 15" aria-labelledby="title">
+        <title id="title">Remove scale</title>
+        <use xlink:href="#add"></use>
+      </svg>
+    </a>
+    <a href="javascript:aboutT();" class="about-toggle button-pm">
+      <svg class="svg-pm" viewBox="0 0 15 15" aria-labelledby="title">
+        <title id="title">Help panel</title>
+        <use xlink:href="#help"></use>
       </svg>
     </a>
     <%= partial "partials/pager" %>

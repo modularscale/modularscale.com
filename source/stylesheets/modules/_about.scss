@@ -75,10 +75,18 @@ a.scale-add {
   top: 4em;
   bottom: auto;
   display: block;
+  .thread-max & {
+    @include transform(rotateZ(-90deg) scale(0));
+  }
 }
 a.scale-remove {
   top: 7em;
   bottom: auto;
   display: block;
-  @include transform(rotateZ(45deg));
+  svg {
+    @include transform(rotateZ(45deg));
+  }
+  .thread-min & {
+    @include transform(rotateZ(90deg) scale(0));
+  }
 }

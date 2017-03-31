@@ -16,7 +16,6 @@
     width: 96%;
   }
   form {
-    margin-bottom: ms(1);
     position: relative;
   }
 }
@@ -238,6 +237,12 @@ a.code-install {
       text-decoration: none;
     }
   }
+}
+
+.routput {
+  opacity: .8;
+  margin: (ms(-1) * -1) 0 0 ms(2);
+  @extend %tabularlining;
 }
 
 // Help text

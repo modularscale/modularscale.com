@@ -56,6 +56,12 @@ function msPage(l) {
     if ($[thread].u === 'em' || $[thread].u === 'rem') {
       vR = v*16+'px';
     }
+    //
+    if (document.getElementById('ratio').value.search('@') != -1) {
+      document.getElementById('routput').innerHTML = Math.round($[thread].r * 10000) / 10000;
+    } else {
+      document.getElementById('routput').innerHTML = '';
+    }
     // Find output values to display
     var baseOne = '';
     var atSixteen = '';

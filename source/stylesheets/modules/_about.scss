@@ -68,6 +68,18 @@
   }
 }
 
+.scale-add,
+.scale-remove {
+  @media (max-width: $break-med) {
+    right: ms(1);
+    .panel-form &,
+    .panel-calc &,
+    .panel-about & {
+      display: none;
+    }
+  }
+}
+
 .about-toggle.about-toggle {
   z-index: 1;
 }

@@ -58,10 +58,10 @@ function keyStep(e,k,s) {
   // Get the numerical value of the element
   var v = splitUnit(e.value);
   // Change step multiplyer with alt or shift keys
-  if (window.event.altKey) {
+  if (e.altKey) {
     s = s/10;
   }
-  if (window.event.shiftKey) {
+  if (e.shiftKey) {
     s = s*10;
   }
   // Return value and recombine with unit.

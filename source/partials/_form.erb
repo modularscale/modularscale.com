@@ -27,31 +27,40 @@
     </div>
 
     <div class="ratios">
-      <h6 class="label">Ratios</h6>
+      <h6 class="label">Ratio</h6>
 
       <div id="formRatios">
         <label>
-          <input type="number" class="ratio" min="1.001" value="1.5" step="0.001" onkeyup="changeRatio()"><div onclick="ratioSelectOpen(this)" class="ratios-select-open">
+          <input type="text" class="ratio" value="1.5" step="0.01" min="1.01" onkeyup="changeRatio(this,event.keyCode)" id="ratio">
+          <div onclick="ratioSelectToggle()" class="ratios-select-open">
             <svg viewBox="0 0 10 10" class="ratios-select-svg" aria-labelledby="title">
               <title id="title">Select a ratio</title>
               <path d="m0 3 l10 0 -5 5 z"/>
-            </svg></div><div class="ratios-select"></div>
+            </svg>
+          </div>
+          <div class="ratios-select" id="ratiosSelect" style="display: none">
+            <a href="javascript:rS(1.067)">15:16 – minor second</a>
+            <a href="javascript:rS(1.125)">8:9 – major second</a>
+            <a href="javascript:rS(1.2)">5:6 – minor third</a>
+            <a href="javascript:rS(1.25)">4:5 – major third</a>
+            <a href="javascript:rS(1.333)">3:4 – perfect fourth</a>
+            <a href="javascript:rS(1.414)">1:√2 – aug. fourth / dim. fifth</a>
+            <a href="javascript:rS(1.5)">2:3 – perfect fifth</a>
+            <a href="javascript:rS(1.6)">5:8 – minor sixth</a>
+            <a href="javascript:rS(1.618)">1:1.618 – golden section</a>
+            <a href="javascript:rS(1.667)">3:5 – major sixth</a>
+            <a href="javascript:rS(1.778)">9:16 – minor seventh</a>
+            <a href="javascript:rS(1.875)">8:15 – major seventh</a>
+            <a href="javascript:rS(2)">1:2 – octave</a>
+            <a href="javascript:rS(2.5)">2:5 – major tenth</a>
+            <a href="javascript:rS(2.667)">3:8 – major eleventh</a>
+            <a href="javascript:rS(3)">1:3 – major twelfth</a>
+            <a href="javascript:rS(4)">1:4 – double octave</a>
+          </div>
         </label>
+        <div id="routput" class="routput"></div>
       </div>
-
-      <a class="button-pm add" href="javascript:addRatio()">
-        <svg class="svg-pm" viewBox="0 0 15 15" aria-labelledby="title">
-          <title id="title">Add ratio</title>
-          <use xlink:href="#add"></use>
-        </svg>
-      </a>
-      <a class="button-pm remove" href="javascript:removeRatio()">
-        <svg class="svg-pm" viewBox="0 0 15 15" aria-labelledby="title">
-          <title id="title">Remove ratio</title>
-          <use xlink:href="#add"></use>
-        </svg>
-      </a>
-      <p class="helptext"><em>Ratios</em> are multiplied by the base to produce a scale of numbers that is proportionally related. <a href="javascript:aboutA('whats-a-good-ratio');">More&nbsp;&rarr;</a></p>
+      <p class="helptext"><em>Ratios</em> are multiplied by the base to produce a scale of numbers that is proportionally related. If you know what size you want a heading to be, type the target value @ position on the scale like <em>36@5</em> <a href="javascript:aboutA('whats-a-good-ratio');">More&nbsp;&rarr;</a></p>
 
     </div>
     <input class="submit" type="submit"/>
@@ -72,6 +81,8 @@
   </div>
 
   <small class="credits">
-    <p>This site is built &amp; maintained by <a href="http://scottkellum.com/">Scott Kellum</a> and <a href="https://twitter.com/nicewebtype">Tim Brown</a>. Copyright © 2010&#8211;2015 <a href="http://tbrown.org/">Tim Brown</a>.</p>
+    <p>This site is built &amp; maintained by <a href="http://scottkellum.com/">Scott Kellum</a> and <a href="https://twitter.com/nicewebtype">Tim Brown</a>. Copyright © 2010&#8211;2017 <a href="http://tbrown.org/">Tim Brown</a>.</p>
   </small>
+
+  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1696&serve=CVYD42T&placement=modularscalecom" id="_carbonads_js"></script>
 </section>

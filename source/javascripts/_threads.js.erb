@@ -1,0 +1,64 @@
+function threadSelect(t) {
+  // Pull fresh, untransformed, values
+  getBase();
+  // # of threads
+  var threads = $.length-1;
+  // Don’t run unless it's a new thread
+  if (thread != t) {
+    // How many bases are currently here?
+    var bLength = $[thread].b.length;
+    // Pick new thread
+    thread = t;
+    // Remove active class
+    output.getElementsByClassName('active')[0].classList.remove('active');
+    // Add active class on the newly active panel
+    output.childNodes[thread].classList.add('active');
+    // Render panel if not rendered
+    if (threads < thread) {
+      $.push({
+        b: $[threads].b,
+        u: $[threads].u,
+        r: $[threads].r,
+      });
+      msPage();
+    }
+    // Remove bases
+    document.getElementById('formBases').innerHTML = '<label><input type="text" class="base" value="1em" step="1" onkeyup="changeBase(this,event.keyCode)"></label>'
+    baseCount = 0;
+    // Update the form panel
+    formUpdate();
+  }
+}
+
+function threadAdd() {
+  if ($.length > 0) {
+    document.getElementById('threads').classList.remove('thread-min');
+  }
+  if ($.length < 5) {
+    threadSelect($.length);
+    document.getElementById('threads').classList.remove('thread-max');
+  }
+  if ($.length === 5) {
+    document.getElementById('threads').classList.add('thread-max');
+  }
+}
+
+function threadRemove() {
+  if ($.length > 1) {
+    output.getElementsByClassName('active')[0].classList.remove('active');
+    output.childNodes[$.length-2].classList.add('active');
+    output.childNodes[$.length-1].innerHTML = '';
+    $.pop();
+    thread = $.length-1
+    document.getElementById('threads').classList.remove('thread-max');
+    for (var i = 0; i < $.length; i++){
+      output.childNodes[i].getElementsByClassName('text_m0')[0].scrollIntoView(false);
+    }
+  }
+
+  if ($.length === 1) {
+    document.getElementById('threads').classList.add('thread-min');
+  }
+  formUpdate();
+  newURL();
+}

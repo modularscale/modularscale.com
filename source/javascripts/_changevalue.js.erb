@@ -1,66 +1,100 @@
-function changeBase(e,k) {
-
-  msBase = [];
-  msUnit = null;
-  var msError = false;
-
-  // Change the base with arrow keys
-  if (e != null) {
-    var thisValue = e.value.match(/^(\d+(?:\.\d+)?)(.*)$/);
-    if (k == 38) {
-      e.value = thisValue[1]-0 + 1 + thisValue[2];
-    } else if (k == 40) {
-      if (thisValue[1] > 1) {
-        e.value = thisValue[1] - 1 + thisValue[2];
-      }
-    }
-  }
-
+// Find bases from form
+function getBase() {
+  // Reset base & unit values
+  $[thread].b = [];
+  $[thread].u = '';
+  // Pull base inputs
   var bases = document.getElementsByClassName('base');
+  // loop through to aggrigate values.
   for (var i = 0; i < bases.length; i++) {
-    v = ('0' + bases[i].value).match(/^(\d+(?:\.\d+)?)(.*)$/);
-    if (v[1] > 0) {
-      msBase.push(v[1].slice(1));
+    // Split the units off
+    v = splitUnit(bases[i].value);
+    // Write the numbers to the global base var
+    if (v[0] > 0) {
+      $[thread].b.push(v[0]);
     } else {
+      // If the base is not a number or less than 0, issue a warning.
       msError = 'Your base must be greater than 0';
     }
-    if (msUnit == null) {
-      msUnit = v[2];
+    // Pull the unit
+    if ($[thread].u === '') {
+      $[thread].u = v[1];
     }
   }
-  if (msError == false) {
-    msPage(msBase, msUnit, msRatio);
-    error(msError);
-  } else {
-    error(msError);
+
+  return $[thread].b;
+};
+
+// What order are the bases in?
+function baseOrder() {
+  var base = getBase();
+  var order = [];
+  // Normalize bases
+  // Find the upper bounds for base values
+  var baseHigh = Math.pow($[thread].r,1) * base[0];
+  for (var i = 1; i < base.length; i++) {
+    // shift up if value too low
+    while (base[i] < base[0]) {
+      base[i] = Math.pow($[thread].r,1) * base[i];
+    }
+    // Shift down if too high
+    while (base[i] >= baseHigh) {
+      base[i] = Math.pow($[thread].r,-1) * base[i];
+    }
+  }
+  // New sorted base var to compare with
+  var sBase = base.concat().sort();
+  // Compare sorted with unsorted to find order.
+  for (var i = 0; i < base.length; i++) {
+    order.push(sBase.indexOf(base[i]));
   }
 
-  codeMode(mode);
+  return order;
+};
+
+// Use arrow keys to change values
+// takes the element, key, and increment
+function keyStep(e,k,s) {
+  // Get the numerical value of the element
+  var v = splitUnit(e.value);
+  // Change step multiplyer with alt or shift keys
+  if (e.altKey) {
+    s = s/10;
+  }
+  if (e.shiftKey) {
+    s = s*10;
+  }
+  // Return value and recombine with unit.
+  // 100s are there to avoid floating points.
+  if (k == 38) {
+    e.value = ((v[0]-0)*msPrecision + s*msPrecision)/msPrecision + v[1];
+  } else if (k == 40) {
+    if (v[0] > 1) {
+    e.value = ((v[0]-0)*msPrecision - s*msPrecision)/msPrecision + v[1];
+    }
+  }
 }
 
-function changeRatio() {
-
-  msRatio = [];
-  var msError = false;
-
-  var ratios = document.getElementsByClassName('ratio');
-  for (var i = 0; i < ratios.length; i++) {
-    v = parseFloat(ratios[i].value);
-    if (typeof(v) == 'number') {
-      msRatio.push(v);
-    } else {
-      msError = true;
-    }
-    if (v <= 1) {
-      msError = 'Your ratio needs to be greater than 1';
-    }
+// Change base triggered by onkeup on form
+function changeBase(e,k) {
+  // Change the base with arrow keys
+  if (e != false) {
+    keyStep(e,k,1);
   }
-  if (msError == false) {
-    msPage(msBase, msUnit, msRatio);
-    error(msError);
-  } else {
-    error(msError);
-  }
+  // Query new base and unit
+  getBase();
+  msPage();
+}
 
-  codeMode(mode);
+function changeRatio(e,k) {
+  msError = false;
+  // Change the base with arrow keys
+  if (e != null) {
+    keyStep(e,k,.1);
+  }
+  // Query ratio input
+  var r = document.getElementById('ratio').value;
+  // Run all the things
+  $[thread].r = revRatio(r,$[thread].b);
+  msPage();
 }

@@ -1,12 +1,16 @@
 // Change the URL
 function newURL() {
-  window.history.replaceState('', 'Modularscale',
-    '?' + msBase +
-    '&' + msUnit +
-    '&' + msRatio +
-    '&' + mode +
-    '&' + outputMode
-  );
+  var url = '';
+  $[thread].b = getBase();
+  $[thread].r = document.getElementById('ratio').value;
+  for (var i = $.length - 1; i >= 0; i--) {
+    url =
+    '?' + $[i].b +
+    '&' + $[i].u +
+    '&' + $[i].r +
+    '' + url
+  }
+  window.history.replaceState('', 'Modularscale', url);
 }
 
 // Query the URL on initial load
@@ -19,32 +23,42 @@ function queryURL() {
     return null
   }
 
+  // Search for settings
   if (URL.search('&') > 0) {
-    URL = URL.split('?')[1].split('&');
-    if (URL.length = 5) {
-      msBase     = URL[0].split(',');
-      msUnit     = URL[1];
-      msRatio    = URL[2].split(',');
-      mode       = URL[3];
-      outputMode = URL[4];
+    // Split multiple settings up
+    URL = URL.split('?');
+    // Loop through settings
+    for (var i = 1; i < URL.length; i++) {
+      // Add a new thread if doing another pass
+      if (i > 1) {
+        threadAdd();
+        // reset to a single base
+        while ($[i-1].b.length > 1) {
+          removeBase();
+        }
+      }
+      // Split the thread into its settings
+      URL[i] = URL[i].split('&');
+      $[i-1].b = URL[i][0].split(',');
+      $[i-1].u = URL[i][1];
+      $[i-1].r = URL[i][2];
 
-      document.getElementsByClassName('base')[0].value = msBase[0] + msUnit;
-      document.getElementsByClassName('ratio')[0].value = msRatio[0];
+      if (URL[i][2].split(',').length > 1) {
+        var r = URL[i][2].split(',');
+        for (var j = 0; j < r.length; j++) {
+          if (j > 0) {
+            threadAdd();
+          }
+          $[thread].r = r[j];
+          formUpdate();
 
-      if (msBase.length > 1) {
-        for (var i = 1; i < msBase.length; i++)
-          addBase(msBase[i] + msUnit);
+          msPage();
+        }
       }
 
-      if (msRatio.length > 1) {
-        for (var i = 1; i < msRatio.length; i++)
-          addRatio(msRatio[i]);
-      }
+      formUpdate();
 
-      msPage(msBase,msUnit,msRatio);
-      codeMode(mode);
-      outputM(outputMode);
-
+      msPage();
     }
   }
 }

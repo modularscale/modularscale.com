@@ -5,8 +5,29 @@ $output-item-end   : 8;
 .output {
   left: $form-width;
   right: 1em;
-  overflow-x: hidden;
-  padding-top: ms(2);
+  display: flex;
+  padding: 0;
+  background-color: $light;
+  > div {
+    padding: ms(2) 1em;
+    flex: 1;
+    overflow: auto;
+    overflow-x: hidden;
+    @include box-shadow(
+      (ms(-3) * -1) 0 0 0 rgba(0,0,0,0.05),
+      -1px 0 0 0 rgba(0,0,0,0.1)
+    );
+    @include filter(saturate(0%));
+    opacity: .8;
+    background: #fff;
+    &.active {
+      @include filter(saturate(100%));
+      opacity: 1;
+    }
+  }
+  > div:empty {
+    display: none;
+  }
   li {
     padding: .25em .5em;
     display: -ms-flexbox;
@@ -14,6 +35,12 @@ $output-item-end   : 8;
     display: flex;
     &:first-child {
       padding-left: 0;
+    }
+    &:nth-child(n+3) {
+      opacity: .67;
+      &:hover {
+        opacity: 1;
+      }
     }
   }
   .output-function {
@@ -32,9 +59,12 @@ $output-item-end   : 8;
     display: -webkit-box;
     display: flex;
     width: 100%;
-    span {
-      min-width: 6em;
+    li {
+      width: 5.8em;
       margin-right: 1em;
+      &:first-child {
+        width: 3.8em;
+      }
     }
   }
   .text {
@@ -87,6 +117,9 @@ $output-item-end   : 8;
     content: 'd';
     color: darken(nth($color-multi, 4), 5%);
   }
+  .text_m0:before {
+    background: $dark;
+  }
   @media (max-width: $break-med) {
     left: 0;
     @include transform(translateX(100%));
@@ -110,10 +143,6 @@ $output-item-end   : 8;
   .at16 {
     display: none;
   }
-}
-
-#text_m0:before {
-  background: $dark;
 }
 
 .table .info.m0 {

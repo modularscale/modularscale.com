@@ -16,13 +16,11 @@
     width: 96%;
   }
   form {
-    margin-bottom: ms(1);
     position: relative;
   }
 }
 
 .label {
-  border-top: ms(-3) solid darken($dark, 3%);
   font-family: inherit;
   font-size: ms(-.5);
   font-weight: 400;
@@ -32,6 +30,12 @@
   &:first-child {
     border-top: none;
     margin-top: ms(-1);
+  }
+  &.max .min {
+    opacity: .3;
+  }
+  &.min .max {
+    opacity: .3;
   }
 }
 
@@ -122,6 +126,9 @@ label {
   &:nth-child(4):before {
     content: 'd';
     color: darken(nth($color-multi, 4), 10%);
+  }
+  #formRatios &:before {
+    content: '';
   }
 }
 
@@ -230,6 +237,12 @@ a.code-install {
       text-decoration: none;
     }
   }
+}
+
+.routput {
+  opacity: .8;
+  margin: (ms(-1) * -1) 0 0 ms(2);
+  @extend %tabularlining;
 }
 
 // Help text

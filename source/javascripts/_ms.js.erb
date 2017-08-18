@@ -1,113 +1,52 @@
-var msValue = 0;
-var msBases = 1;
-var msRatios = (1+ Math.sqrt(5))/2;
+// Function settings
+var modularscale = {
+  base: 16,
+  ratio: 1.5,
+};
 
-// Unique via http://jsfiddle.net/gabrieleromanato/BrLfv/
-var msUnique = function(origArr) {
+// Function
+function ms(v,settings) {
 
-    origArr = origArr.sort(function(a,b) {
-      var x = a[0];
-      var y = b[0];
-      return x-y;
-    });
+  // Parse settings
+  // Write initial settings if undefined
+  if (settings === undefined) {
+    settings = modularscale;
+  }
+  // Initiate values
+  var base = settings.base;
+  var ratio = settings.ratio;
+  // Fill in the blanks with default values
+  if (ratio === undefined) {
+    ratio = modularscale.ratio;
+  }
+  if (base === undefined) {
+    base = modularscale.base;
+  }
 
-    newArr = [];
-    var lastVal = null;
+  // Fast calc if not multi stranded
+  if (!Array.isArray(base) || base.length === 1) {
+    return (Math.pow(ratio,v) * base);
+  }
 
-    for (var i = 0; i < origArr.length; i++) {
-      var currentVal = origArr[i][0];
-      if (currentVal != lastVal) {
-        newArr.push(origArr[i]);
-      };
-
-      lastVal = currentVal;
-
+  // Normalize bases
+  // Find the upper bounds for base values
+  var baseHigh = Math.pow(ratio,1) * base[0];
+  for (var i = 1; i < base.length; i++) {
+    // shift up if value too low
+    while (base[i] < base[0]) {
+      base[i] = Math.pow(ratio,1) * base[i];
     }
-
-    return newArr;
-}
-
-// Main function
-function ms(value, bases, ratios) {
-
-  if (typeof value === 'string') {
-    value = 1;
-  }
-  if (value == undefined) {
-    value = msValue;
-  }
-  if (bases == undefined) {
-    bases = msBases;
-  }
-  if (ratios == undefined) {
-    ratios = msRatios;
-  }
-
-  // Error hangling
-  if (bases <= 0) {
-    bases = 1;
-  }
-  if (typeof Math.abs(bases[0]) != 'number') {
-    bases = 1;
-  }
-
-  // Make arrays
-  var bases = (''+bases).split(',');
-  var ratios = (''+ratios).split(',');
-
-  // Seed return array
-  var r = [];
-  var strand = null;
-
-  for (var ratio = 0; ratio < ratios.length; ratio++) {
-    for (var base = 0; base < bases.length; base++) {
-
-      strand = (base + ratio);
-
-      // Seed list with an initial value
-      // r.push(bases[base]);
-
-      // Find values on a positive scale
-      if (value >= 0) {
-        // Find lower values on the scale
-        var i = 0;
-        while((Math.pow(ratios[ratio], i) * bases[base]) >= bases[0]) {
-          r.push([Math.pow(ratios[ratio], i) * bases[base], strand]);
-          i--;
-        }
-
-        // Find higher possible values on the scale
-        var i = 0;
-        while(Math.pow(ratios[ratio], i) * bases[base] <= Math.pow(ratios[ratio], value + 1) * bases[base]) {
-          r.push([Math.pow(ratios[ratio], i) * bases[base], strand]);
-          i++;
-        }
-      } else {
-        // Find values on a negitve scale
-        var i = 0;
-        while((Math.pow(ratios[ratio], i) * bases[base]) <= bases[0]) {
-          r.push([Math.pow(ratios[ratio], i) * bases[base], strand]);
-          i++;
-        }
-
-        // // Find higher possible values on the scale
-        var i = 0;
-        while((Math.pow(ratios[ratio], i) * bases[base]) >= (Math.pow(ratios[ratio], value - 1) * bases[base])) {
-          if (Math.pow(ratios[ratio], i) * bases[base] <= bases[0]) {
-            r.push([Math.pow(ratios[ratio], i) * bases[base], strand]);
-          }
-          i--;
-        }
-      }
+    // Shift down if too high
+    while (base[i] >= baseHigh) {
+      base[i] = Math.pow(ratio,-1) * base[i];
     }
   }
+  // Sort bases
+  base.sort();
 
-  r = msUnique(r);
+  // Figure out what base to use with modulo
+  var rBase = Math.round((v / base.length - Math.floor(v/base.length)) * base.length);
 
-  // reverse array if value is negitive
-  if(value < 0) {
-    r = r.reverse();
-  }
-
-  return r[Math.abs(value)];
-}
+  // Return
+  return Math.pow(ratio,Math.floor(v/base.length)) * base[rBase];
+};

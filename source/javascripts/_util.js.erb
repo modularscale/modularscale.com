@@ -1,0 +1,47 @@
+// Normalizes values to a specific range
+// like reset to a value between 0 and 360
+function modulo(n,m) {
+  return Math.round(((n/m)-Math.floor(n/m))*m);
+}
+
+// Splits a string with a number and unit
+// into a number and unit
+function splitUnit(n) {
+  n = n.match(/^(\d+(?:\.\d+)?)(.*)$/);
+  return [n[1]/1,n[2]];
+}
+
+// Finds the ratio given a target value
+function revRatio(r,b) {
+  // Detect if a string is being passed in
+  if (isNaN(r/1)) {
+    // Split the string at @
+    r = r.split('@');
+    // Only run if the character following is a number
+    if (r[1] != '' && typeof(r[1]/1) === 'number') {
+      // But don’t run if the target is less than the base value.
+      if (r[0] < $[thread].b.concat().sort(function(a,b){return a-b})[$[thread].b.length-1]) {
+        msError = 'Your target must be a higher value';
+        return $[thread].r;
+      }
+      // If everything passes, run reverse calc
+      else if (Array.isArray(b) && b.length > 1) {
+        var l = b.length;
+        // Find the ordered base
+        b = b[modulo(r[1],l)];
+        r[1] = Math.floor(r[1]/l);
+      }
+      return Math.pow((r[0]/b),(1/r[1]));
+    } else {
+      msError = 'Your ratio needs to be greater than 1 or be formatted <em>n</em>@<em>n</em>';
+      return $[thread].r;
+    }
+  } else if (r <= 1) {
+    msError = 'Your ratio needs to be greater than 1';
+    return $[thread].r;
+  } else {
+    // If no other errors, just pass r on through
+    // it's just a good ratio number
+    return  r;
+  }
+}

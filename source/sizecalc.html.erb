@@ -1,0 +1,19 @@
+---
+layout: blank
+---
+
+<form action="sbumit" id="form">
+  <label for="base">Base</label>
+  <input type="number" id="base" value="16">
+  <label for="h1">H1 size</label>
+  <input type="number" id="h1" value="42">
+  <label for="steps">Steps</label>
+  <input type="number" id="steps" value="5">
+</form>
+
+<script>
+  var b = document.getElementById('base').value;
+  var h = document.getElementById('h1').value;
+  var s = document.getElementById('steps').value;
+  console.log(Math.pow(h/b, 1 / s));
+</script>

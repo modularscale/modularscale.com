@@ -33,44 +33,10 @@
     <meta name="twitter:title" content="Modular Scale">
     <meta name="twitter:description" content="Calculate, visualize, and learn about modular scales.">
     <meta name="twitter:image:src" content="http://www.modularscale.com/twitter-share.png">
-
-    <!-- Roll stylesheet into page for fast load -->
-    <% css_path = sitemap.resources.select { |p| p.source_file.match(/style[.]scss$/) }.first %>
-    <style><%= css_path.render %></style>
   </head>
 
-  <body class="panel-calc mode-web">
+  <body>
     <%= partial "partials/svg" %>
-    <%= partial "partials/form" %>
-    <%= partial "partials/output" %>
-    <article class="about panel" data-panel="about" id="about">
-      <%= yield %>
-    </article>
-    <div id="threads" class="thread-min">
-        <a href="javascript:threadAdd(0)" class="scale-add button-pm">
-          <svg class="svg-pm" viewBox="0 0 15 15" aria-labelledby="title">
-            <title id="title">Add scale</title>
-            <use xlink:href="#add"></use>
-          </svg>
-        </a>
-        <a href="javascript:threadRemove(0)" class="scale-remove button-pm">
-          <svg class="svg-pm" viewBox="0 0 15 15" aria-labelledby="title">
-            <title id="title">Remove scale</title>
-            <use xlink:href="#add"></use>
-          </svg>
-        </a>
-    </div>
-    <a href="javascript:aboutT();" class="about-toggle button-pm">
-      <svg class="svg-pm" viewBox="0 0 15 15" aria-labelledby="title">
-        <title id="title">Help panel</title>
-        <use xlink:href="#help"></use>
-      </svg>
-    </a>
-    <%= partial "partials/pager" %>
-
-    <!-- Roll javascript into page for fast load -->
-    <% app_js = sprockets.find_asset('script.js.erb').to_s %>
-    <script><%= defined?(Uglifier) ? Uglifier.compile(app_js) : app_js %></script>
-
+    <%= yield %>
   </body>
 </html>

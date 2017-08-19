@@ -1,9 +1,16 @@
-.advertisement {
-  background: darken($dark, 5%);
-  margin: ms(1) 0;
-  padding: ms(-6) ms(-1) ms(-2);
-  p {
-    margin: ms(-1) 0;
-    font-size: ms(-0.4)
+#carbonads {
+  background: lighten($light, 5%);
+  border-radius: 3px;
+  margin: ms(-1) 0;
+  padding: ms(-1) ms(-1) ms(-2);
+  font-size: ms(-.5);
+  img {
+    display: block;
+    margin: 0 0 ms(-1);
+  }
+  .carbon-poweredby {
+    opacity: .6;
+    display: block;
+    margin: ms(-2) 0 0;
   }
 }
